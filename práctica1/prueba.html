@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ficha de Registro</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <header>
+    <h1>Registro de Usuario</h1>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#formulario">Registro</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio">
+      <article>
+        <h2>Bienvenida</h2>
+        <p>Completa el formulario para unirte a nuestra comunidad.</p>
+      </article>
+    </section>
+
+    <section id="formulario">
+      <h2>Formulario de Registro</h2>
+      <form>
+        <label for="email">Correo:</label>
+        <input type="email" id="email" required>
+
+        <label for="usuario">
+          Usuario (solo letras y números):
+        </label>
+        <input
+          type="text"
+          id="usuario"
+          pattern="[A-Za-z0-9]+"
+          placeholder="ejemplo123"
+        >
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Mi Sitio Web</p>
+  </footer>
+
+</body>
+</html>
