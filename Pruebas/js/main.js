@@ -100,16 +100,45 @@ if (true) {
 
 console.log("Valor de 'd' fuera: " + d) */
 
-let myObj = {
+/* let myObj = {
     name: "Pepe",
     edad: 34
 }
 
-console.dir(myObj);
+console.dir(myObj); */
 
 //Declaracion de funciones y sus valores independientemente de donde se encuentre la función
-console.log(typeof hello);
-/*********************** */
-function hello () {
+/* function hello () {
     console.log("hello");
 }
+
+console.log(typeof hello);
+ */
+
+// let nombre = "Pepe";
+/* let nota = "8.45";
+
+// Simplemente cambia el tipo de variable
+// edad = edad.toString();
+
+// let login = nombre + edad;
+
+console.log("Tipo de Nota: " + typeof nota);
+
+nota = parseFloat(nota);
+
+console.log("Tipo de Nota: " + typeof nota +". Valor de la nota: " +nota) */
+
+// let myArray = [1,2,3,4,5,6,7,8,9];
+
+/* let myArray = [1, true, 34.56, "Pepe", {name:"Mary", age:45}, undefined]
+
+console.log(myArray); */
+
+let myObj = {
+    name: "Pepe",
+    edad: 34,
+    email: "pepe@mail.com"
+}
+
+console.log("Email: " +myObj.email);
