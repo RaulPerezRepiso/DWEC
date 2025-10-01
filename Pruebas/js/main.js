@@ -151,9 +151,11 @@ console.log(myArray); */
 
 // Variables declaradas
 let h11 = document.getElementById("h11");
-let b1 = document.getElementById("b1");
+let it2 = document.getElementById("b1");
 let it1 = document.getElementById("it1");
 let b2 = document.getElementById("b2");
+let a = "Pepe";
+let b = "García";
 
 // let a = 5;
 // let b = 10;
@@ -398,15 +400,14 @@ var itop2 = document.getElementById("itop2");
     h11.innerHTML = result;
 }
  */
-// Parametro Spread
+// Parametro Spread usamos arguments para usarlo
 let myArray = [true, 5, 7, 9];
+
 
 /**
  * @returns Devuelve la media de las notas si el primer parámetro 
  * es un boolean a true. En caso contrario, devuelve "Suspenso"
  */
-calculaMedia(...myArray);
-
 /* function calculaMedia(op1, ...rest) {
     let result = 0;
 
@@ -420,7 +421,8 @@ calculaMedia(...myArray);
         h11.innerHTML = "Suspenso";
 } */
 
-function calculaMedia() {
+// Usa el parámetro ( ...myArray ) para coger los valores del array llamandlos con argumente depende de como queramos usalros con ( arguments[x] )
+/* function calculaMedia() {
     if ((typeof arguments[0] == "boolean") && (arguments[0])) {
         let result = 0;
         for (i = 1; i < arguments.length; i++)
@@ -433,4 +435,55 @@ function calculaMedia() {
     }
     else
         h11.innerHTML = "Nota media: Suspenso";
+} */
+
+/* calculaMedia(...myArray); */
+
+// Ejemplo de Generadores "NO ENTRA"
+let myArray2 = [true, 5, 7, 9, false, 45, "Pepe", true, "Maria", false, false, 88];
+
+/* let counter = contadorFuncion();
+let data = counter.next();
+
+while (!data.done) {
+
+    h11.innerHTML += data.value + " - ";
+    data = counter.next();
+}
+ */
+// Para usar el Generador tenemos que usar "function*" | usamos yield para mostrar dentro de las funciones Generadoras
+/* function* contadorFuncion() {
+    for (let i in myArray2) {
+        if (typeof myArray2[i] == "boolean")
+            yield myArray2[i];
+    }
+} */
+
+// Función main que se carga cada vez que carga el body y lanza la funcion anónima. Podemos llamarlo de dos maneras "() =>" || "function()"
+// Podemos mostrar valores de variables o pasarle el valor de una como parametro sin parantesis
+/* document.body.onload = () => {
+    alert("Empezando... " + a +" " +b)
+} */
+
+// Funciones Anónimas. No tienen nombre se pueden declarar dentro de una variable sirven para usarse una vez porque una vez se la encuntra se ejecuta
+/* b2.onclick = function(){
+    it1.value = parseFloat(itop1.value) * parseFloat(itop2.value);
+} */
+
+// Cada uno manda un tipo de dato por el tipo de llamada que hace
+/* b2.onclick = () => {
+    alert("Empezando... " + this)
+    console.log("Arguments en => es: " + arguments)
+}
+
+b1.onclick = function () {
+    it1.value = this;
+    console.log("Argumentes en function() es: " +arguments)
+} */
+
+recorre(myArray2);
+
+function recorre(a) {
+    for (i in a)
+        h11.innerHTML += a[i] + ", ";
 }
