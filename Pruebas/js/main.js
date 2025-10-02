@@ -151,9 +151,9 @@ console.log(myArray); */
 
 // Variables declaradas
 let h11 = document.getElementById("h11");
-let it2 = document.getElementById("b1");
+let it2 = document.getElementById("it2");
 let it1 = document.getElementById("it1");
-let b2 = document.getElementById("b2");
+let = document.getElementById("");
 let a = "Pepe";
 let b = "García";
 
@@ -321,7 +321,7 @@ function sumar10() {
 /* let result = multiplica(3, 5);
 h11.innerHTML = result; */
 
-// b2.onclick = multiplicaButton;
+// .onclick = multiplicaButton;
 
 // Función para coger dos valores de los text y hacer la multiplicación al clickar en el boton se mostrar en otro text 
 var itop1 = document.getElementById("itop1");
@@ -466,12 +466,12 @@ while (!data.done) {
 } */
 
 // Funciones Anónimas. No tienen nombre se pueden declarar dentro de una variable sirven para usarse una vez porque una vez se la encuntra se ejecuta
-/* b2.onclick = function(){
+/* .onclick = function(){
     it1.value = parseFloat(itop1.value) * parseFloat(itop2.value);
 } */
 
 // Cada uno manda un tipo de dato por el tipo de llamada que hace
-/* b2.onclick = () => {
+/* .onclick = () => {
     alert("Empezando... " + this)
     console.log("Arguments en => es: " + arguments)
 }
@@ -481,9 +481,46 @@ b1.onclick = function () {
     console.log("Argumentes en function() es: " +arguments)
 } */
 
-recorre(myArray2);
+/* recorre(myArray2);
 
 function recorre(a) {
     for (i in a)
         h11.innerHTML += a[i] + ", ";
+} */
+
+// Try, Catch, Throw Y Finally. Sobre todo para leer datos de texto de la interfaz
+// Ejemplo para verificar Usario y Contraseña
+let login = document.getElementById("login");
+let pass = document.getElementById("pass");
+let passConfirm = document.getElementById("passConfirm");
+let error = document.getElementById("error");
+let b1 = document.getElementById("b1");
+
+//Mensaje que sale por pantalla para aceptar
+/* if(!confirm("Eres mayor de edad?")){
+    window.close();
+} */
+/* 
+b1.onclick = function () {
+    try {
+        if (login.value == "") throw "Debe introducir un Login!";
+        else if (pass.value == "" || passConfirm.value == "") throw "Debe introducir una Contraseña y Confimarla"
+        else if (pass.value != passConfirm.value) throw "Debe introducir una contraseña Valida"
+        else alert("¡Usuario registrado con Éxito!")
+    }
+    catch (err) {
+        error.innerHTML = "Error " + err;
+    }
+    finally {
+        login.value = "";
+        pass.value = "";
+        passConfirm.value = "";
+    }
 }
+ */
+/**
+ * Clases para abri, sobreescribir mi codigo o cerralo
+ * document.open();
+ * document.write("<h2>Mensaje</h2>");
+ * document.close(); 
+ */
