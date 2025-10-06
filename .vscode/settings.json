@@ -1,0 +1,10 @@
+{
+     "vscode_vibrancy.imports": [
+    "vscode://file/path/to/custom.css",
+    "vscode://file/path/to/custom.js"
+  ],
+  "vscode_vibrancy.opacity": 1,
+  "vscode_vibrancy.enableAutoTheme": true,
+  "vscode_vibrancy.disableFramelessWindow": false,
+  "vscode_vibrancy.enableFrame": false
+}
