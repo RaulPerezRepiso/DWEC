@@ -58,6 +58,31 @@ let rGenerar = document.getElementById("rGenerar");
 let bGenera1 = document.getElementById("bGenerar1");
 let rGenerar1 = document.getElementById("rGenerar1");
 
+// Variables Ejercicio 10
+let arrow = document.getElementById("arrow");
+let bArrow = document.getElementById("bArrow");
+let rArrow = document.getElementById("rArrow");
+
+// Variables Ejercicio 11 
+
+// Variables Ejercicio 12
+
+// Variables Ejercicio 13
+
+// Variables Ejercicio 14
+
+// Variables Ejercicio 15
+
+// Variables Ejercicio 16
+
+// Variables Ejercicio 17
+
+// Variables Ejercicio 18
+
+// Variables Ejercicio 19
+
+// Variables Ejercicio 20
+
 /*********** Ejercicio 1 */
 b1.onclick = () => {
   let myArrayC2 = [nota1.value, nota2.value, nota3.value];
@@ -151,7 +176,7 @@ bMedia.onclick = () => {
         rNota.innerText = "NOTABLE";
         break;
       default:
-        rNota.innerHTML = "SOBRESALIENTE";
+        rNota.innerText = "SOBRESALIENTE";
         break;
     }
   } else {
@@ -184,6 +209,13 @@ bGenerar1.onclick = () => {
 };
 
 /*********** Ejercicio 10 */
+bArrow.onclick = () => {
+  rArrow.innerText = " ";
+  if (parseFloat(arrow.value) % 2 == 0)
+    rArrow.innerText += "Par";
+  else
+    rArrow.innerText += "Impar";
+}
 
 /*********** Ejercicio 11 */
 

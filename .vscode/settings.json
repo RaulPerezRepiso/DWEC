@@ -1,10 +1,14 @@
 {
-     "vscode_vibrancy.imports": [
-    "vscode://file/path/to/custom.css",
-    "vscode://file/path/to/custom.js"
-  ],
-  "vscode_vibrancy.opacity": 1,
-  "vscode_vibrancy.enableAutoTheme": true,
-  "vscode_vibrancy.disableFramelessWindow": false,
-  "vscode_vibrancy.enableFrame": false
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#0c0c5d",
+        "activityBar.background": "#0c0c5d",
+        "activityBarBadge.background": "#a91616",
+        "activityBarBadge.foreground": "#ffffff",
+        "sash.hoverBorder": "#0c0c5d",
+        "statusBar.background": "#060630",
+        "statusBarItem.hoverBackground": "#0c0c5d",
+        "statusBarItem.remoteBackground": "#060630",
+        "titleBar.activeBackground": "#060630",
+        "titleBar.inactiveBackground": "#06063099"
+    }
 }
