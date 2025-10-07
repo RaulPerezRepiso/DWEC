@@ -63,11 +63,18 @@ let arrow = document.getElementById("arrow");
 let bArrow = document.getElementById("bArrow");
 let rArrow = document.getElementById("rArrow");
 
-// Variables Ejercicio 11 
+// Variables Ejercicio 11
+let bPum = document.getElementById("bPum");
+let rPum = document.getElementById("rPum");
+let bPumGene = document.getElementById("bPumGene");
 
 // Variables Ejercicio 12
+let bConteo = document.getElementById("bConteo");
+let rConteo = document.getElementById("rConteo");
 
 // Variables Ejercicio 13
+let bDados = document.getElementById("bDados");
+let rDados = document.getElementById("rDados");
 
 // Variables Ejercicio 14
 
@@ -202,7 +209,6 @@ bGenerar1.onclick = () => {
     rGenerar1.innerText += " ";
     for (let j = 1; j <= i; j++) {
       rGenerar1.innerText += j;
-      
     }
     rGenerar1.innerText += "\n";
   }
@@ -211,19 +217,95 @@ bGenerar1.onclick = () => {
 /*********** Ejercicio 10 */
 bArrow.onclick = () => {
   rArrow.innerText = " ";
-  if (parseFloat(arrow.value) % 2 == 0)
-    rArrow.innerText += "Par";
-  else
-    rArrow.innerText += "Impar";
-}
+  if (parseFloat(arrow.value) % 2 == 0) rArrow.innerText += "Par";
+  else rArrow.innerText += "Impar";
+};
 
 /*********** Ejercicio 11 */
+bPum.onclick = () => {
+  rPum.innerText = " ";
+  for (let i = 1; i <= 100; i++) {
+    if (i % 7 == 0 || i % 10 == 7) rPum.innerText += "PUM" + ", ";
+    else rPum.innerText += i + ", ";
+  }
+};
+
+function* generadorPum() {
+  for (let i = 1; i <= 100; i++) {
+    if (i % 10 === 7 || i % 7 === 0) {
+      yield "PUM";
+    } else {
+      yield i.toString();
+    }
+  }
+}
+
+bPumGene.onclick = () => {
+  const gen = generadorPum();
+  let resultado = "";
+  let count = 1;
+
+  for (let valor of gen) {
+    resultado += valor;
+
+    count++;
+  }
+
+  rPum.innerText += resultado;
+};
 
 /*********** Ejercicio 12 */
+bConteo.onclick = () => {
+  rConteo.innerText = " ";
+  for (let i = 1; i <= 300; i++) {
+    const span = document.createElement("span");
+    span.innerText = i + " ";
+
+    // Estilos condicionales
+    if (i % 4 === 0 && i % 9 === 0) {
+      span.style.color = "purple"; // mezcla visual
+      span.style.fontSize = "22px"; // 16 + 4 + 2
+    } else if (i % 4 === 0) {
+      span.style.color = "green";
+      span.style.fontSize = "20px"; // 16 + 4
+    } else if (i % 9 === 0) {
+      span.style.color = "red";
+      span.style.fontSize = "18px"; // 16 + 2
+    }
+
+    rConteo.appendChild(span);
+
+    // Salto de línea cada 10 números
+    if (i % 10 === 0) {
+      rConteo.appendChild(document.createElement("br"));
+    }
+  }
+};
 
 /*********** Ejercicio 13 */
+bDados.onclick = () => {
+  rDados.innerText = "";
+  let resultados = {};
 
+  // Inicializar el objeto con claves del 2 al 12
+  for (let i = 2; i <= 12; i++) {
+    resultados[i] = 0;
+  }
+
+  for (let i = 1; i <= 36000; i++) {
+    let d1 = Math.floor(Math.random() * 6) + 1;
+    let d2 = Math.floor(Math.random() * 6) + 1;
+    let suma = d1 + d2;
+
+    resultados[suma]++;
+  }
+
+  for (let suma in resultados) {
+    rDados.innerText += "Suma " + suma + ": " + resultados[suma] + " apariciones\n";
+  }
+};
 /*********** Ejercicio 14 */
+
 
 /*********** Ejercicio 15 */
 
