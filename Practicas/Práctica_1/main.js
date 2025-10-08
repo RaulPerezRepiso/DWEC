@@ -399,16 +399,14 @@ let conjunto = letrasMayus + letrasMinus + "0123456789!@#$%^&*()";
 
 bPass.onclick = () => {
   rPass.innerText = "";
-  let resultado = "";
 
   if (pass.value == "" || pass.value < 8)
     rPass.innerText = "Debe introducir un número mínimo de 8 Bytes";
   else {
     for (let i = 0; i < pass.value; i++) {
       let randomIndex = Math.floor(Math.random() * conjunto.length);
-      resultado += conjunto[randomIndex];
+      rPass.innerText += conjunto[randomIndex];
     }
-    rPass.innerText = resultado;
   }
 };
 
