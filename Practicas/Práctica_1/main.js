@@ -77,10 +77,20 @@ let bDados = document.getElementById("bDados");
 let rDados = document.getElementById("rDados");
 
 // Variables Ejercicio 14
+let numeros = document.getElementById("numeros");
+let rNums = document.getElementById("rNums");
+let bNums = document.getElementById("bNums");
 
 // Variables Ejercicio 15
+let texto = document.getElementById("texto");
+let rInv = document.getElementById("rInv");
+let bAña = document.getElementById("bAña");
+let bInv = document.getElementById("bInv");
 
 // Variables Ejercicio 16
+let pass = document.getElementById("pass");
+let rPass = document.getElementById("rPass");
+let bPass = document.getElementById("bPass");
 
 // Variables Ejercicio 17
 
@@ -286,11 +296,12 @@ bDados.onclick = () => {
   rDados.innerText = "";
   let resultados = {};
 
-  // Inicializar el objeto con claves del 2 al 12
+  // Guarda los resultados desde el 2 al 12
   for (let i = 2; i <= 12; i++) {
     resultados[i] = 0;
   }
 
+  // Genera los 36000 resultados de lanzar 2 dados
   for (let i = 1; i <= 36000; i++) {
     let d1 = Math.floor(Math.random() * 6) + 1;
     let d2 = Math.floor(Math.random() * 6) + 1;
@@ -299,15 +310,107 @@ bDados.onclick = () => {
     resultados[suma]++;
   }
 
+  // Muestra los resultado con un for in
   for (let suma in resultados) {
-    rDados.innerText += "Suma " + suma + ": " + resultados[suma] + " apariciones\n";
+    rDados.innerText +=
+      "Suma " + suma + ": " + resultados[suma] + " apariciones\n";
   }
 };
 /*********** Ejercicio 14 */
+// Array fuera sino vamos a estar reiniciandolo a 0 cada vez que hacemos click
+let arrayNums = [];
+let resumenMostrado = false;
+
+bNums.onclick = () => {
+  let num = Number(numeros.value); // Convertimos a número
+
+  while (num === 0) {
+    // Orden descendente
+    let ordenados = [...arrayNums].sort((a, b) => b - a);
+
+    // Mayor y menor
+    let max = Math.max(...arrayNums);
+    let min = Math.min(...arrayNums);
+
+    // Ocurrencias
+    let ocurrenciasMax = arrayNums.filter((n) => n === max).length;
+    let ocurrenciasMin = arrayNums.filter((n) => n === min).length;
+
+    // Mostrar resultados
+    rNums.innerText =
+      "Números introducidos (orden descendente):\n" +
+      ordenados.join(", ") +
+      "\n\n" +
+      `Mayor: ${max} (ocurre ${ocurrenciasMax} veces)\n` +
+      `Menor: ${min} (ocurre ${ocurrenciasMin} veces)\n`;
+
+    arrayNums = []; // Reiniciamos el array
+    resumenMostrado = true; // Activamos la bandera
+    numeros.value = "";
+    numeros.focus();
+    return;
+  }
+
+  // Si ya se mostró el resumen, limpiamos antes de continuar
+  if (resumenMostrado) {
+    rNums.innerText = "";
+    resumenMostrado = false;
+  }
+
+  // Guardamos el número
+  arrayNums.push(num);
+
+  // Mostramos el número actual
+  rNums.innerText += num + ", ";
+
+  // Limpiamos el input y mantenemos el foco
+  numeros.value = "";
+  numeros.focus();
+};
 
 /*********** Ejercicio 15 */
+let arrayTodo = [];
+
+bAña.onclick = () => {
+  let text = texto.value;
+  arrayTodo.push(text);
+  texto.focus();
+  texto.value = "";
+  rInv.innerText += text + ", ";
+};
+
+bInv.onclick = () => {
+  rInv.innerText = "";
+  arrayTodo.reverse();
+  for (let i = 0; i < arrayTodo.length; i++) {
+    rInv.innerText += arrayTodo[i] + ", ";
+  }
+};
 
 /*********** Ejercicio 16 */
+
+let letrasMayus = Array.from({ length: 26 }, (_, i) =>
+  String.fromCharCode(65 + i)
+).join("");
+let letrasMinus = Array.from({ length: 26 }, (_, i) =>
+  String.fromCharCode(97 + i)
+).join("");
+let conjunto = letrasMayus + letrasMinus + "0123456789!@#$%^&*()";
+
+bPass.onclick = () => {
+  rPass.innerText = "";
+  let resultado = "";
+
+  if (pass.value == "" || pass.value < 8)
+    rPass.innerText = "Debe introducir un número mínimo de 8 Bytes";
+  else {
+    for (let i = 0; i < pass.value; i++) {
+      let randomIndex = Math.floor(Math.random() * conjunto.length);
+      resultado += conjunto[randomIndex];
+    }
+    rPass.innerText = resultado;
+  }
+};
 
 /*********** Ejercicio 17 */
 

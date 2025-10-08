@@ -1,196 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="main.js" defer></script>
+    <title>PérezRepisoRaul_DWES_Ejercios</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="main.js" defer></script>
-  <title>PérezRepisoRaul_DWES_Ejercios</title>
-</head>
+  <body>
+    <!-- Título -->
+    <h1>Ejercicios de JavaScript Básico I</h1>
 
-<body>
-  <!-- Título -->
-  <h1>Ejercicios de JavaScript Básico I</h1>
+    <!-- Ejercicios -->
+    <h2>Ejercicio 1:</h2>
+    <div>
+      <label for="">Nombre: </label>
+      <input type="text" id="nombre" />
+      <label for="">Apellidos: </label>
+      <input type="text" id="apellidos" />
+      <label for="">Curso: </label>
+      <input type="number" min="1" max="4" id="curso" />
+      <label for="">Nota 1: </label>
+      <input type="number" min="0" max="10" id="nota1" />
+      <label for="">Nota 2: </label>
+      <input type="number" min="0" max="10" id="nota2" />
+      <label for="">Nota 3: </label>
+      <input type="number" min="0" max="10" id="nota3" />
 
-  <!-- Ejercicios -->
-  <h2>Ejercicio 1:</h2>
-  <div>
-    <label for="">Nombre: </label>
-    <input type="text" id="nombre" />
-    <label for="">Apellidos: </label>
-    <input type="text" id="apellidos" />
-    <label for="">Curso: </label>
-    <input type="number" min="1" max="4" id="curso" />
-    <label for="">Nota 1: </label>
-    <input type="number" min="0" max="10" id="nota1" />
-    <label for="">Nota 2: </label>
-    <input type="number" min="0" max="10" id="nota2" />
-    <label for="">Nota 3: </label>
-    <input type="number" min="0" max="10" id="nota3" />
+      <button id="b1">Añadir</button>
 
-    <button id="b1">Añadir</button>
+      <h3>Alumnos</h3>
+      <p>Nombre, Apellidos, Curso, Notas</p>
+      <p id="alumnos"></p>
+    </div>
+    <hr />
 
-    <h3>Alumnos</h3>
-    <p>Nombre, Apellidos, Curso, Notas</p>
-    <p id="alumnos"></p>
-  </div>
-  <hr>
+    <h2>Ejercicio 2:</h2>
+    <div>
+      <label for="">a: </label>
+      <input type="number" id="n1" min="0" max="1" />
+      <label for="">b: </label>
+      <input type="number" id="n2" min="0" max="1" />
+      <button id="bBinario">Convertir</button><br />
+      <label for="">XOR: </label>
+      <p id="resultado"></p>
+    </div>
+    <hr />
 
-  <h2>Ejercicio 2:</h2>
-  <div>
-    <label for="">a: </label>
-    <input type="number" id="n1" min="0" max="1" />
-    <label for="">b: </label>
-    <input type="number" id="n2" min="0" max="1" />
-    <button id="bBinario">Convertir</button><br />
-    <label for="">XOR: </label>
-    <p id="resultado"></p>
-  </div>
-  <hr>
+    <h2>Ejercicio 3:</h2>
+    <div>
+      <label for="">Euros: </label>
+      <input type="number" min="0" id="euros" />
+      <button id="bEur">Convertir</button><br />
+      <label for="">Dólares: </label>
+      <p id="dollares"></p>
+      <label for="">Yenes: </label>
+      <p id="yenes"></p>
+    </div>
+    <hr />
 
-  <h2>Ejercicio 3:</h2>
-  <div>
-    <label for="">Euros: </label>
-    <input type="number" min="0" id="euros" />
-    <button id="bEur">Convertir</button><br />
-    <label for="">Dólares: </label>
-    <p id="dollares"></p>
-    <label for="">Yenes: </label>
-    <p id="yenes"></p>
-  </div>
-  <hr>
+    <h2>Ejercicio 4:</h2>
+    <div>
+      <label for="">Introduce el Radio para hallar:</label>
+      <input type="number" id="radio" />
+      <button id="b2">Calcula</button><br />
+      <label for="">Área: </label>
+      <p id="area"></p>
+      <label for="">Perímetro: </label>
+      <p id="perimetro"></p>
+    </div>
+    <hr />
 
-  <h2>Ejercicio 4:</h2>
-  <div>
-    <label for="">Introduce el Radio para hallar:</label>
-    <input type="number" id="radio" />
-    <button id="b2">Calcula</button><br />
-    <label for="">Área: </label>
-    <p id="area"></p>
-    <label for="">Perímetro: </label>
-    <p id="perimetro"></p>
-  </div>
-  <hr>
+    <h2>Ejercicio 5:</h2>
+    <div>
+      <label for="">Desde el: </label>
+      <input type="number" id="num1" min="-99" max="5000" />
+      <label for="">Hasta el: </label>
+      <input type="number" id="num2" min="-99" max="5000" />
+      <button id="bPares">Convertir</button><br />
+      <label for="">Números pares entre ambos: </label>
+      <p id="rPares"></p>
+    </div>
+    <hr />
 
-  <h2>Ejercicio 5:</h2>
-  <div>
-    <label for="">Desde el: </label>
-    <input type="number" id="num1" min="-99" max="5000" />
-    <label for="">Hasta el: </label>
-    <input type="number" id="num2" min="-99" max="5000" />
-    <button id="bPares">Convertir</button><br />
-    <label for="">Números pares entre ambos: </label>
-    <p id="rPares"></p>
-  </div>
-  <hr>
+    <h2>Ejercicio 6:</h2>
+    <div>
+      <p>Operaciones Básicas</p>
+      <label for="">Número 1: </label>
+      <input type="number" id="nume1" />
+      <label for="">Número 2: </label>
+      <input type="number" id="nume2" />
+      <button id="bOpe">Operar</button><br />
+      <label for="">Suma: </label>
+      <p id="rSuma"></p>
+      <label for="">Resta: </label>
+      <p id="rResta"></p>
+      <label for="">Multiplicación: </label>
+      <p id="rMulti"></p>
+      <label for="">División: </label>
+      <p id="rDivi"></p>
+    </div>
+    <hr />
 
-  <h2>Ejercicio 6:</h2>
-  <div>
-    <p>Operaciones Básicas</p>
-    <label for="">Número 1: </label>
-    <input type="number" id="nume1" />
-    <label for="">Número 2: </label>
-    <input type="number" id="nume2" />
-    <button id="bOpe">Operar</button><br />
-    <label for="">Suma: </label>
-    <p id="rSuma"></p>
-    <label for="">Resta: </label>
-    <p id="rResta"></p>
-    <label for="">Multiplicación: </label>
-    <p id="rMulti"></p>
-    <label for="">División: </label>
-    <p id="rDivi"></p>
-  </div>
-  <hr>
+    <h2>Ejercicio 7:</h2>
+    <div>
+      <label for="">Nota 1: </label>
+      <input type="number" id="note1" min="0" max="10" />
+      <label for="">Nota 2: </label>
+      <input type="number" id="note2" min="0" max="10" />
+      <label for="">Nota 3: </label>
+      <input type="number" id="note3" min="0" max="10" />
+      <button id="bMedia">Media</button><br />
+      <label for="">Nota Media: </label>
+      <p id="rNota"></p>
+    </div>
+    <hr />
 
-  <h2>Ejercicio 7:</h2>
-  <div>
-    <label for="">Nota 1: </label>
-    <input type="number" id="note1" min="0" max="10" />
-    <label for="">Nota 2: </label>
-    <input type="number" id="note2" min="0" max="10" />
-    <label for="">Nota 3: </label>
-    <input type="number" id="note3" min="0" max="10" />
-    <button id="bMedia">Media</button><br />
-    <label for="">Nota Media: </label>
-    <p id="rNota"></p>
-  </div>
-  <hr>
+    <h2>Ejercicio 8:</h2>
+    <div>
+      <button id="bGenerar">Generar Piramide</button><br />
+      <p id="rGenerar"></p>
+    </div>
+    <hr />
 
-  <h2>Ejercicio 8:</h2>
-  <div>
-    <button id="bGenerar">Generar Piramide</button><br />
-    <p id="rGenerar"></p>
-  </div>
-  <hr>
+    <h2>Ejercicio 9:</h2>
+    <div>
+      <button id="bGenerar1">Generar Piramide</button><br />
+      <p id="rGenerar1"></p>
+    </div>
+    <hr />
 
-  <h2>Ejercicio 9:</h2>
-  <div>
-    <button id="bGenerar1">Generar Piramide</button><br />
-    <p id="rGenerar1"></p>
-  </div>
-  <hr>
+    <h2>Ejercicio 10:</h2>
+    <div>
+      <label for="">Introduce Número: </label>
+      <input type="number" id="arrow" />
+      <button id="bArrow">Botón</button><br />
+      <p id="rArrow"></p>
+    </div>
+    <hr />
 
-  <h2>Ejercicio 10:</h2>
-  <div>
-    <label for="">Introduce Número: </label>
-    <input type="number" id="arrow" />
-    <button id="bArrow">Botón</button><br />
-    <p id="rArrow"></p>
-  </div>
-  <hr>
+    <h2>Ejercicio 11:</h2>
+    <div>
+      <button id="bPum">PUM</button><br />
+      <button id="bPumGene">PUM Generador</button><br />
+      <p id="rPum"></p>
+    </div>
+    <hr />
 
-  <h2>Ejercicio 11:</h2>
-  <div>
-    <button id="bPum">PUM</button><br />
-    <button id="bPumGene">PUM Generador</button><br />
-    <p id="rPum"></p>
-  </div>
-  <hr>
+    <h2>Ejercicio 12:</h2>
+    <div>
+      <button id="bConteo">Conteo</button><br />
+      <p id="rConteo"></p>
+    </div>
+    <hr />
 
-  <h2>Ejercicio 12:</h2>
-  <div>
-    <button id="bConteo">Conteo</button><br />
-    <p id="rConteo"></p>
-  </div>
-  <hr>
+    <h2>Ejercicio 13:</h2>
+    <div>
+      <button id="bDados">Tirar Dados</button><br />
+      <p id="rDados"></p>
+    </div>
+    <hr />
 
-  <h2>Ejercicio 13:</h2>
-  <div>
-    <button id="bDados">Tirar Dados</button><br />
-    <p id="rDados"></p>
-  </div>
-  <hr>
+    <h2>Ejercicio 14:</h2>
+    <div>
+      <label for="">Introduce Números (0 para parar): </label>
+      <input type="number" id="numeros" />
+      <button id="bNums">Guardar</button><br />
+      <p id="rNums"></p>
+    </div>
+    <hr />
 
-  <h2>Ejercicio 14:</h2>
-  <div>
+    <h2>Ejercicio 15:</h2>
+    <div>
+      <label for="">Introduce Números o Caracteres: </label>
+      <input type="text" id="texto" />
+      <button id="bAña">Añadir</button><br />
+      <button id="bInv">Invertir</button><br />
+      <p id="rInv"></p>
+    </div>
+    <hr />
 
-  </div>
-  <hr>
+    <h2>Ejercicio 16:</h2>
+    <div>
+      <input type="number" id="pass" />
+      <button id="bPass">Generar</button><br />
+      <p id="rPass"></p>
+    </div>
+    <hr />
 
-  <h2>Ejercicio 15:</h2>
-  <div></div>
-  <hr>
+    <h2>Ejercicio 17:</h2>
+    <div></div>
+    <hr />
 
-  <h2>Ejercicio 16:</h2>
-  <div></div>
-  <hr>
+    <h2>Ejercicio 18:</h2>
+    <div></div>
+    <hr />
 
-  <h2>Ejercicio 17:</h2>
-  <div></div>
-  <hr>
+    <h2>Ejercicio 19:</h2>
+    <div></div>
+    <hr />
 
-  <h2>Ejercicio 18:</h2>
-  <div></div>
-  <hr>
-
-  <h2>Ejercicio 19:</h2>
-  <div></div>
-  <hr>
-
-  <h2>Ejercicio 20:</h2>
-  <div></div>
-
-</body>
-
+    <h2>Ejercicio 20:</h2>
+    <div></div>
+  </body>
 </html>
