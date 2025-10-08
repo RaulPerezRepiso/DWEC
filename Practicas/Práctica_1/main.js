@@ -206,7 +206,6 @@ bGenerar.onclick = () => {
 bGenerar1.onclick = () => {
   rGenerar.innerText = " ";
   for (let i = 1; i <= 50; i++) {
-    rGenerar1.innerText += " ";
     for (let j = 1; j <= i; j++) {
       rGenerar1.innerText += j;
     }
@@ -305,7 +304,6 @@ bDados.onclick = () => {
   }
 };
 /*********** Ejercicio 14 */
-
 
 /*********** Ejercicio 15 */
 

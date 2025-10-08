@@ -8,11 +8,65 @@
     <link rel="stylesheet" href="css/style2.css">
     <!-- Defer FUNCION indiferida que carga el BODY/CSS y JS por último para que todo cargue bien (SIEMPRE)-->
     <script src="js/main2.js" defer></script>
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        nav {
+            width: 100%;
+            height: 10%;
+            background-color: rgb(78, 243, 13);
+        }
+
+        aside {
+            width: 30%;
+            height: 80%;
+            background-color: lightskyblue;
+        }
+
+        aside,
+        main {
+            float: left;
+        }
+
+
+        main {
+            width: 70%;
+            height: 80%;
+            background-color: rgb(128, 130, 97);
+        }
+
+        footer {
+            width: 100%;
+            height: 100%;
+            background-color: rgb(180, 60, 120);
+        }
+    </style>
 </head>
 
 <body>
     <!--Nada recomendable NO USAR ONCLICK (<h1 onclick="this.style.backgroundColor='red'">)-->
-    <h1 id="info"></h1>
+    <nav>
+        <a href="">Inicio</a>
+        <a href="">Consulta</a>
+        <a href="">Mapa</a>
+    </nav>
+    <aside>
+    </aside>
+    <main>
+        <h1 id="info"></h1>
+    </main>
+    <footer>
+
+    </footer>
 </body>
 <!--Podemos ponerel SCRIPT antes de acabar el body o después pero NO es RECOMENDABLE-->
 
