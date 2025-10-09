@@ -106,6 +106,14 @@ let rMenu = document.getElementById("rMenu");
 let bOpera = document.getElementById("bOpera");
 
 // Variables Ejercicio 19
+let nHoras = document.getElementById("nHoras");
+let bHoras = document.getElementById("bHoras");
+let rHoras = document.getElementById("rHoras");
+let bMañana = document.getElementById("bMañana");
+let bTarde = document.getElementById("bTarde");
+let bNoche = document.getElementById("bNoche");
+let nNombre = document.getElementById("nNombre");
+let nApellido = document.getElementById("nApellido");
 
 // Variables Ejercicio 20
 
@@ -407,8 +415,11 @@ bInv.onclick = () => {
 
 /*********** Ejercicio 16 */
 
-
-let conjunto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ" + "abcdefghijklmnñopqrstuvwxyz" + "áéíóúÁÉÍÓÚ" + "0123456789!@#$%^&*()";
+let conjunto =
+  "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ" +
+  "abcdefghijklmnñopqrstuvwxyz" +
+  "áéíóúÁÉÍÓÚ" +
+  "0123456789!@#$%^&*()";
 
 bPass.onclick = () => {
   rPass.innerText = "";
@@ -435,23 +446,23 @@ bCalc.onclick = () => {
   let min = Math.min(...array);
   let max = Math.max(...array);
 
-
   for (let i = min + 1; i < max; i++) {
-    if (i == max - 1)
-      rCalc.innerText += i;
+    if (i == max - 1) rCalc.innerText += i;
     else {
       rCalc.innerText += i + ", ";
     }
   }
 
   let contador = max - min;
-  rCalc.innerText += "\nEl menor es: " + min + " hay " + contador + " entre ellos";
-}
+  rCalc.innerText +=
+    "\nEl menor es: " + min + " hay " + contador + " entre ellos";
+};
 
 /*********** Ejercicio 18 */
 bMenu.onclick = () => {
-  rMenu.innerText = "Menú\n ---\n 1.Calcular si es múliplo de 2\n 2.Calcular si es múliplo de 3\n 3.Calcular si es múliplo de 5\n 0. Salir"
-}
+  rMenu.innerText =
+    "Menú\n ---\n 1.Calcular si es múliplo de 2\n 2.Calcular si es múliplo de 3\n 3.Calcular si es múliplo de 5\n 0. Salir";
+};
 
 bOpera.onclick = () => {
   if (nMenu2.value == 0) {
@@ -468,26 +479,83 @@ bOpera.onclick = () => {
 
   function uno() {
     if (nMenu.value % 2 == 0) {
-      rMenu.innerText = "El número es multiplo de 2"
-    } else
-      rMenu.innerText = "El número no es múltiplo de 2"
+      rMenu.innerText = "El número es multiplo de 2";
+    } else rMenu.innerText = "El número no es múltiplo de 2";
   }
 
   function dos() {
     if (nMenu.value % 3 == 0) {
-      rMenu.innerText = "El número es multiplo de 3"
-    } else
-      rMenu.innerText = "El número no es múltiplo de 3"
+      rMenu.innerText = "El número es multiplo de 3";
+    } else rMenu.innerText = "El número no es múltiplo de 3";
   }
 
   function tres() {
     if (nMenu.value % 5 == 0) {
-      rMenu.innerText = "El número es multiplo de 5"
-    } else
-      rMenu.innerText = "El número no es múltiplo de 5"
+      rMenu.innerText = "El número es multiplo de 5";
+    } else rMenu.innerText = "El número no es múltiplo de 5";
   }
-}
+};
 
 /*********** Ejercicio 19 */
+const empleados = [];
+
+bEmpleado.onclick = () => {
+  const datos = datosEmpleado();
+  const salarioBruto = calHoras();
+  const salarioNeto = calNeto();
+
+  empleados.push([datos, salarioBruto, salarioNeto]);
+
+  nNombre.value = "";
+  nApellido.value = "";
+  nHoras.value = "";
+  rHoras.innerText = "Trabajador añadido correctamente.";
+};
+
+bHoras.onclick = () => {
+  rHoras.innerText = "";
+
+  let contador = 1;
+  for (const empleado of empleados) {
+    const [datos, bruto, neto] = empleado;
+    const nombreCompleto = datos[0] + " "+ datos[1];
+    rHoras.innerText += contador + nombreCompleto + " Bruto: " + bruto +" €, Neto: "+neto +"€\n";
+    contador++;
+  }
+};
+
+function calHoras() {
+  let horas;
+  if (bMañana.checked || bTarde.checked || bNoche.checked) {
+    if (bMañana.checked) {
+      horas = nHoras.value * 25;
+    } else if (bTarde.checked) {
+      horas = nHoras.value * 30;
+    } else {
+      horas = nHoras.value * 35;
+    }
+  } else {
+    rHoras.innerText = "Tienes que seleccionar el turno";
+  }
+  return horas;
+}
+
+function calNeto() {
+  let salario = calHoras();
+
+  if (salario < 600) {
+    salario *= 0.92;
+  } else if (salario < 1000) {
+    salario *= 0.9;
+  } else if (salario > 10000) {
+    salario *= 0.88;
+  }
+  return salario;
+}
+
+function datosEmpleado() {
+  let myArrayD = [nNombre.value, nApellido.value];
+  return myArrayD;
+}
 
 /*********** Ejercicio 20 */
