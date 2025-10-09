@@ -135,6 +135,82 @@ for (let encontrado of myString.matchAll("sit")) {
 
 console.log(mySlice); */
 
-let mySplit= myString.split(" ");
+/* let mySplit= myString.split(" ");
 
-console.log(mySplit);
+console.log(mySplit); */
+
+let myArray = new Array(1, true, { nombre: "Pepe", apellidos: "Garcia perez", }, 45.67, Math.PI, false);
+
+// Podemos definir la posicion con el contenido que queramos pero estarán vacias los demas sitios del array solo llenar el asignado los demás Undefined
+// myArray[10001] = "Mery";
+
+// info.innerHTML = myArray[9999];
+
+// Push añade al final y pop elimina el ultimo elemnto
+/* myArray.push([1,2,3,4,5])
+myArray.push(2025);
+
+myArray.pop(); */
+
+// Unshif añade delante y Shift elimina de delante
+/* myArray.unshift(2025);
+myArray.unshift("Lorem ipsum");
+
+myArray.shift();
+myArray.shift();
+myArray.shift();
+ */
+
+// Sino ponemos como lo ordenada por rango
+/* let prueba = myArray.sort();
+
+console.log(prueba); */
+
+// 1 Posición a partir de la que quieres añadir 2 Posición a partir de la que quieres borrra y lo demás numero a añadir desde la posición indicada +1
+myArray.splice(3, 0, "Hola", false, 9999);
+
+/* Números que sean negativos
+    true a flase y viceversa
+    Los string se le anteponga "Nombre:" */
+
+/* let myArrayR = myArray.map(function (elem) {
+    console.log("Elemento: " + elem)
+    switch (typeof elem) {
+        case "number":
+            return elem * -1;
+        case "boolean":
+            return !elem;
+        case "string":
+            return "Nombre: " + elem;
+    }
+}) */
+/* info.innerHTML = myArrayR;
+console.log(myArrayR); */
+
+// CallBacks con funciones
+/* let myArrayResult = myArray.map(modificaArray)
+
+function modificaArray(elem) {
+    switch (typeof elem) {
+        case "number":
+            return (elem * -1);
+        case "boolean":
+            return !elem;
+        case "string":
+            return "Nombre: " + elem;
+    }
+}
+
+info.innerHTML = myArrayResult;
+console.log(myArrayResult); */
+
+let myArrayR = myArray.filter(function (elem) {
+    return typeof elem == "boolean";
+})
+
+/* for (let i in myArray) {
+    if (myArray.length - 1 == i) {
+        info.innerHTML += myArray[i];
+    } else
+        info.innerHTML += myArray[i] + " - ";
+} */

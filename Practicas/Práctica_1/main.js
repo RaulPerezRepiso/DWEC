@@ -370,6 +370,7 @@ bNums.onclick = () => {
 
 /*********** Ejercicio 15 */
 let arrayTodo = [];
+let resumenMostrado2 = false;
 
 bAña.onclick = () => {
   let text = texto.value;
@@ -377,6 +378,13 @@ bAña.onclick = () => {
   texto.focus();
   texto.value = "";
   rInv.innerText += text + ", ";
+  resumenMostrado2 = true;
+
+  // Si ya se mostró el resumen, limpiamos antes de continuar
+  if (resumenMostrado2) {
+    rInv.innerText = "";
+    resumenMostrado2 = false;
+  }
 };
 
 bInv.onclick = () => {
@@ -385,17 +393,13 @@ bInv.onclick = () => {
   for (let i = 0; i < arrayTodo.length; i++) {
     rInv.innerText += arrayTodo[i] + ", ";
   }
+  arrayTodo = [];
 };
 
 /*********** Ejercicio 16 */
 
-let letrasMayus = Array.from({ length: 26 }, (_, i) =>
-  String.fromCharCode(65 + i)
-).join("");
-let letrasMinus = Array.from({ length: 26 }, (_, i) =>
-  String.fromCharCode(97 + i)
-).join("");
-let conjunto = letrasMayus + letrasMinus + "0123456789!@#$%^&*()";
+
+let conjunto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ" + "abcdefghijklmnñopqrstuvwxyz" +"áéíóúÁÉÍÓÚ"+ "0123456789!@#$%^&*()";
 
 bPass.onclick = () => {
   rPass.innerText = "";
