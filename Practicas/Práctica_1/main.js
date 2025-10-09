@@ -93,8 +93,17 @@ let rPass = document.getElementById("rPass");
 let bPass = document.getElementById("bPass");
 
 // Variables Ejercicio 17
+let Nc1 = document.getElementById("Nc1");
+let Nc2 = document.getElementById("Nc2");
+let bCalc = document.getElementById("bCalc");
+let rCalc = document.getElementById("rCalc");
 
 // Variables Ejercicio 18
+let nMenu = document.getElementById("nMenu");
+let nMenu2 = document.getElementById("nMenu2");
+let bMenu = document.getElementById("bMenu");
+let rMenu = document.getElementById("rMenu");
+let bOpera = document.getElementById("bOpera");
 
 // Variables Ejercicio 19
 
@@ -399,7 +408,7 @@ bInv.onclick = () => {
 /*********** Ejercicio 16 */
 
 
-let conjunto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ" + "abcdefghijklmnñopqrstuvwxyz" +"áéíóúÁÉÍÓÚ"+ "0123456789!@#$%^&*()";
+let conjunto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ" + "abcdefghijklmnñopqrstuvwxyz" + "áéíóúÁÉÍÓÚ" + "0123456789!@#$%^&*()";
 
 bPass.onclick = () => {
   rPass.innerText = "";
@@ -415,8 +424,69 @@ bPass.onclick = () => {
 };
 
 /*********** Ejercicio 17 */
+bCalc.onclick = () => {
+  rCalc.innerText = "";
+
+  let array = [];
+
+  array.push(Nc1.value);
+  array.push(Nc2.value);
+
+  let min = Math.min(...array);
+  let max = Math.max(...array);
+
+
+  for (let i = min + 1; i < max; i++) {
+    if (i == max - 1)
+      rCalc.innerText += i;
+    else {
+      rCalc.innerText += i + ", ";
+    }
+  }
+
+  let contador = max - min;
+  rCalc.innerText += "\nEl menor es: " + min + " hay " + contador + " entre ellos";
+}
 
 /*********** Ejercicio 18 */
+bMenu.onclick = () => {
+  rMenu.innerText = "Menú\n ---\n 1.Calcular si es múliplo de 2\n 2.Calcular si es múliplo de 3\n 3.Calcular si es múliplo de 5\n 0. Salir"
+}
+
+bOpera.onclick = () => {
+  if (nMenu2.value == 0) {
+    rMenu.innerText = "";
+  } else if (nMenu2.value == 1) {
+    uno();
+  } else if (nMenu2.value == 2) {
+    dos();
+  } else if (nMenu2.value == 3) {
+    tres();
+  } else {
+    rMenu.innerText = "Número introducido no válido";
+  }
+
+  function uno() {
+    if (nMenu.value % 2 == 0) {
+      rMenu.innerText = "El número es multiplo de 2"
+    } else
+      rMenu.innerText = "El número no es múltiplo de 2"
+  }
+
+  function dos() {
+    if (nMenu.value % 3 == 0) {
+      rMenu.innerText = "El número es multiplo de 3"
+    } else
+      rMenu.innerText = "El número no es múltiplo de 3"
+  }
+
+  function tres() {
+    if (nMenu.value % 5 == 0) {
+      rMenu.innerText = "El número es multiplo de 5"
+    } else
+      rMenu.innerText = "El número no es múltiplo de 5"
+  }
+}
 
 /*********** Ejercicio 19 */
 
