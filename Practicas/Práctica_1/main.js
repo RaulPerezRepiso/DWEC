@@ -116,6 +116,9 @@ let nNombre = document.getElementById("nNombre");
 let nApellido = document.getElementById("nApellido");
 
 // Variables Ejercicio 20
+let nAleatorio = document.getElementById("nAleatorio");
+let bComprobar = document.getElementById("bComprobar");
+let rPistas = document.getElementById("rPistas");
 
 /*********** Ejercicio 1 */
 b1.onclick = () => {
@@ -516,12 +519,16 @@ bHoras.onclick = () => {
   rHoras.innerText = "";
 
   let contador = 1;
+  let salarioTotal = 0;
+
   for (const empleado of empleados) {
     const [datos, bruto, neto] = empleado;
-    const nombreCompleto = datos[0] + " "+ datos[1];
-    rHoras.innerText += contador + nombreCompleto + " Bruto: " + bruto +" €, Neto: "+neto +"€\n";
+    const nombreCompleto = datos[0] + " " + datos[1];
+    salarioTotal += bruto + neto;
+    rHoras.innerText += contador + " " + nombreCompleto + " Bruto: " + bruto + " €, Neto: " + neto + "€\n";
     contador++;
   }
+  rHoras.innerText += "\nSalario Total: " + salarioTotal
 };
 
 function calHoras() {
@@ -558,4 +565,22 @@ function datosEmpleado() {
   return myArrayD;
 }
 
+
 /*********** Ejercicio 20 */
+const aleatorio = Math.floor(Math.random() * 100) + 1;
+let cont = 1;
+
+bComprobar.onclick = () => {
+  if (aleatorio == nAleatorio.value) {
+    rPistas.innerText = "Felicidades has acertado el número en " + cont + "intentos";
+    cont++;
+  }
+  else if (aleatorio > nAleatorio.value) {
+    rPistas.innerText = "El número es mayor que " + nAleatorio.value
+    cont++;
+  } else {
+    rPistas.innerText = "El número es menor que " + nAleatorio.value
+    cont++;
+  }
+
+}
