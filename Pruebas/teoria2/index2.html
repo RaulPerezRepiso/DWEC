@@ -49,6 +49,18 @@
             height: 100%;
             background-color: rgb(180, 60, 120);
         }
+        input { 
+            padding: 1%;
+            margin: 1%;
+            height: 8%;
+            background-color: coral;
+            color: white;
+        }
+        a {
+            text-decoration: none;
+            cursor: pointer;
+            color: lightblue;
+        }
     </style>
 </head>
 
@@ -61,8 +73,10 @@
     </nav>
     <aside>
     </aside>
-    <main>
+    <main id="main">
         <h1 id="info"></h1>
+        <input type="datetime-local" name="fecha" id="fecha">
+        <a href="#" id="bCalcula">Calcula los días vividos</a>
     </main>
     <footer>
 

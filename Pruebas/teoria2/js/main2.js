@@ -214,3 +214,88 @@ let myArrayR = myArray.filter(function (elem) {
     } else
         info.innerHTML += myArray[i] + " - ";
 } */
+
+// Manera de hacer funcoines con funcinoes con o sin nombre 
+/* myArray.forEach(function (elem, indice, arrayActual) {
+console.log("myArray es: "+arrayActual);
+
+info.innerHTML += "<br>Elemto actual es: "+elem+ ", situado en la posición: "+indice;
+}); */
+
+/* let existBoolean = false;
+
+existBoolean = myArray.some(function (elem) {
+    return typeof elem == "boolean";
+});
+
+if(existBoolean) alert("Existen booleanos en el Array"); */
+
+// Con Arrow no existe el This ni el Arguments
+/* existBoolean = myArray.findIndex( elem => {
+    return typeof elem == "boolean";
+});
+
+if(existBoolean) alert("Se ha encontrado el Index"); */
+
+/* let fecha = document.getElementById("fecha");
+
+let date = new Date();
+// Número de segndos desde 1970 
+let myDate = new Date(3468644494944);
+
+// Fecha por parámetros
+myDate = new Date(1980, 6, 31, 23, 54, 15);
+
+myDate = new Date("Wed Jul 30 1980 11:00:15");
+
+fecha.value = Date.parse(date);
+info.innerHTML = date.getMonth();
+
+info.innerHTML = myDate;
+
+// El desfase de horas entre hora local y UTC
+info.innerHTML = date.getTimezoneOffset();
+
+// Hora internacional
+info.innerHTML = date.getUTCHours();
+
+// Formato de Fecha y Hora normal
+info.innerHTML = date.toDateString();
+
+// Hora local del dispositivo
+info.innerHTML = date.toLocaleString();
+
+info.innerHTML = "La hora en tu ciudad: "+ date.toUTCString() + " añadiendo un offset de " +date.getTimezoneOffset()*-1/60 +" horas";   */
+
+// Un script que si son más de las 8 de la tarde colores oscuros en la web
+/* let mainHtml = document.getElementById("main");
+let date = new Date;
+
+if (date.getHours() >= 20 || date.getHours()<=7 && (date.getMonth()>=9 || date.getMonth() <=2))  {
+    mainHtml.style.backgroundColor = "#252850";
+    mainHtml.style.color = "white";
+} else {
+    mainHtml.style.backgroundColor = "white";
+    mainHtml.style.color = "black"; 
+} */
+let fecha = document.getElementById("fecha");
+let bCal = document.getElementById("bCalcula");
+
+
+
+bCal.onclick = () => {
+    let date = new Date();
+    let dateCumple = new Date(fecha.value);
+
+    let result = date - dateCumple;
+
+    info.innerHTML = "Llevas vivo " + parseInt(result/1000/60/60/24/365) +  " años";
+}
+
+// Saber si mi aplicación web esta conectada a internet
+info.innerHTML = "¿Estas online? " +navigator.onLine;
+
+// Saber el navegador en el que estas
+info.innerHTML = "¿Cual es tu navegador? " +navigator.userAgent;
+
+
