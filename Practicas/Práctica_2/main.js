@@ -59,10 +59,38 @@ profesor.innerHTML = asignar();
 /*Ejercicio 2 */
 
 /*Ejercicio 3 */
+let pi1 = document.getElementById("pi1");
+let pi2 = document.getElementById("pi2");
+
+pi1.innerText = Math.PI.toFixed(4);
+pi2.innerText = Math.PI.toPrecision(5);
 
 /*Ejercicio 4 */
+let nDias = document.getElementById("nDias");
+let bCalcula = document.getElementById("bCalcula");
+let fecha = document.getElementById("fecha");
+
+bCalcula.onclick = () => {
+    let date = new Date();
+    let dateCumple = new Date(fecha.value);
+
+    let result = date - dateCumple;
+
+    nDias.innerText = "Llevas vivo " + parseInt(result / 1000 / 60 / 60 / 24 / 365) + " años";
+}
 
 /*Ejercicio 5 */
+let nDias1 = document.getElementById("nDias1");
+let bCalcula1 = document.getElementById("bCalcula1");
+let fecha1 = document.getElementById("fecha1");
+bCalcula.onclick = () => {
+    let date = new Date();
+    let dateCumple = new Date(fecha.value);
+
+    let result = date - dateCumple;
+
+    nDias.innerText = "Llevas vivo " + parseInt(result / 1000 / 60 / 60 / 24 / 365) + " años";
+}
 
 /*Ejercicio 6 */
 

@@ -7,6 +7,9 @@ let resultado = document.getElementById("resultado");
 
 procesarPedido.onclick = () => {
 
+    let precio = 0;
+    let total = 0;
+
     if (tipoCafe.value == "solo") {
         precio = 1.5;
         total = 1.5 * cantidad.value
@@ -16,23 +19,12 @@ procesarPedido.onclick = () => {
     } else {
         precio = 2.5;
         total = 2.5 * cantidad.value
-
     }
 
+    if (paraLlevar.checked) { total += cantidad.value * 0.2; }
+    if (cantidad.value >= 5) { total -= total * 0.1; }
 
-    if (cantidad.value >= 5) {
-        let valor = total
-        total = total - (valor * 0.1);
-    }
-
-    if (paraLlevar.checked) {
-        total = total + (cantidad.value * 0.2);
-        resultado.innerText = "Han pedido " + cantidad.value + " café(s) " + tipoCafe.value + ". (para llevar)" +
-            "\nTotal a pagar: " + total;
-    } else {
-        total = total + (cantidad.value * 0.2);
-        resultado.innerText = "Han pedido " + cantidad.value + " café(s) " + tipoCafe.value +
-            "\nTotal a pagar: " + total;
-    }
-
+    let variable = paraLlevar.checked ? ". (para llevar)" : "";
+    resultado.innerText = "Has pedido " + cantidad.value + " café(s) " + tipoCafe.value + variable +
+        "\nTotal a pagar: " + total;
 }
