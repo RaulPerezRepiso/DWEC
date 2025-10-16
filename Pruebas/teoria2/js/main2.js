@@ -30,7 +30,6 @@ let obj2 = new Object({
 /* Object.preventExtensions(obj2);
 obj2.colordefondo = "green"; */
 
-
 // Borra el valor de la variable
 /* delete obj2.tlf;
 
@@ -51,7 +50,6 @@ for (prop in obj2)
 info.innerHTML += "<br>Datos de obj1: " +Object.keys(obj1);
 
 info.innerHTML += "<hr>Datos de obj2: " +Object.keys(obj2); */
-
 
 /* for of NO sirve para objetos pero si en la llamda de objetos dentro de keys
 for(prop of obj1)
@@ -94,7 +92,6 @@ for (prop of Object.keys(obj2))
 
 let info = document.getElementById("info");
 
-
 /* info.innerHTML = Math.ceil(4.1);
 info.innerHTML = Math.round(Math.random() * 100);
 info.innerHTML = 5 / 0;
@@ -113,7 +110,8 @@ info.innerHTML = "Valor infinito inesperado"; */
 // let num = 2134.1234
 // info.innerHTML = num.toLocaleString;
 
-let myString = "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit fugit rem! Consectetur quibusdam nesciunt, enim soluta, hic similique eius, non qui aspernatur explicabo totam nam ad repellendus ipsa cupiditate.";
+let myString =
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit fugit rem! Consectetur quibusdam nesciunt, enim soluta, hic similique eius, non qui aspernatur explicabo totam nam ad repellendus ipsa cupiditate.";
 
 // Si mostramos algo fuera de la cadena no mostrara nada o si pedimos un caracter que no este
 // info.innerHTML = myString.charAt(100);
@@ -139,7 +137,14 @@ console.log(mySlice); */
 
 console.log(mySplit); */
 
-let myArray = new Array(1, true, { nombre: "Pepe", apellidos: "Garcia perez", }, 45.67, Math.PI, false);
+let myArray = new Array(
+  1,
+  true,
+  { nombre: "Pepe", apellidos: "Garcia perez" },
+  45.67,
+  Math.PI,
+  false
+);
 
 // Podemos definir la posicion con el contenido que queramos pero estarán vacias los demas sitios del array solo llenar el asignado los demás Undefined
 // myArray[10001] = "Mery";
@@ -205,8 +210,8 @@ info.innerHTML = myArrayResult;
 console.log(myArrayResult); */
 
 let myArrayR = myArray.filter(function (elem) {
-    return typeof elem == "boolean";
-})
+  return typeof elem == "boolean";
+});
 
 /* for (let i in myArray) {
     if (myArray.length - 1 == i) {
@@ -215,7 +220,7 @@ let myArrayR = myArray.filter(function (elem) {
         info.innerHTML += myArray[i] + " - ";
 } */
 
-// Manera de hacer funcoines con funcinoes con o sin nombre 
+// Manera de hacer funcoines con funcinoes con o sin nombre
 /* myArray.forEach(function (elem, indice, arrayActual) {
 console.log("myArray es: "+arrayActual);
 
@@ -281,9 +286,7 @@ if (date.getHours() >= 20 || date.getHours()<=7 && (date.getMonth()>=9 || date.g
 let fecha = document.getElementById("fecha");
 let bCal = document.getElementById("bCalcula");
 
-
-
-bCal.onclick = () => {
+/* bCal.onclick = () => {
     let date = new Date();
     let dateCumple = new Date(fecha.value);
 
@@ -292,10 +295,34 @@ bCal.onclick = () => {
     info.innerHTML = "Llevas vivo " + parseInt(result/1000/60/60/24/365) +  " años";
 }
 
-// Saber si mi aplicación web esta conectada a internet
+// Saber si mi aplicación web esta conectada a internet (No detecta si tiene RED)
 info.innerHTML = "¿Estas online? " +navigator.onLine;
 
 // Saber el navegador en el que estas
-info.innerHTML = "¿Cual es tu navegador? " +navigator.userAgent;
+info.innerHTML = "¿Cual es tu navegador? " +navigator.userAgent; */
+
+// Comprueba si la página tiene cookies
+// info.innerHTML = "¿Están las cookies habilitadas? " +navigator.cookieEnabled;
+
+//Cantidad de núcleos
+// info.innerHTML = "Número de nucleos? " +navigator.hardwareConcurrency;
+
+//Cantidad de memoría
+// info.innerHTML = "Cantidad de memoria? " +navigator.deviceMemory;
+
+// Resolución usada de la pantalla
+// info.innerHTML = "Resolución de la pantala (px): " +screen.availWidth +" - "+ screen.availHeight;
+
+// Resolución total que puede alcanzar
+// info.innerHTML = "Resolución TOTAL de la pantala (px): " +screen.width +" - "+ screen.height;
+
+// Colores usados
+// info.innerHTML = "Bits para colores " +screen.colorDepth;
+
+// Bits usados en la pantalla
+// info.innerHTML = "Bits para colores " +screen.pixelDepth;
+
+// Orientación de la pantalla
+// info.innerHTML = "Orientación " +screen.orientation.angle;
 
 
