@@ -49,13 +49,15 @@
             height: 100%;
             background-color: rgb(180, 60, 120);
         }
-        input { 
+
+        input {
             padding: 1%;
             margin: 1%;
             height: 8%;
             background-color: coral;
             color: white;
         }
+
         a {
             text-decoration: none;
             cursor: pointer;
@@ -74,9 +76,22 @@
     <aside>
     </aside>
     <main id="main">
-        <h1 id="info"></h1>
-        <input type="datetime-local" name="fecha" id="fecha">
-        <a href="#" id="bCalcula">Calcula los días vividos</a>
+        <h3 id="info"></h3>
+        <button id="paraIntervalo">Para</button>
+        <br>
+        <textarea for="texto" id="texto" rows="10" cols="40"></textarea>
+        <br>
+        <label for="">Recordar a: </label>
+        <input type="datetime-local" name="hora" id="hora">
+        <hr>
+        <button id="bRecordar">Recordar</button>
+        <hr>
+        <button id="bAbrir">Abrir Ventana</button>
+        <button id="bMover">Mover To</button>
+        <button id="bMoverBy">Mover By</button>
+        <button id="bResizeTo">Resize To</button>
+        <button id="bResizeBy">Resize By</button>
+        <button id="bPrint">Print</button>
     </main>
     <footer>
 

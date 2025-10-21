@@ -111,7 +111,7 @@ info.innerHTML = "Valor infinito inesperado"; */
 // info.innerHTML = num.toLocaleString;
 
 let myString =
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit fugit rem! Consectetur quibusdam nesciunt, enim soluta, hic similique eius, non qui aspernatur explicabo totam nam ad repellendus ipsa cupiditate.";
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit fugit rem! Consectetur quibusdam nesciunt, enim soluta, hic similique eius, non qui aspernatur explicabo totam nam ad repellendus ipsa cupiditate.";
 
 // Si mostramos algo fuera de la cadena no mostrara nada o si pedimos un caracter que no este
 // info.innerHTML = myString.charAt(100);
@@ -138,12 +138,12 @@ console.log(mySlice); */
 console.log(mySplit); */
 
 let myArray = new Array(
-  1,
-  true,
-  { nombre: "Pepe", apellidos: "Garcia perez" },
-  45.67,
-  Math.PI,
-  false
+    1,
+    true,
+    { nombre: "Pepe", apellidos: "Garcia perez" },
+    45.67,
+    Math.PI,
+    false
 );
 
 // Podemos definir la posicion con el contenido que queramos pero estarán vacias los demas sitios del array solo llenar el asignado los demás Undefined
@@ -210,7 +210,7 @@ info.innerHTML = myArrayResult;
 console.log(myArrayResult); */
 
 let myArrayR = myArray.filter(function (elem) {
-  return typeof elem == "boolean";
+    return typeof elem == "boolean";
 });
 
 /* for (let i in myArray) {
@@ -273,7 +273,7 @@ info.innerHTML = date.toLocaleString();
 info.innerHTML = "La hora en tu ciudad: "+ date.toUTCString() + " añadiendo un offset de " +date.getTimezoneOffset()*-1/60 +" horas";   */
 
 // Un script que si son más de las 8 de la tarde colores oscuros en la web
-/* let mainHtml = document.getElementById("main");
+/* Html = document.getElementById("main");
 let date = new Date;
 
 if (date.getHours() >= 20 || date.getHours()<=7 && (date.getMonth()>=9 || date.getMonth() <=2))  {
@@ -326,3 +326,78 @@ info.innerHTML = "¿Cual es tu navegador? " +navigator.userAgent; */
 // info.innerHTML = "Orientación " +screen.orientation.angle;
 
 
+let main = document.getElementById("main");
+let hora = document.getElementById("hora");
+let texto = document.getElementById("texto");
+
+let backgroundColorMain = "rgb(128, 130, 97)";
+let backgroundColorMain2 = "rgba(232,52,7,1)";
+
+/* setTimeout(function () {
+    mainHtml.style.backgroundColor = "rgb(233,233,233, 1)"
+}, 5000) */
+
+/* let intervalo = setInterval(function () {
+    if (main.style.backgroundColor == backgroundColorMain)
+        main.style.backgroundColor = backgroundColorMain2;
+    else
+        main.style.backgroundColor = backgroundColorMain;
+}, 2000);
+
+document.getElementById("paraIntervalo").onclick = function () {
+    clearInterval(intervalo);
+} */
+
+/* document.getElementById("bRecordar").onclick = () => {
+    let mensaje = texto.value;
+    let tiempo = new Date(hora.value);
+
+    let fechaNow = new Date();
+    
+    tiempo = Math.abs(fechaNow - tiempo);
+
+    setTimeout(function () {
+        alert(mensaje)
+    }, tiempo);
+
+} */
+
+let vAux = undefined;
+
+document.getElementById("bAbrir").onclick = () => {
+
+    vAux = window.open("./usuarios.html", "_blank", "width=300px, height=400px, left=400px, top=100px",);
+
+}
+
+document.getElementById("bMover").onclick = () => {
+
+    if ((vAux) && (!vAux.closed))
+        vAux.moveTo(200, 200);
+    vAux.focus(); //Para que mantenga el foco y no se queda atras
+    // vAux.blur(); //Quita el foco de la pestaña donde se encuentra
+
+}
+document.getElementById("bMoverBy").onclick = () => {
+
+    if ((vAux) && (!vAux.closed))
+        vAux.moveBy(200, 200);
+    vAux.focus(); //Para que mantenga el foco y no se queda atras
+}
+document.getElementById("bResizeTo").onclick = () => {
+
+    if ((vAux) && (!vAux.closed))
+        vAux.resizeTo(400, 400);
+    vAux.focus(); //Para que mantenga el foco y no se queda atras
+}
+document.getElementById("bResizeBy").onclick = () => {
+
+    if ((vAux) && (!vAux.closed))
+        vAux.resizeBy(200, 200);
+    vAux.focus(); //Para que mantenga el foco y no se queda atras
+}
+document.getElementById("bPrint").onclick = () => {
+
+    if ((vAux) && (!vAux.closed))
+        vAux.print();
+}

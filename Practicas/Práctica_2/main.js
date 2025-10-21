@@ -83,13 +83,18 @@ bCalcula.onclick = () => {
 let nDias1 = document.getElementById("nDias1");
 let bCalcula1 = document.getElementById("bCalcula1");
 let fecha1 = document.getElementById("fecha1");
-bCalcula.onclick = () => {
+bCalcula1.onclick = () => {
     let date = new Date();
-    let dateCumple = new Date(fecha.value);
+    let dateCumple = new Date(fecha1.value);
 
     let result = date - dateCumple;
 
-    nDias.innerText = "Llevas vivo " + parseInt(result / 1000 / 60 / 60 / 24 / 365) + " años";
+    let años = parseInt(result / 1000 / 60 / 60 / 24 / 365);
+    let dias = parseInt(result / 1000 / 60 / 60 / 24 / 365) - años;
+    let horas = parseInt(result / 1000 / 60 / 60 / 24 / 365) - parseInt(result / 1000 / 60 / 60);
+    let min = parseInt(result / 1000 / 60 / 60 / 24 / 365) - parseInt(result / 1000 / 60);
+
+    nDias1.innerText = "Llevas vivo " + años + " años, " + dias + " dias,  " + horas + " horas y  " + min + " minutos";
 }
 
 /*Ejercicio 6 */
