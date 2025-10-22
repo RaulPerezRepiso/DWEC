@@ -71,7 +71,7 @@ function rebota() {
         leftCSS += direccion;
         pelota.style.left = leftCSS + "px";
 
-    }, 10);
+    }, 1);
 }
 
 
