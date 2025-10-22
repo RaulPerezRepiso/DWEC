@@ -401,3 +401,12 @@ document.getElementById("bPrint").onclick = () => {
     if ((vAux) && (!vAux.closed))
         vAux.print();
 }
+
+document.getElementById("aEnviarLogin").onclick = () =>{
+    if(!vAux.closed)
+        vAux.document.getElementById("loginText").value = document.getElementById("login").value;
+        
+        vAux.focus();
+}
+
+
