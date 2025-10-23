@@ -409,4 +409,37 @@ document.getElementById("aEnviarLogin").onclick = () =>{
         vAux.focus();
 }
 
+// Crear una cookie que expire en un determinado momento
+document.cookie = "name=Pepe; max-age=20000000";
+
+// Número de formularios que hay creados
+/* alert(document.forms.length) */
+
+let opt = document.createElement("option");
+opt.innerHTML = "Alemania"
+document.getElementById("lista").appendChild(opt);
+
+/* document.getElementById("uno").style.backgroundColor = "pink";
+document.getElementById("dos").style.backgroundColor = "black"; */
+
+//URL de la página y URL de la página que ha llamado a esta
+info.innerHTML = "URL: " + document.location + "\nReferencia desde: " + document.referrer;
+
+// Muestra el contenido de nuestro árboo DOM
+console.log(document.children[0].children)
+
+// NO FUNCIONA
+/* document.getElementById("bSalir").onclick = ()=>{
+    document.exitFullscreen();
+} */
+
+/* document.open();
+
+document.writeln("<h1>Has ganando un premio!! Dime tu cuenta para ingresar el premio: </h1><input input type = 'text'></input>");
+
+document.close(); */
+
+
+
+
 

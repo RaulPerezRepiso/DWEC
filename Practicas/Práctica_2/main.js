@@ -163,12 +163,85 @@ document.getElementById("bCadena").onclick = () => {
   let rCadena = document.getElementById("rCadena");
 
   for (let i = 0; i < cad.length; i++) {
-    rCadena.innerText += cad[i] +""+ i+"\n";
+    rCadena.innerText += cad[i] + "" + i + "\n";
   }
 };
 
 /*Ejercicio 8 */
+let cadP = document.getElementById("cadP");
+let cadS1 = document.getElementById("cadS1");
+let cadS2 = document.getElementById("cadS2");
+let rCadenaArray = document.getElementById("rCadenaArray");
 
+let array2 = [];
+
+document.getElementById("bIf").onclick = () => {
+  array2 = [];
+  if (cadS1.value == "") {
+    console.log(alert("Introduce un valor para usar el Botón Insertar al Final"))
+  } else {
+    array2 = [cadP.value];
+    array2.push(cadS1.value);
+  }
+  rCadenaArray.innerText = array2;
+
+}
+
+document.getElementById("bIp").onclick = () => {
+  if (cadS1.value == "") {
+    console.log(alert("Introduce un valor para usar el Botón Insertar al principio"))
+  } else {
+    array2 = [cadP.value];
+    array2.unshift(cadS1.value);
+  }
+  rCadenaArray.innerText = array2;
+}
+
+document.getElementById("bAelem").onclick = () => {
+
+  if (array2 === "") {
+    console.log(alert("Introduce cadenas"))
+  } else {
+    array2.push(cadP.value);
+    cadP.value = "";
+  }
+  rCadenaArray.innerText = array2;
+
+}
+
+document.getElementById("bBp").onclick = () => {
+  if (array2.length === 0) {
+    console.log(alert("Introduce cadenas para borrar elemento al array"))
+  } else {
+    array2.shift();
+  }
+  rCadenaArray.innerText = array2;
+}
+
+document.getElementById("bBu").onclick = () => {
+  if (array2.length === 0) {
+    console.log(alert("Introduce cadenas para añadir elemento al array"))
+  } else {
+    array2.pop();
+  }
+  rCadenaArray.innerText = array2;
+}
+
+document.getElementById("bId").onclick = () => {
+
+}
+
+document.getElementById("bBd").onclick = () => {
+
+}
+
+document.getElementById("bOasc").onclick = () => {
+
+}
+
+document.getElementById("bOdes").onclick = () => {
+
+}
 
 /*Ejercicio 9 */
 
