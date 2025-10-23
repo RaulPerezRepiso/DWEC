@@ -228,6 +228,7 @@ document.getElementById("bBu").onclick = () => {
 }
 
 document.getElementById("bId").onclick = () => {
+  
 
 }
 
