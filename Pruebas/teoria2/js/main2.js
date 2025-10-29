@@ -362,7 +362,7 @@ document.getElementById("paraIntervalo").onclick = function () {
 
 } */
 
-let vAux = undefined;
+/* let vAux = undefined;
 
 document.getElementById("bAbrir").onclick = () => {
 
@@ -402,32 +402,32 @@ document.getElementById("bPrint").onclick = () => {
         vAux.print();
 }
 
-document.getElementById("aEnviarLogin").onclick = () =>{
-    if(!vAux.closed)
+document.getElementById("aEnviarLogin").onclick = () => {
+    if (!vAux.closed)
         vAux.document.getElementById("loginText").value = document.getElementById("login").value;
-        
-        vAux.focus();
-}
+
+    vAux.focus();
+} */
 
 // Crear una cookie que expire en un determinado momento
-document.cookie = "name=Pepe; max-age=20000000";
+/* document.cookie = "name=Pepe; max-age=20000000"; */
 
 // Número de formularios que hay creados
 /* alert(document.forms.length) */
 
-let opt = document.createElement("option");
+/* let opt = document.createElement("option");
 opt.innerHTML = "Alemania"
-document.getElementById("lista").appendChild(opt);
+document.getElementById("lista").appendChild(opt); */
 
 /* document.getElementById("uno").style.backgroundColor = "pink";
 document.getElementById("dos").style.backgroundColor = "black"; */
 
 //URL de la página y URL de la página que ha llamado a esta
-info.innerHTML = "URL: " + document.location + "\nReferencia desde: " + document.referrer;
-
+/* info.innerHTML = "URL: " + document.location + "\nReferencia desde: " + document.referrer;
+ */
 // Muestra el contenido de nuestro árboo DOM
-console.log(document.children[0].children)
-
+/* console.log(document.children[0].children)
+ */
 // NO FUNCIONA
 /* document.getElementById("bSalir").onclick = ()=>{
     document.exitFullscreen();
@@ -438,6 +438,60 @@ console.log(document.children[0].children)
 document.writeln("<h1>Has ganando un premio!! Dime tu cuenta para ingresar el premio: </h1><input input type = 'text'></input>");
 
 document.close(); */
+
+/* console.log(history) */
+/* info.innerHTML = "Número de webs visitadas: " + history.length; */
+/* info.innerHTML += "¿Cuál es la última?: " + history.current+ "<br>";
+info.innerHTML += "¿Cuál es la siguiente?: " + history.next+ "<br>"; */
+
+/* info.innerHTML = "URL: " + location.port;
+
+document.getElementById("back").onclick = () => {
+    history.back()
+}
+
+document.getElementById("forward").onclick = () => {
+    history.forward()
+}
+
+document.getElementById("byoutube").onclick = () => {
+    // location.href = "./usuarios.html";
+    location.assign("./usuarios.html");
+    // location.reload("./usuarios.html");
+    // location.replace("./usuarios.html");
+
+} */
+
+let text = document.getElementById("texto");
+
+let er1 = new RegExp("\\+");
+// let er2 = /o$/ig;
+// let er2 = /^[A-Z]/ig;
+// let er2 = /.$/ig;
+// let er2 = /../ig;
+// let er2 = /[viernes|Mancha]+/;
+let er2 = /[0-9]{1,2}/;
+
+
+console.log(text.innerHTML)
+// let result = er1.test(text.innerText);
+let result1 = er2.test(text.innerText);
+
+// info.innerHTML = result;
+info.innerHTML = result1;
+
+// '\' Especificar metacaracteres complejos \x y para escapar otros metacaracteres
+// '^' Empieza por '$' acaba por '*' algo que se repite 0 o más veces '+' 1 o más '?' 0 o una vez 
+// '.' calquier caracter solo 1
+
+
+
+
+
+
+
+
+
 
 
 
