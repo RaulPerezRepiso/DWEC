@@ -137,14 +137,14 @@ console.log(mySlice); */
 
 console.log(mySplit); */
 
-let myArray = new Array(
+/* let myArray = new Array(
     1,
     true,
     { nombre: "Pepe", apellidos: "Garcia perez" },
     45.67,
     Math.PI,
     false
-);
+); */
 
 // Podemos definir la posicion con el contenido que queramos pero estarán vacias los demas sitios del array solo llenar el asignado los demás Undefined
 // myArray[10001] = "Mery";
@@ -172,7 +172,7 @@ myArray.shift();
 console.log(prueba); */
 
 // 1 Posición a partir de la que quieres añadir 2 Posición a partir de la que quieres borrra y lo demás numero a añadir desde la posición indicada +1
-myArray.splice(3, 0, "Hola", false, 9999);
+// myArray.splice(3, 0, "Hola", false, 9999);
 
 /* Números que sean negativos
     true a flase y viceversa
@@ -209,9 +209,9 @@ function modificaArray(elem) {
 info.innerHTML = myArrayResult;
 console.log(myArrayResult); */
 
-let myArrayR = myArray.filter(function (elem) {
+/* let myArrayR = myArray.filter(function (elem) {
     return typeof elem == "boolean";
-});
+}); */
 
 /* for (let i in myArray) {
     if (myArray.length - 1 == i) {
@@ -283,8 +283,8 @@ if (date.getHours() >= 20 || date.getHours()<=7 && (date.getMonth()>=9 || date.g
     mainHtml.style.backgroundColor = "white";
     mainHtml.style.color = "black"; 
 } */
-let fecha = document.getElementById("fecha");
-let bCal = document.getElementById("bCalcula");
+/* let fecha = document.getElementById("fecha");
+let bCal = document.getElementById("bCalcula"); */
 
 /* bCal.onclick = () => {
     let date = new Date();
@@ -326,12 +326,12 @@ info.innerHTML = "¿Cual es tu navegador? " +navigator.userAgent; */
 // info.innerHTML = "Orientación " +screen.orientation.angle;
 
 
-let main = document.getElementById("main");
+/* let main = document.getElementById("main");
 let hora = document.getElementById("hora");
 let texto = document.getElementById("texto");
 
 let backgroundColorMain = "rgb(128, 130, 97)";
-let backgroundColorMain2 = "rgba(232,52,7,1)";
+let backgroundColorMain2 = "rgba(232,52,7,1)"; */
 
 /* setTimeout(function () {
     mainHtml.style.backgroundColor = "rgb(233,233,233, 1)"
@@ -462,29 +462,85 @@ document.getElementById("byoutube").onclick = () => {
 
 } */
 
-let text = document.getElementById("texto");
+// let text = document.getElementById("texto");
 
-let er1 = new RegExp("\\+");
+// let er1 = new RegExp("\\+");
 // let er2 = /o$/ig;
 // let er2 = /^[A-Z]/ig;
 // let er2 = /.$/ig;
 // let er2 = /../ig;
 // let er2 = /[viernes|Mancha]+/;
-let er2 = /[0-9]{1,2}/;
+// let er2 = /\d{1,2}/g;
 
+// console.log(text.innerHTML)
 
-console.log(text.innerHTML)
 // let result = er1.test(text.innerText);
-let result1 = er2.test(text.innerText);
+
+/* let tmpIndex = er2.lastIndex;
+
+// Podemos encontrar x ocurriencis dentro de un texto recorriendolo así
+while (er2.test(text.innerText)) {
+    console.info("LastIndex después de test: " + er2.lastIndex);
+
+    er2.lastIndex = tmpIndex;
+
+    let result = er2.exec(text.innerText);
+    console.info("LastIndex después de exec: " + er2.lastIndex);
+
+    console.log(result);
+    info.innerHTML += "Encontrado " + result["0"] + " en la posición " + result.index + "<br>";
+
+    tmpIndex = er2.lastIndex;
+} */
+
+// Manera corta y más clara sin lastIndex 
+/*let result;
+while ((result = er2.exec(text.innerText)) !== null) {
+    console.info("LastIndex después de exec: " + er2.lastIndex);
+    console.log(result);
+    info.innerHTML += "Encontrado " + result[0] + " en la posición " + result.index + "<br>";
+} */
+
+// Se útiliza para devolver un encontrado o no encontrado simplemente
+/* while (text.match(er2)) 
+    info.innerHTML = "Encontrado: " + text.match(er2); */
+
+// Búsca en un texto como el metodo de antes
+/* if (text.match(er2)) 
+    for(enc of text.matchAll(er2))
+        console.log(enc) */
+
+/* if (text.innerText.match(er2)) 
+    text.innerHTML = text.innerText.replaceAll(er2,"<strong style='color:red'><u>REF</u></strong>"); */
+
 
 // info.innerHTML = result;
-info.innerHTML = result1;
+// info.innerHTML = result1;
 
 // '\' Especificar metacaracteres complejos \x y para escapar otros metacaracteres
-// '^' Empieza por '$' acaba por '*' algo que se repite 0 o más veces '+' 1 o más '?' 0 o una vez 
-// '.' calquier caracter solo 1
+// '^' Empieza por '$' acaba por '*' algo que se repite 0 o más veces '+' 1 o más '?' 0 o una vez
+// '.' calquier caracter solo 1 '{x,x}' Devolver de x a x indempendiente mente de si las x no están declaradas
+// 
 
 
+// Empiece por mayúscula (al menos uno) entre D-R
+// Contenga, al menos, 2 símbolos entre (_,-,$;(,))
+let login = document.getElementById("login");
+let pass = document.getElementById("pass");
+
+document.getElementById("bLogin").onclick = () => {
+    let value = pass.value;
+
+    let start = /^[D-R]/.test(value);
+    let simbolos = (value.match(/[_\-\$\(\)]/g) || []).length;
+
+    if (start && simbolos >= 2) {
+        info.innerHTML = "Login válido";
+    } else {
+        info.innerHTML = "Login inválido";
+    }
+
+}
 
 
 

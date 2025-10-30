@@ -175,28 +175,34 @@ let rCadenaArray = document.getElementById("rCadenaArray");
 
 let array2 = [];
 
+/**
+ * Inserta un valor dado al final de la cadena
+ */
 document.getElementById("bIf").onclick = () => {
-  array2 = [];
   if (cadS1.value == "") {
     console.log(alert("Introduce un valor para usar el Botón Insertar al Final"))
   } else {
-    array2 = [cadP.value];
     array2.push(cadS1.value);
   }
   rCadenaArray.innerText = array2;
 
 }
 
+/**
+ * Inserta un valor dado al principio de la cadena
+ */
 document.getElementById("bIp").onclick = () => {
   if (cadS1.value == "") {
     console.log(alert("Introduce un valor para usar el Botón Insertar al principio"))
   } else {
-    array2 = [cadP.value];
     array2.unshift(cadS1.value);
   }
   rCadenaArray.innerText = array2;
 }
 
+/**
+ * Un boton para añadir elementos a la cadena 
+ */
 document.getElementById("bAelem").onclick = () => {
 
   if (array2 === "") {
@@ -209,6 +215,9 @@ document.getElementById("bAelem").onclick = () => {
 
 }
 
+/**
+ * Borra la primera posoción del array y sigue mostrando el contenido del array
+ */
 document.getElementById("bBp").onclick = () => {
   if (array2.length === 0) {
     console.log(alert("Introduce cadenas para borrar elemento al array"))
@@ -218,6 +227,9 @@ document.getElementById("bBp").onclick = () => {
   rCadenaArray.innerText = array2;
 }
 
+/**
+ * Borra la última posoción del array y sigue mostrando el contenido del array
+ */
 document.getElementById("bBu").onclick = () => {
   if (array2.length === 0) {
     console.log(alert("Introduce cadenas para añadir elemento al array"))
@@ -227,21 +239,52 @@ document.getElementById("bBu").onclick = () => {
   rCadenaArray.innerText = array2;
 }
 
+/**
+ * Introduce un elemento dado den el text de valor de arriba en la posicon dada en el text de abajo
+ */
 document.getElementById("bId").onclick = () => {
-  
+  let valor = cadS1.value;
+  let posicion = parseInt(cadS2.value);
 
-}
+  if (valor === "" || isNaN(posicion)) {
+    alert("Introduce un valor y una posición válida para insertar");
+    return;
+  }
 
+  array2.splice(posicion, 0, valor);
+  rCadenaArray.innerText = array2;
+};
+
+/**
+ * Borra lo que haya en la posición dada
+ */
 document.getElementById("bBd").onclick = () => {
+  let posicion = parseInt(cadS2.value);
 
-}
+  if (isNaN(posicion) || posicion < 0 || posicion >= array2.length) {
+    alert("Introduce una posición válida para borrar");
+    return;
+  }
 
+  array2.splice(posicion, 1);
+  rCadenaArray.innerText = array2;
+};
+
+/**
+ * Ordenada de manera ascendente
+ */
 document.getElementById("bOasc").onclick = () => {
+  array2.sort();
+  rCadenaArray.innerText = array2;
 
 }
 
+/**
+ * Ordenad de manera descendente
+ */
 document.getElementById("bOdes").onclick = () => {
-
+  array2.sort().reverse();
+  rCadenaArray.innerText = array2;
 }
 
 /*Ejercicio 9 */
