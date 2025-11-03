@@ -180,64 +180,65 @@ let array2 = [];
  */
 document.getElementById("bIf").onclick = () => {
   if (cadS1.value == "") {
-    console.log(alert("Introduce un valor para usar el Botón Insertar al Final"))
+    console.log(
+      alert("Introduce un valor para usar el Botón Insertar al Final")
+    );
   } else {
     array2.push(cadS1.value);
   }
   rCadenaArray.innerText = array2;
-
-}
+};
 
 /**
  * Inserta un valor dado al principio de la cadena
  */
 document.getElementById("bIp").onclick = () => {
   if (cadS1.value == "") {
-    console.log(alert("Introduce un valor para usar el Botón Insertar al principio"))
+    console.log(
+      alert("Introduce un valor para usar el Botón Insertar al principio")
+    );
   } else {
     array2.unshift(cadS1.value);
   }
   rCadenaArray.innerText = array2;
-}
+};
 
 /**
- * Un boton para añadir elementos a la cadena 
+ * Un boton para añadir elementos a la cadena
  */
 document.getElementById("bAelem").onclick = () => {
-
   if (array2 === "") {
-    console.log(alert("Introduce cadenas"))
+    console.log(alert("Introduce cadenas"));
   } else {
     array2.push(cadP.value);
     cadP.value = "";
   }
   rCadenaArray.innerText = array2;
-
-}
+};
 
 /**
  * Borra la primera posoción del array y sigue mostrando el contenido del array
  */
 document.getElementById("bBp").onclick = () => {
   if (array2.length === 0) {
-    console.log(alert("Introduce cadenas para borrar elemento al array"))
+    console.log(alert("Introduce cadenas para borrar elemento al array"));
   } else {
     array2.shift();
   }
   rCadenaArray.innerText = array2;
-}
+};
 
 /**
  * Borra la última posoción del array y sigue mostrando el contenido del array
  */
 document.getElementById("bBu").onclick = () => {
   if (array2.length === 0) {
-    console.log(alert("Introduce cadenas para añadir elemento al array"))
+    console.log(alert("Introduce cadenas para añadir elemento al array"));
   } else {
     array2.pop();
   }
   rCadenaArray.innerText = array2;
-}
+};
 
 /**
  * Introduce un elemento dado den el text de valor de arriba en la posicon dada en el text de abajo
@@ -276,8 +277,7 @@ document.getElementById("bBd").onclick = () => {
 document.getElementById("bOasc").onclick = () => {
   array2.sort();
   rCadenaArray.innerText = array2;
-
-}
+};
 
 /**
  * Ordenad de manera descendente
@@ -285,13 +285,45 @@ document.getElementById("bOasc").onclick = () => {
 document.getElementById("bOdes").onclick = () => {
   array2.sort().reverse();
   rCadenaArray.innerText = array2;
-}
+};
 
 /*Ejercicio 9 */
+let rRes = document.getElementById("rRes");
+let rTipoRes = document.getElementById("rTipoRes");
+
+mostrarResulucion = () => {
+  rTipoRes.innerText = "La pantalla es de: ";
+  ancho = window.innerWidth;
+  alto = window.innerHeight;
+
+  if (ancho < 768) rTipoRes.innerText += " Móvil";
+  else if (ancho < 1024) rTipoRes.innerText += " Tablet";
+  else rTipoRes.innerText += " Desktop";
+
+  rRes.innerText =
+    "La resolución de la pantalla es ancho " + ancho + " y alto " + alto;
+};
+
+document.getElementById("bRes").onclick = mostrarResulucion;
+
+window.addEventListener("resize", mostrarResolucion);
 
 /*Ejercicio 10 */
+let an = window.innerWidth - 40;
+let al = window.innerHeight - 20;
+let aux = undefined;
+document.getElementById("bVen").onclick = () => {
+  aux = window.open(
+    "./pruebas.html",
+    "_blank",
+    `width=${an},height=${al}`
+  );
+};
 
 /*Ejercicio 11 */
+document.getElementById("bRed").onclick = () => {
+  window.resizeTo(600, 500);
+};
 
 /*Ejercicio 12 */
 
