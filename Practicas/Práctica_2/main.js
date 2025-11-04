@@ -76,6 +76,28 @@ asignar = () => {
 profesor.innerHTML = asignar();
 
 /*Ejercicio 2 */
+document.getElementById("bCalcular").onclick = () => {
+  // Captura de coordenadas
+  let x1 = parseFloat(document.getElementById("x1").value);
+  let y1 = parseFloat(document.getElementById("y1").value);
+  let x2 = parseFloat(document.getElementById("x2").value);
+  let y2 = parseFloat(document.getElementById("y2").value);
+
+  // Cálculos
+  let dx = x2 - x1;
+  let dy = y2 - y1;
+
+  let pendiente = Math.sqrt(dx ** 2 + dy ** 2);
+  let anguloRad = Math.atan(dy / dx);
+  let anguloGrados = anguloRad * (180 / Math.PI);
+  let pendientePorcentaje = (dy / pendiente) * 100;
+
+  // Mostrar resultados
+  longitud.innerHTML =
+    "Longitud de la pendiente: " + pendiente.toFixed(2) + " m";
+  angulo.innerHTML = "Ángulo de inclinación: " + anguloGrados.toFixed(2) + "°";
+  porcentaje.innerHTML = "Pendiente: " + pendientePorcentaje.toFixed(2) + "%";
+};
 
 /*Ejercicio 3 */
 let pi1 = document.getElementById("pi1");
@@ -305,7 +327,7 @@ window.addEventListener("resize", () => {
 });
 
 /*Ejercicio 10 */
-let aux= undefined;
+let aux = undefined;
 document.getElementById("bVen").onclick = () => {
   let rRes2 = document.getElementById("rRes2");
   rRes2.innerText = "Hola";
@@ -322,15 +344,61 @@ document.getElementById("bRed").onclick = () => {
 };
 
 /*Ejercicio 12 */
+document.getElementById("bR").onclick = () => {
+  history.back();
+};
+
+document.getElementById("bA").onclick = () => {
+  history.forward();
+};
 
 /*Ejercicio 13 */
 
 /*Ejercicio 14 */
 
 /*Ejercicio 15 */
+document.getElementById("bFecha").onclick = () => {
+  let regFecha = new RegExp("[0-9]{2}/[0-9]{2}/[0-9]{4}", "ig");
+  let texto = document.getElementById("rFecha");
+  let input = document.getElementById("fechaC").value;
+
+  texto.innerText = regFecha.test(input)
+    ? "Fecha introducida: " + input
+    : "Introduce fecha";
+};
 
 /*Ejercicio 16 */
+document.getElementById("bCorreo").onclick = () => {
+  let res = document.getElementById("rCorreo");
+  let input = document.getElementById("correo").value;
+
+  let regCorreo = new RegExp(
+    "[0-9A-Za-z-.]{2,}@[A-Za-z0-9]{2,}.[a-z0-9]{2,3}",
+    "i"
+  );
+
+  res.innerText = regCorreo.test(input) ? "Correo Correcto" : "Inserta correo";
+};
 
 /*Ejercicio 17 */
+document.getElementById("bNombre").onclick = () => {
+  const res = document.getElementById("rNombre");
+  const input = document.getElementById("nombre").value.trim();
+
+  // Verifica que el input tenga al menos dos palabras
+  if (/^[a-zA-Z]+\s+[a-zA-Z]+$/.test(input)) {
+    const formatted = input.replace(/([a-zA-Z]+)\s+([a-zA-Z]+)/, "$2, $1");
+    res.textContent = formatted;
+  } else {
+    res.textContent = "Por favor, introduce nombre y apellido válidos.";
+  }
+};
 
 /*Ejercicio 18 */
+document.getElementById("bHTML").onclick = () => {
+  let input = document.getElementById("HTML").value;
+  let res = document.getElementById("rHTML");
+  let regScript = new RegExp("<script[\\s\\S]*?<\\/script>", "ig");
+
+  res.innerText = input.replace(regScript, "");
+};
