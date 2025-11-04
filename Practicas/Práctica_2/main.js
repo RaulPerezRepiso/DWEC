@@ -291,7 +291,7 @@ document.getElementById("bOdes").onclick = () => {
 let rRes = document.getElementById("rRes");
 let rTipoRes = document.getElementById("rTipoRes");
 
-mostrarResulucion = () => {
+window.addEventListener("resize", () => {
   rTipoRes.innerText = "La pantalla es de: ";
   ancho = window.innerWidth;
   alto = window.innerHeight;
@@ -302,27 +302,23 @@ mostrarResulucion = () => {
 
   rRes.innerText =
     "La resolución de la pantalla es ancho " + ancho + " y alto " + alto;
-};
-
-document.getElementById("bRes").onclick = mostrarResulucion;
-
-window.addEventListener("resize", mostrarResolucion);
+});
 
 /*Ejercicio 10 */
-let an = window.innerWidth - 40;
-let al = window.innerHeight - 20;
-let aux = undefined;
+let aux= undefined;
 document.getElementById("bVen").onclick = () => {
-  aux = window.open(
-    "./pruebas.html",
-    "_blank",
-    `width=${an},height=${al}`
-  );
+  let rRes2 = document.getElementById("rRes2");
+  rRes2.innerText = "Hola";
+
+  let an = window.innerWidth - 40;
+  let al = window.innerHeight - 20;
+
+  aux = window.open("./pruebas.html", "_blank", `width=${an},height=${al}`);
 };
 
 /*Ejercicio 11 */
 document.getElementById("bRed").onclick = () => {
-  window.resizeTo(600, 500);
+  aux.resizeTo(600, 500);
 };
 
 /*Ejercicio 12 */

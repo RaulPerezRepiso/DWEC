@@ -5,6 +5,8 @@ let obj1 = {
     email: "pepe@mail.com"
 }; */
 
+const { createElement } = require("react");
+
 // Define propiedades para los objetos Writable hace que se puedan modificar valores, enumerable que salga en la consola y valor el valor que le queremos dar a esa propiedad nueva
 /* Object.defineProperty(obj1, "color", { writable: true, enumerable: true, value: "red" });
 obj1.color = "yellow";
@@ -525,10 +527,10 @@ while ((result = er2.exec(text.innerText)) !== null) {
 
 // Empiece por mayúscula (al menos uno) entre D-R
 // Contenga, al menos, 2 símbolos entre (_,-,$;(,))
-let login = document.getElementById("login");
-let pass = document.getElementById("pass");
+/* let login = document.getElementById("login");
+let pass = document.getElementById("pass"); */
 
-document.getElementById("bLogin").onclick = () => {
+/* document.getElementById("bLogin").onclick = () => {
     let value = pass.value;
 
     let start = /^[D-R]/.test(value);
@@ -540,7 +542,72 @@ document.getElementById("bLogin").onclick = () => {
         info.innerHTML = "Login inválido";
     }
 
+} */
+
+/* let parrafos = document.getElementsByName("saludo");
+
+console.log(parrafos);
+parrafos[0].style.backgroundColor = "pink";
+
+
+
+const opciones = document.getElementsByName("opciones");
+console.log(opciones[0].nodeType);
+
+let rCheck = document.getElementById("rCheck");
+
+document.getElementById("check").onclick = () => {
+    opciones.forEach(element => {
+         if (element.checked) {
+            rCheck.innerText = "Opción seleccionada: " + element.value;
+        }
+    });
 }
+
+const opciones2 = document.getElementsByName("opciones2");
+console.log(opciones2[0].nodeType); */
+
+
+let pie = document.createElement("footer");
+let pPie = document.createElement("p");
+let pPieText = document.createTextNode("Contacto: 654 654 654");
+
+pPie.appendChild(pPieText);
+
+pie.appendChild(pPie);
+
+document.body.appendChild(pie);
+
+
+document.getElementById("check").onclick = () => {
+    let op = document.getElementById("opcionLista").value;
+    let lista = null;
+
+    if ((document.getElementsByTagName("ul").length > 0) && (op != "")) {
+        lista = document.getElementsByTagName("ul")[0];
+
+       /*  let opElement = document.createElement("li");
+        let opElementText = document.createTextNode(op);
+
+        opElement.appendChild(opElementText); */
+        lista.appendChild(opElement);
+    }
+
+    document.getElementById("opcionLista").focus();
+    document.getElementById("opcionLista").value = "";
+}
+
+function createNode(tipoNodo, tipoTexto) {
+    let nodo = createElement(tipoNodo);
+    let nodoText = createTextNode(tipoTexto);
+
+    nodo.appendChild(nodoText);
+
+    return nodo;
+
+}
+
+
 
 
 
