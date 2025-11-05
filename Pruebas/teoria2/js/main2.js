@@ -5,7 +5,7 @@ let obj1 = {
     email: "pepe@mail.com"
 }; */
 
-const { createElement } = require("react");
+/* const { createElement } = require("react"); */
 
 // Define propiedades para los objetos Writable hace que se puedan modificar valores, enumerable que salga en la consola y valor el valor que le queremos dar a esa propiedad nueva
 /* Object.defineProperty(obj1, "color", { writable: true, enumerable: true, value: "red" });
@@ -576,38 +576,110 @@ pPie.appendChild(pPieText);
 
 pie.appendChild(pPie);
 
-document.body.appendChild(pie);
+// document.body.appendChild(pie);
+
+document.body.innerHTML += "<label>Has ganado un coche. Pincha en este enlace: </label><a href='estafa.com'>Premio!!</a>"
+
+// document.getElementById("opcionLista").placeholder = "Inserta opción para la lista";
+// document.getElementById("opcionLista").setAttribute("placeholder", "Inserta opción para la lista");
+document.getElementById("opcionLista").setAttribute("placeholder", "Inserta opción para la lista");
+
+// alert(document.getElementById("opcionLista").setAttribute("placeholder"));
+alert(document.getElementById("opcionLista").removeAttribute("placeholder"));
+
+
+document.body.appendChild(createNode("hr"));
+document.body.appendChild(createNode("br"));
+document.body.appendChild(createNode("hr"));
+document.body.appendChild(createNode("br"));
+document.body.appendChild(createNode("hr"));
 
 
 document.getElementById("check").onclick = () => {
     let op = document.getElementById("opcionLista").value;
     let lista = null;
+    // let lista = document.getElementsByTagName("ul")[0].innerHTML += "<li>" + op + "</li>";
 
     if ((document.getElementsByTagName("ul").length > 0) && (op != "")) {
         lista = document.getElementsByTagName("ul")[0];
 
-       /*  let opElement = document.createElement("li");
-        let opElementText = document.createTextNode(op);
+        /*  let opElement = document.createElement("li");
+         let opElementText = document.createTextNode(op);
+         opElement.appendChild(opElementText); */
+        lista.appendChild(createNode("li", op));
+        // lista.appendChild(opElement);
 
-        opElement.appendChild(opElementText); */
-        lista.appendChild(opElement);
     }
 
     document.getElementById("opcionLista").focus();
     document.getElementById("opcionLista").value = "";
 }
 
-function createNode(tipoNodo, tipoTexto) {
-    let nodo = createElement(tipoNodo);
-    let nodoText = createTextNode(tipoTexto);
+document.getElementById("bDelete").onclick = () => {
+    let lista = document.getElementById("lista");
+    let lastChild;
 
-    nodo.appendChild(nodoText);
+    // Con esta función podemos recuperar el nodo aunque lo borremos
+    /*if (lista.getElementsByTagName("li").length > 0) {
+           lastChild = lista.getElementsByTagName("li")[lista.getElementsByTagName("li").length - 1]; //Podemos usar .lastChild en ligar de cargar el array con una posicón menos
+           let nodoBorrado = lastChild.parentNode.removeChild(lastChild);
+       console.log(nodoBorrado);
+       } */
+
+    // Una vez borramos perdemos la información
+    if (lista.getElementsByTagName("li").length > 0) {
+        lastChild = lista.getElementsByTagName("li")[lista.getElementsByTagName("li").length - 1]; //Podemos usar .lastChild en ligar de cargar el array con una posicón menos
+        let nodoBorrado = lastChild.remove();
+        console.log(nodoBorrado);
+    }
+
+}
+
+function createNode(tipoNodo, tipoTexto) {
+    /* let nodo;
+    let nodoText = tipoTexto || null; */
+
+    let nodo;
+    let nodoText;
+
+    /*  if (tipoTexto) {
+         nodoText = document.createTextNode(tipoTexto);
+         nodo.appendChild(nodoText);
+     }
+  */
+
+    switch (arguments.length) {
+        case 0:
+            throw "Se necesitas al menos el tipo de elemetno a crear.";
+        case 1: nodo = document.createElement(tipoNodo);
+            nodo.onclick = changColor;
+            nodo.id = "nuevoNodo";
+            break;
+        case 2:
+            nodo = document.createElement(tipoNodo);
+            nodo.onclick = changColor;
+            nodoText = document.createTextNode(tipoTexto);
+            nodo.appendChild(nodoText);
+    }
 
     return nodo;
 
 }
+function changColor() {
+    this.style.color = "red";
+}
 
+document.getElementById("password").onclick = () => {
+    if (document.getElementById("pass").type == "password") {
+        document.getElementById("pass").type = "text"
+        document.getElementById("password").innerHTML = "Ocultar";
+    }
+    else {
+        document.getElementById("pass").type = "password"
+        document.getElementById("password").innerHTML = "Mostrar";
 
+    }
+}
 
 
 
