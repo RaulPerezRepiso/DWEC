@@ -414,17 +414,16 @@ window.addEventListener("resize", () => {
 // Variable global para guardar la referencia a la nueva ventana
 let aux = undefined;
 
-document.getElementById("bVen").onclick = function () {
-  // Calcula el tamaño de la nueva ventana restando márgenes
-  const x = window.innerWidth - 40;
-  const y = window.innerHeight - 20;
+// Calcula el tamaño de la nueva ventana restando márgenes
+let x = (window.innerWidth - 40);
+let y = (window.innerHeight - 20);
 
+document.getElementById("bVen").onclick = function () {
   // Abre una nueva ventana con la URL indicada y dimensiones calculadas
   aux = window.open(
     "/Pruebas/teoria2/usuarios.html", // Ruta del archivo a abrir
     "NuevaVentana", // Nombre de la ventana
-    (width = x),
-    (height = y)
+    "width=" + x + ",height=" + y
   );
 };
 
@@ -560,6 +559,9 @@ document.getElementById("bNombre").onclick = () => {
   // Verifica que el input tenga al menos dos palabras separadas por espacio
   // Permite letras con acentos y mayúsculas/minúsculas
   const regNombre = /^([A-Za-zÁÉÍÓÚáéíóúÑñ]+)\s+([A-Za-zÁÉÍÓÚáéíóúÑñ]+)$/;
+  
+  //Sirve pero no abarca las tildes
+  // const regNombre = /^(\w+)\s+(\w+)$/;
 
   if (regNombre.test(input)) {
     // Extrae las dos palabras y las invierte en formato "Apellido, Nombre"
