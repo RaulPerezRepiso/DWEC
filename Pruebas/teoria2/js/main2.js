@@ -549,8 +549,6 @@ let pass = document.getElementById("pass"); */
 console.log(parrafos);
 parrafos[0].style.backgroundColor = "pink";
 
-
-
 const opciones = document.getElementsByName("opciones");
 console.log(opciones[0].nodeType);
 
@@ -663,8 +661,8 @@ function createNode(tipoNodo, tipoTexto) {
     }
 
     return nodo;
-
 }
+
 function changColor() {
     this.style.color = "red";
 }
