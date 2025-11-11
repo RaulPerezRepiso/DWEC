@@ -16,53 +16,100 @@ document.getElementById("bDoc").onclick = () => {
 }
 
 //Bóton que introduce todo en la tabla
-let indice0 = document.getElementById("indice0");
-let indice1 = document.getElementById("indice1");
-let indice2 = document.getElementById("indice2");
-let indice3 = document.getElementById("indice3");
+const tabla = document.getElementById("tablaDatos");
 
 document.getElementById("bDatosusuarios").onclick = () => {
-    introducirIndice();
-    introducirNombre();
-    introducirEmail();
-    introducirEdad();
-}
+    for (let usuario = 0; usuario < datosUsuarios.length; usuario++) {
 
-class Persona {
-    constructor(indice, nombre, email, edad, valido) {
-        this.indnice = indice;
-        this.nombre = nombre;
-        this.email = email;
-        this.edad = edad;
-        this.valido = valido;
+        // Mostrar Índice:
+        let datosUsuario = datosUsuarios[usuario].split(",");
+        document.getElementById("indice" + usuario).innerHTML = usuario+1;
+
+        // Obtenemos el nombre
+        let nombre = datosUsuario[0].split(":")[1].trim().toUpperCase();
+        document.getElementById("nombre" + usuario).innerHTML = nombre;
+
+        // Obtenemos el correo
+        let correo = datosUsuario[1].split(":")[1].trim();
+        document.getElementById("email" + usuario).innerHTML = correo;
+
+        // Para hacerlo con test hacemos. - regexEmail.test(correo)
+        if (correo.match(regexEmail)) {
+            document.getElementById("valido" + usuario).innerHTML = "Válido";
+        } else {
+            document.getElementById("valido" + usuario).innerHTML = "NO Válido";
+        }
+
+        // Obtenemos la edad
+        let fechaNac = new Date(datosUsuario[2].split(":")[1].trim());
+        let anoNow = new Date().getFullYear();
+
+        if (fechaNac)
+            document.getElementById("edad" + usuario).innerHTML = anoNow - fechaNac.getFullYear();
+        else
+            document.getElementById("edad" + usuario).innerHTML = "<b>Fecha no admitida</b>";
+
     }
 }
 
-function introducirIndice() {
-    for (let i = 0; i <= datosUsuarios.length; i++) {
-        let indice;
-        indice += [i];
-        indice = i;
+/* document.getElementById("bDatosusuarios").onclick = () => {
+    indice();
+    nombre();
+    email();
+    edad();
+}
+
+function indice() {
+    for (let usuario = 0; usuario < datosUsuarios.length; usuario++) {
+
+        // Mostrar Índice:
+        document.getElementById("indice" + usuario).innerHTML = usuario;
     }
 }
 
-function introducirNombre() {
+function nombre() {
 
+    for (let usuario = 0; usuario < datosUsuarios.length; usuario++) {
+
+        let datosUsuario = datosUsuarios[usuario].split(",");
+
+        // Obtenemos el nombre
+        let nombre = datosUsuario[0].split(":")[1].trim().toUpperCase();
+        document.getElementById("nombre" + usuario).innerHTML = nombre;
+    }
 }
 
+function email() {
 
-function introducirEmail() {
+    for (let usuario = 0; usuario < datosUsuarios.length; usuario++) {
 
+        let datosUsuario = datosUsuarios[usuario].split(",");
+
+        // Obtenemos el correo
+        let correo = datosUsuario[1].split(":")[1].trim();
+        document.getElementById("email" + usuario).innerHTML = correo;
+
+        if (correo.match(regexEmail)) {
+            document.getElementById("valido" + usuario).innerHTML = "Válido";
+        } else {
+            document.getElementById("valido" + usuario).innerHTML = "NO Válido";
+        }
+    }
 }
 
+function edad() {
 
-function introducirEdad() {
+    for (let usuario = 0; usuario < datosUsuarios.length; usuario++) {
 
-}
+        let datosUsuario = datosUsuarios[usuario].split(",");
 
+        // Obtenemos la edad
+        let fechaNac = new Date(datosUsuario[2].split(":")[1].trim());
+        let anoNow = new Date().getFullYear();
 
-function introducirValido() {
-    if (!introducirEmail)
-        return false
-    return true
-}
+        if (fechaNac)
+            document.getElementById("edad" + usuario).innerHTML = anoNow - fechaNac.getFullYear();
+        else
+            document.getElementById("edad" + usuario).innerHTML = "<b>Fecha no admitida</b>";
+    }
+}  */

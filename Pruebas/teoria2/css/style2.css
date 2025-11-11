@@ -57,3 +57,90 @@ a {
     cursor: pointer;
     color: lightblue;
 } */
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+nav {
+    height: 10%;
+    width: 100%;
+    background-color: rgb(218, 31, 196);
+    text-align: center;
+    padding-top: 1.5%;
+    transition: 3s background-color;
+}
+
+nav a {
+    margin: 5%;
+    font-size: large;
+    color: white;
+    font-weight: bolder;
+}
+
+/* aside, main {
+    float: left;
+}
+
+aside {
+    height: 80%;
+    width: 30%;
+    background-color: lightblue;
+} */
+
+main {
+    height: 90%;
+    width: 100%;
+    /* background-color: rgb(167, 154, 17); */
+    transition: 5s background-color;
+}
+
+li:first-child {
+    background-color: rgb(167, 215, 231);
+}
+
+input,
+a {
+    padding: 1%;
+    margin: 1%;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: lightblue;
+
+}
+
+hr {
+    background-color: lightblue;
+}
+
+label {
+    color: yellow;
+}
+
+.azul,
+.rojo {
+    height: 20%;
+}
+
+.azul {
+    background-color: blue;
+    color: white;
+}
+
+.rojo {
+    background-color: red;
+    color: white;
+}

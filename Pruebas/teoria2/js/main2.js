@@ -247,7 +247,7 @@ if(existBoolean) alert("Se ha encontrado el Index"); */
 /* let fecha = document.getElementById("fecha");
 
 let date = new Date();
-// Número de segndos desde 1970 
+// Número de segndos desde 1970
 let myDate = new Date(3468644494944);
 
 // Fecha por parámetros
@@ -283,7 +283,7 @@ if (date.getHours() >= 20 || date.getHours()<=7 && (date.getMonth()>=9 || date.g
     mainHtml.style.color = "white";
 } else {
     mainHtml.style.backgroundColor = "white";
-    mainHtml.style.color = "black"; 
+    mainHtml.style.color = "black";
 } */
 /* let fecha = document.getElementById("fecha");
 let bCal = document.getElementById("bCalcula"); */
@@ -355,7 +355,7 @@ document.getElementById("paraIntervalo").onclick = function () {
     let tiempo = new Date(hora.value);
 
     let fechaNow = new Date();
-    
+
     tiempo = Math.abs(fechaNow - tiempo);
 
     setTimeout(function () {
@@ -495,7 +495,7 @@ while (er2.test(text.innerText)) {
     tmpIndex = er2.lastIndex;
 } */
 
-// Manera corta y más clara sin lastIndex 
+// Manera corta y más clara sin lastIndex
 /*let result;
 while ((result = er2.exec(text.innerText)) !== null) {
     console.info("LastIndex después de exec: " + er2.lastIndex);
@@ -504,15 +504,15 @@ while ((result = er2.exec(text.innerText)) !== null) {
 } */
 
 // Se útiliza para devolver un encontrado o no encontrado simplemente
-/* while (text.match(er2)) 
+/* while (text.match(er2))
     info.innerHTML = "Encontrado: " + text.match(er2); */
 
 // Búsca en un texto como el metodo de antes
-/* if (text.match(er2)) 
+/* if (text.match(er2))
     for(enc of text.matchAll(er2))
         console.log(enc) */
 
-/* if (text.innerText.match(er2)) 
+/* if (text.innerText.match(er2))
     text.innerHTML = text.innerText.replaceAll(er2,"<strong style='color:red'><u>REF</u></strong>"); */
 
 
@@ -522,7 +522,7 @@ while ((result = er2.exec(text.innerText)) !== null) {
 // '\' Especificar metacaracteres complejos \x y para escapar otros metacaracteres
 // '^' Empieza por '$' acaba por '*' algo que se repite 0 o más veces '+' 1 o más '?' 0 o una vez
 // '.' calquier caracter solo 1 '{x,x}' Devolver de x a x indempendiente mente de si las x no están declaradas
-// 
+//
 
 
 // Empiece por mayúscula (al menos uno) entre D-R
@@ -566,34 +566,33 @@ const opciones2 = document.getElementsByName("opciones2");
 console.log(opciones2[0].nodeType); */
 
 
-let pie = document.createElement("footer");
+/* let pie = document.createElement("footer");
 let pPie = document.createElement("p");
 let pPieText = document.createTextNode("Contacto: 654 654 654");
 
 pPie.appendChild(pPieText);
 
-pie.appendChild(pPie);
+pie.appendChild(pPie); */
 
 // document.body.appendChild(pie);
 
-document.body.innerHTML += "<label>Has ganado un coche. Pincha en este enlace: </label><a href='estafa.com'>Premio!!</a>"
+// document.body.innerHTML += "<label>Has ganado un coche. Pincha en este enlace: </label><a href='estafa.com'>Premio!!</a>"
 
 // document.getElementById("opcionLista").placeholder = "Inserta opción para la lista";
 // document.getElementById("opcionLista").setAttribute("placeholder", "Inserta opción para la lista");
-document.getElementById("opcionLista").setAttribute("placeholder", "Inserta opción para la lista");
+// document.getElementById("opcionLista").setAttribute("placeholder", "Inserta opción para la lista");
 
 // alert(document.getElementById("opcionLista").setAttribute("placeholder"));
-alert(document.getElementById("opcionLista").removeAttribute("placeholder"));
+// alert(document.getElementById("opcionLista").removeAttribute("placeholder"));
 
-
-document.body.appendChild(createNode("hr"));
+/* document.body.appendChild(createNode("hr"));
 document.body.appendChild(createNode("br"));
 document.body.appendChild(createNode("hr"));
 document.body.appendChild(createNode("br"));
-document.body.appendChild(createNode("hr"));
+document.body.appendChild(createNode("hr")); */
 
 
-document.getElementById("check").onclick = () => {
+/* document.getElementById("check").onclick = () => {
     let op = document.getElementById("opcionLista").value;
     let lista = null;
     // let lista = document.getElementsByTagName("ul")[0].innerHTML += "<li>" + op + "</li>";
@@ -601,9 +600,9 @@ document.getElementById("check").onclick = () => {
     if ((document.getElementsByTagName("ul").length > 0) && (op != "")) {
         lista = document.getElementsByTagName("ul")[0];
 
-        /*  let opElement = document.createElement("li");
-         let opElementText = document.createTextNode(op);
-         opElement.appendChild(opElementText); */
+        //  let opElement = document.createElement("li");
+        //  let opElementText = document.createTextNode(op);
+        //  opElement.appendChild(opElementText);
         lista.appendChild(createNode("li", op));
         // lista.appendChild(opElement);
 
@@ -611,18 +610,18 @@ document.getElementById("check").onclick = () => {
 
     document.getElementById("opcionLista").focus();
     document.getElementById("opcionLista").value = "";
-}
+} */
 
-document.getElementById("bDelete").onclick = () => {
+/* document.getElementById("bDelete").onclick = () => {
     let lista = document.getElementById("lista");
     let lastChild;
 
     // Con esta función podemos recuperar el nodo aunque lo borremos
-    /*if (lista.getElementsByTagName("li").length > 0) {
-           lastChild = lista.getElementsByTagName("li")[lista.getElementsByTagName("li").length - 1]; //Podemos usar .lastChild en ligar de cargar el array con una posicón menos
-           let nodoBorrado = lastChild.parentNode.removeChild(lastChild);
-       console.log(nodoBorrado);
-       } */
+    // if (lista.getElementsByTagName("li").length > 0) {
+    //        lastChild = lista.getElementsByTagName("li")[lista.getElementsByTagName("li").length - 1]; //Podemos usar .lastChild en ligar de cargar el array con una posicón menos
+    //        let nodoBorrado = lastChild.parentNode.removeChild(lastChild);
+    //    console.log(nodoBorrado);
+    //    }
 
     // Una vez borramos perdemos la información
     if (lista.getElementsByTagName("li").length > 0) {
@@ -631,20 +630,20 @@ document.getElementById("bDelete").onclick = () => {
         console.log(nodoBorrado);
     }
 
-}
+} */
 
-function createNode(tipoNodo, tipoTexto) {
-    /* let nodo;
-    let nodoText = tipoTexto || null; */
+/* function createNode(tipoNodo, tipoTexto) {
+    // let nodo;
+    // let nodoText = tipoTexto || null;
 
-    let nodo;
-    let nodoText;
+    // let nodo;
+    // let nodoText;
 
-    /*  if (tipoTexto) {
-         nodoText = document.createTextNode(tipoTexto);
-         nodo.appendChild(nodoText);
-     }
-  */
+    //  if (tipoTexto) {
+    //      nodoText = document.createTextNode(tipoTexto);
+    //      nodo.appendChild(nodoText);
+    //  }
+
 
     switch (arguments.length) {
         case 0:
@@ -661,13 +660,13 @@ function createNode(tipoNodo, tipoTexto) {
     }
 
     return nodo;
-}
+} */
 
-function changColor() {
+/* function changColor() {
     this.style.color = "red";
-}
+} */
 
-document.getElementById("password").onclick = () => {
+/* document.getElementById("password").onclick = () => {
     if (document.getElementById("pass").type == "password") {
         document.getElementById("pass").type = "text"
         document.getElementById("password").innerHTML = "Ocultar";
@@ -677,16 +676,69 @@ document.getElementById("password").onclick = () => {
         document.getElementById("password").innerHTML = "Mostrar";
 
     }
+} */
+
+/* let primerosLI = document.querySelectorAll("li:first-child");
+for (elem of primerosLI) {
+    console.log(elem.style.backgroundColor = "ligthblue");
+} */
+// console.log(primerosLI);
+
+
+/* for (let elem of document.querySelectorAll("#lista li")) {
+    elem.style.color = "blue";
 }
 
+let primerLI = document.querySelector("li:first-child");
+let cssPrimerLI = window.getComputedStyle(primerLI);
+console.log(cssPrimerLI.margin); */
 
+// let azul = document.querySelectorAll("#blue");
+// let rojo = document.querySelectorAll("#red");
 
+/* document.getElementById("blue").onclick = () => {
+    for (elem of azul) {
+        if (elem.style.backgroundColor == "red") {
+            elem.style.backgroundColor = "blue";
+        } else {
+            elem.style.backgroundColor = "red";
+        }
 
+    }
+}
 
+document.getElementById("red").onclick = () => {
+    for (elem of rojo) {
+         if (elem.style.backgroundColor == "blue") {
+            elem.style.backgroundColor = "red";
+        } else {
+            elem.style.backgroundColor = "blue";
+        }
+    }
+} */
 
+// Ahora con ClassList
+/* for (let sec of document.getElementsByTagName("section"))
+    sec.onclick = changeColorComputed;
 
+function changeColorComputed() {
 
+    if (this.className == "rojo")
+        this.className = "azul";
+    else
+        this.className = "rojo";
 
+} */
 
+for (let sec of document.getElementsByTagName("section"))
+    sec.onclick = function () {
+
+        console.log(this.classList.contains("rojo"));
+
+        if (this.className == "rojo")
+            this.classList.replace("rojo", "azul");
+        else
+            this.classList.replace("azul", "rojo");
+    };
 
 
