@@ -58,7 +58,7 @@ a {
     color: lightblue;
 } */
 
-* {
+/* * {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0%;
     padding: 0%;
@@ -86,7 +86,7 @@ nav a {
     font-size: large;
     color: white;
     font-weight: bolder;
-}
+} */
 
 /* aside, main {
     float: left;
@@ -98,14 +98,14 @@ aside {
     background-color: lightblue;
 } */
 
-main {
+/* main {
     height: 90%;
-    width: 100%;
+    width: 100%; */
     /* background-color: rgb(167, 154, 17); */
-    transition: 5s background-color;
-}
+/*     transition: 5s background-color;
+} */
 
-li:first-child {
+/* li:first-child {
     background-color: rgb(167, 215, 231);
 }
 
@@ -143,7 +143,7 @@ label {
 .rojo {
     background-color: red;
     color: white;
-}
+} */
 
 /* p {
     transition: all 2s ease;
