@@ -925,4 +925,5 @@ document.getElementById("inserta").onclick = function () {
     console.log(document.getElementById("listaAnimales").childNodes);
     console.log(document.getElementById("listaAnimales").children);
 
+    
 }
