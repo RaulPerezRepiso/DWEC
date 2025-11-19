@@ -893,8 +893,7 @@ for(let p of section) {
 
 } */
 
-
-document.getElementById("inserta").onclick = function () {
+/* document.getElementById("inserta").onclick = function () {
 
     const arrayAnimales = new Array("León", "Jirafa", "Foca", "Perro", "Gato", "Lagartija", "Águila", "Avestruz", "Elefante");
 
@@ -924,6 +923,67 @@ document.getElementById("inserta").onclick = function () {
     // Podemos ver todas las propiedades de cada Nodoo por si necesitamos usarlas
     console.log(document.getElementById("listaAnimales").childNodes);
     console.log(document.getElementById("listaAnimales").children);
-
     
+} */
+
+//Usar mejor el id porque si cambiamos el orden del html dará errores NO USAR
+// Solamente al crearlo de forma dinámica
+// info.innerHTML = document.forms[0].elements[0].value;
+
+const f1 = document.getElementById("f1");
+
+/* document.getElementsByName("turnos")[0].checked = true;
+
+info.innerHTML = document.forms[0].elements[0].value;
+
+//Va cogiendo el valor del input
+document.getElementById("login").oninput  = function () {
+    console.log(this.value);
 }
+
+//Va cogiendo el valor de foco
+document.getElementById("lista").onchange = function () {
+    console.log(this.value);
+}
+
+// Cambia cuando tiene el foco
+document.getElementById("login").onfocus = function () {
+    this.style.border = "5px solid red";
+}
+
+// Cambia cuando deja de tener el foco
+document.getElementById("login").onblur = function () {
+    this.style.border = "1px solid black";
+}
+
+document.getElementById("lista").onfocus = function () {
+    this.style.border = "5px solid red";
+}
+
+document.getElementById("lista").onblur = function () {
+    this.style.border = "1px solid black";
+}
+
+ for (elem of document.getElementsByName("turnos"))
+    if (elem.checked) {
+         info.innerText = elem.value;
+    }
+
+//Cogemos el valor y el contenido de la lista en el onchange (cuando va cambiando)
+info.innerText = document.getElementById("lista").options[document.getElementById("lista").selectedIndex].value;
+info.innerText += " - " +document.getElementById("lista").options[document.getElementById("lista").selectedIndex].text;*/
+
+const progress1 = document.getElementById("progress1");
+const meter1 = document.getElementById("meter1");
+const range = document.getElementById("range");
+
+let intervalo = setInterval(() => {
+    if (progress1.value == progress1.max) {
+        clearInterval(intervalo);
+        console.log("FIN");
+    } else {
+        progress1.value++;
+    }
+}, 500);
+
+meter1.value += 13;

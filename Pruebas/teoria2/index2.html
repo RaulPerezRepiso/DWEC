@@ -185,20 +185,51 @@ rocín flaco y galgo corredor4. Una olla + de algo más vaca que carnero, salpic
                 praesentium! Distinctio laboriosam doloremque vel totam accusantium! Neque.</p>
         </section> -->
 
-        <ol id="listaAnimales">
-            <!--  <li>León</li>
+        <!--  <ol id="listaAnimales">
+             <li>León</li>
             <li>Rana</li>
             <li>Jirafa</li>
             <li>Perro</li>
-            <li>Gato</li> -->
-            <!--Primer animal-->
+            <li>Gato</li>
+            <Primer animal
             <li>Faisán</li>
         </ol>
 
 
         <input type="text" name="" id="animal" value="Rayan">
-        <a href="#" id="inserta">Insertar animal</a>
+        <a href="#" id="inserta">Insertar animal</a> -->
 
+        <form action="http://www.2daw.com/users.php" method="post" id="f1">
+            <label for="login">Login</label>
+            <input type="text" name="login" id="login">
+            <br>
+            <label for="lista">Selecciona paises en los que has vivido:</label>
+            <br>
+            <select id="lista">
+                <option value="" disabled>NS/NC</option>
+                <option value="es">España</option>
+                <option value="ar">Argentina</option>
+                <option value="en">Inglaterra</option>
+                <option value="fr">Francia</option>
+                <option value="it">Italia</option>
+            </select>
+            <br>
+            <label for=""><input type="radio" name="turnos" value="tm" id=""> Turno de mañana</label>
+            <br>
+            <label for=""><input type="radio" name="turnos" value="tt" id=""> Turno de tarde</label>
+            <br>
+            <label for=""><input type="radio" name="turnos" value="tn" id="" checked> Turno de noche</label>
+            <br>
+            <label for="progreso">Progreso:</label>
+            <progress id="progress1" max="100" value="0"></progress>
+            <meter id="meter1" max="100" min="0" optimum ="50" high="80" value="50"></meter>
+
+            <input id="range1" type=range max="1" step="1">
+
+
+            <br><br>
+            <input type="submit" id="bEnviar" value="Enviar">
+        </form>
     </main>
     <footer>
 
