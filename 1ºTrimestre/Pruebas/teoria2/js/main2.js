@@ -988,22 +988,18 @@ let intervalo = setInterval(() => {
 
 meter1.value += 13; */
 
-
-// EVENTOS (NO USAR )
-
 // Evento aplicado al body que funciona con el resize de la pantalla
 /* document.body.onresize = () => {
     info.innerHTML = window.innerWidth + " x " + window.innerHeight ;
 } */
 
-// A los eventos de los apuntes tenemos que darle el ON delante a todos (Ver en Apuntes)
-
-//Evento que al clickar en cualquier parte del body cambia el color
+// A los eventos de los apuntes tenemos que darle el ON delante a todos siempre y cuando los llamemmos fuera de FUNCIONES (Ver en Apuntes)
+// Evento que al clickar en cualquier parte del body cambia el color
 /* document.addEventListener("click", () =>{
     document.body.style.backgroundColor = "red";
 }); */
 
-//Evento para que al moverse cambie el color de fondo a blanco
+// Evento para que al moverse cambie el color de fondo a blanco
 /* document.addEventListener("mousemove", () =>{
     document.body.style.backgroundColor = "white";
 }); */
@@ -1036,7 +1032,8 @@ document.getElementById("aside1").ondblclick = changeColor;
 document.getElementById("aside1").onmouseover = changeColor;
 document.getElementById("aside1").onmouseout = changeColor; */
 
-// Tambien podemos asigar el quitar un evento con un boton o otro tipo de evento para quitar un listener concreto
+// Tambien podemos asigar el quitar un evento con un boton o otro tipo de evento para quitar un 
+// listener concreto y que deje de hacer la función que estan haciendo los demás
 /* document.getElementById("b1").addEventListener("click", function () {
     document.getElementById("main1").removeEventListener("mouseout", changeColor);
 }); */
@@ -1084,8 +1081,61 @@ function changeColor(ev) {
     event.stopPropagation(); //No se realice otra ejecución o listener para que le llegue al DOM
 }); */
 
-document.getElementById("bSend").addEventListener("click", function (ev) {
-    // Guarda los datos del formulario (No recarga automáticamente la página)
+//Para la lanzar la función del Evento PreventDefault
+/* document.getElementById("bSend").addEventListener("click", function (ev) {
+    // Guarda los datos del formulario en las celdas correspondientes (No recarga automáticamente la página)
     ev.preventDefault();
-    // ....
-})
+}) */
+
+// ---------------------------------
+// EVENTO QUE NO USAR
+
+// ---------------------------------
+
+
+// Eventos de teclado
+/* document.getElementById("t1").addEventListener("keydown", press);
+document.getElementById("t1").addEventListener("keypress", press);
+document.getElementById("t1").addEventListener("keyup", press); */
+
+// Para detectar teclas concretas solo funciona el keydwon
+document.body.addEventListener("keydown", press);
+// document.body.addEventListener("keypress", press);
+// document.body.addEventListener("keyup", press);
+
+/* function press(ev) {
+    info.innerHTML = "<b>Evento</b> " + ev.type + ". <b>Código de tecla</b> " + ev.code + ". <b>Tecla pulsada:</b> " + ev.key;
+    if (ev.altKey) info.innerHTML = "Has pulsado Alt";
+    if (ev.ctrlKey) info.innerHTML = "Has pulsado Ctrl";
+    if (ev.shiftKey) info.innerHTML = "Has pulsado Shift";
+} */
+
+// Mover DIV por pantalla
+const OFFSET = 15;
+const ball = document.getElementById("pelota");
+
+function press  (ev) {
+
+    //Declaración de top, left, bottom, right con el valor de la pagina menos 2
+    let top = parseFloat(ball.style.top.substring(0, ball.style.top.length-2));
+    let left = parseFloat(ball.style.left.substring(0, ball.style.left.length-2));
+
+    switch(ev.key) {
+        case "ArrowUp":
+            if (top > 0)
+                ball.style.top = (top - OFFSET) + "px";
+        break;
+        case "ArrowDown":
+            if (top < window.innerHeight)
+                ball.style.top = (top + OFFSET) + "px";
+        break;
+        case "ArrowLeft":
+            if (left > 0)
+                ball.style.left = (left - OFFSET) + "px";
+        break;
+        case "ArrowRight":
+            if (left < window.innerWidth)
+                ball.style.left = (left + OFFSET) + "px";
+        break;
+    }
+}
