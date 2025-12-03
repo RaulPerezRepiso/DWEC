@@ -930,7 +930,7 @@ for(let p of section) {
 // Solamente al crearlo de forma dinámica
 // info.innerHTML = document.forms[0].elements[0].value;
 
-const f1 = document.getElementById("f1");
+// const f1 = document.getElementById("f1");
 
 /* document.getElementsByName("turnos")[0].checked = true;
 
@@ -973,7 +973,7 @@ document.getElementById("lista").onblur = function () {
 info.innerText = document.getElementById("lista").options[document.getElementById("lista").selectedIndex].value;
 info.innerText += " - " +document.getElementById("lista").options[document.getElementById("lista").selectedIndex].text;*/
 
-const progress1 = document.getElementById("progress1");
+/* const progress1 = document.getElementById("progress1");
 const meter1 = document.getElementById("meter1");
 const range = document.getElementById("range");
 
@@ -986,4 +986,156 @@ let intervalo = setInterval(() => {
     }
 }, 500);
 
-meter1.value += 13;
+meter1.value += 13; */
+
+// Evento aplicado al body que funciona con el resize de la pantalla
+/* document.body.onresize = () => {
+    info.innerHTML = window.innerWidth + " x " + window.innerHeight ;
+} */
+
+// A los eventos de los apuntes tenemos que darle el ON delante a todos siempre y cuando los llamemmos fuera de FUNCIONES (Ver en Apuntes)
+// Evento que al clickar en cualquier parte del body cambia el color
+/* document.addEventListener("click", () =>{
+    document.body.style.backgroundColor = "red";
+}); */
+
+// Evento para que al moverse cambie el color de fondo a blanco
+/* document.addEventListener("mousemove", () =>{
+    document.body.style.backgroundColor = "white";
+}); */
+
+// Ejercicios de EVENTOS en CLASE dblckick, mouseover, focus
+/* let main1 = document.getElementById("main1");
+let aside1 = document.getElementById("aside1");
+
+document.addEventListener("dblclick", () => {
+    main1.style.backgroundColor = "orange";
+    aside1.style.backgroundColor = "lightblue";
+});
+
+document.addEventListener("mouseover", () => {
+    main1.style.backgroundColor = "purple";
+    aside1.style.backgroundColor = "blue";
+});
+
+document.addEventListener("focus", () => {
+    main1.style.backgroundColor = "orange";
+    aside1.style.backgroundColor = "lightblue";
+}); */
+
+// Ejercico en Clase ejercicio con funciones
+/* document.getElementById("main1").ondblclick = changeColor;
+document.getElementById("main1").onmouseover = changeColor;
+document.getElementById("main1").onmouseout = changeColor;
+
+document.getElementById("aside1").ondblclick = changeColor;
+document.getElementById("aside1").onmouseover = changeColor;
+document.getElementById("aside1").onmouseout = changeColor; */
+
+// Tambien podemos asigar el quitar un evento con un boton o otro tipo de evento para quitar un 
+// listener concreto y que deje de hacer la función que estan haciendo los demás
+/* document.getElementById("b1").addEventListener("click", function () {
+    document.getElementById("main1").removeEventListener("mouseout", changeColor);
+}); */
+
+/* 
+let pMain = document.getElementById("pMain");
+let pAside = document.getElementById("pAside");
+
+function changeColor(ev) {
+    if (this.id == "main1")
+        switch (ev.type) {
+            case "dblclick":
+                this.style.backgroundColor = "#F2BDB3";
+                pMain.innerText = "Doble click";
+                break;
+            case "mouseover":
+                this.style.backgroundColor = "#914E41";
+                pMain.innerText = "Ratón dentro";
+                break;
+            case "mouseout":
+                this.style.backgroundColor = "#C92202";
+                pMain.innerText = "Ratón fuera";
+                break;
+        }
+    else // aside
+        switch (ev.type) {
+            case "dblclick":
+                this.style.backgroundColor = "#B9DCEB";
+                pAside.innerText = "Doble click";
+                break;
+            case "mouseover":
+                this.style.backgroundColor = "#3E7A94";
+                pAside.innerText = "Ratón dentro";
+                break;
+            case "mouseout":
+                this.style.backgroundColor = "#044561";
+                pAside.innerText = "Ratón fuera";
+                break;
+        }
+} */
+
+// Hay eventos que haran que el codigo no se ejectue cuando se cree sino con una acción despues evento.preventDefault()
+/* document.getElementById("main1").addEventListener("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation(); //No se realice otra ejecución o listener para que le llegue al DOM
+}); */
+
+//Para la lanzar la función del Evento PreventDefault
+/* document.getElementById("bSend").addEventListener("click", function (ev) {
+    // Guarda los datos del formulario en las celdas correspondientes (No recarga automáticamente la página)
+    ev.preventDefault();
+}) */
+
+// ---------------------------------
+// EVENTO QUE NO USAR
+
+// ---------------------------------
+
+
+// Eventos de teclado
+/* document.getElementById("t1").addEventListener("keydown", press);
+document.getElementById("t1").addEventListener("keypress", press);
+document.getElementById("t1").addEventListener("keyup", press); */
+
+// Para detectar teclas concretas solo funciona el keydwon
+document.body.addEventListener("keydown", press);
+// document.body.addEventListener("keypress", press);
+// document.body.addEventListener("keyup", press);
+
+/* function press(ev) {
+    info.innerHTML = "<b>Evento</b> " + ev.type + ". <b>Código de tecla</b> " + ev.code + ". <b>Tecla pulsada:</b> " + ev.key;
+    if (ev.altKey) info.innerHTML = "Has pulsado Alt";
+    if (ev.ctrlKey) info.innerHTML = "Has pulsado Ctrl";
+    if (ev.shiftKey) info.innerHTML = "Has pulsado Shift";
+} */
+
+// Mover DIV por pantalla
+const OFFSET = 15;
+const ball = document.getElementById("pelota");
+
+function press  (ev) {
+
+    //Declaración de top, left, bottom, right con el valor de la pagina menos 2
+    let top = parseFloat(ball.style.top.substring(0, ball.style.top.length-2));
+    let left = parseFloat(ball.style.left.substring(0, ball.style.left.length-2));
+
+    switch(ev.key) {
+        case "ArrowUp":
+            if (top > 0)
+                ball.style.top = (top - OFFSET) + "px";
+        break;
+        case "ArrowDown":
+            if (top < window.innerHeight)
+                ball.style.top = (top + OFFSET) + "px";
+        break;
+        case "ArrowLeft":
+            if (left > 0)
+                ball.style.left = (left - OFFSET) + "px";
+        break;
+        case "ArrowRight":
+            if (left < window.innerWidth)
+                ball.style.left = (left + OFFSET) + "px";
+        break;
+    }
+}

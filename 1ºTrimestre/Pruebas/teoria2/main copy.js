@@ -1,4 +1,3 @@
-
 let word = document.getElementById("word");
 let palabra = document.getElementById("palabra");
 let bMos = document.getElementById("bMos");
@@ -9,15 +8,12 @@ let letra;
 let letras;
 let bLetra;
 let contador;
-let h3
 
 let juego = true;
-let intentos = 0;
+let intentos = 6;
 let adivina = "";
 let intervalo;
 let arrayLetras = [];
-
-let juegosGanados = [];
 
 /**
  * Funcion para crear Nodos que nos servira para crear nodos al empezar el juego
@@ -31,7 +27,7 @@ function createNode(tipoNodo, tipoTexto) {
 
   switch (arguments.length) {
     case 0:
-      throw "Se necesitas al menos el tipo de elemento a crear.";
+      throw "Se necesitas al menos el tipo de elemetno a crear.";
     case 1:
       nodo = document.createElement(tipoNodo);
       nodo.id = "nuevoNodo";
@@ -87,15 +83,13 @@ function validarPalabra() {
     juego = false;
 
     //Desahabilitamos los botones para que no nos den errores ni se puedan mostrar las palabras
-    // bMos.disabled = true;
-    // bIns.disabled = true;
-    // word.disabled = true;
+    bMos.disabled = true;
+    bIns.disabled = true;
+    word.disabled = true;
   } else {
     palabra.innerText = "Solo letras mayúsculas o minúsculas.";
   }
 }
-
-let tiempoRestante = 0;
 
 /**
  * Función que crea los nodos necesarios para jugar
@@ -125,10 +119,6 @@ function empezarJuego() {
   letras = createNode("h4");
   document.body.appendChild(letras);
 
-  h3 = createNode("h3")
-  document.body.appendChild(h3);
-
-
   // Preparar palabra
   palabra.innerText = "";
   word.placeholder = "Juego Comenzado";
@@ -140,23 +130,19 @@ function empezarJuego() {
   arrayLetras = Array(adivina.length).fill("-");
   palabra.innerText = arrayLetras.join(" ");
 
-  //El número de intentos longitud palabra entre entre dos más uno 
-  intentos = parseInt((adivina.length / 2)) + 1;
-
   // Tiempo proporcional a la longitud
-  let tiempoTotal = (adivina.length * 10) / 3;
-  contador.innerText = "Tiempo restante: " + tiempoTotal.toFixed(1) + " segundos";
+  let tiempoTotal = adivina.length * 5;
+  contador.innerText = "Tiempo restante: " + tiempoTotal + " segundos";
   contador.style.color = "darkblue";
-
 
   // Intervalo regresivo
   intervalo = setInterval(() => {
     tiempoTotal--;
-    contador.innerText = "Tiempo restante: " + tiempoTotal.toFixed(1) + " segundos";
+    contador.innerText = "Tiempo restante: " + tiempoTotal + " segundos";
     contador.style.color =
       contador.style.color === "blue" ? "darkblue" : "blue";
-    tiempoRestante += 1;
-    if (tiempoTotal <= 0.00) {
+
+    if (tiempoTotal <= 0) {
       clearInterval(intervalo);
       contador.style.color = "red";
       contador.innerText = "¡Tiempo agotado! La palabra era: " + adivina;
@@ -167,8 +153,6 @@ function empezarJuego() {
     }
   }, 1000);
 }
-
-
 
 /**
  * Registra intento y comprueba si la letra esta en la palabra o si es válida
@@ -201,12 +185,9 @@ function registraIntento() {
   // Actualiza la palabra oculta
   palabra.innerText = arrayLetras.join(" ");
 
-  let intent = 0;
-
   // Si no acierta, resta intentos y muestra la letra fallida en rojo con el número de intentos que le queda
   if (!acierto) {
     intentos--;
-    intent += intentos
     letras.style.color = "red";
     letras.innerText +=
       "Letra incorrecta: " +
@@ -215,32 +196,81 @@ function registraIntento() {
       intentos +
       " intentos restantes " +
       "\n";
-
   }
-  let partidas = "";
+
   // Condiciones de fin de juego
   if (!arrayLetras.includes("-")) {
-    partidas = "¡Has adivinado la palabra! " + "\"" + adivina + "\"" + "\nAcertado en " + tiempoRestante + " segundos.";
-    contador.innerText = partidas;
+    contador.innerText = "¡Has adivinado la palabra!";
     clearInterval(intervalo);
     letra.disabled = true;
     bLetra.disabled = true;
-    juegosGanados.push(partidas);
-    juego = true;
   } else if (intentos <= 0) {
     letras.style.color = "red";
     letras.innerText += "Intentos agotados\n";
     contador.style.color = "red";
-    contador.innerText = "¡Has perdido! La palabra era: " + "\"" + adivina + "\"" + "\nNo acertado" + ", " + tiempoRestante + " segundos.";
-    clearInterval(intervalo);
+    contador.innerText = "¡Has perdido! La palabra era: " + adivina;
     palabra.innerText = adivina;
     letra.disabled = true;
     bLetra.disabled = true;
-    juego = true;
+    clearInterval(intervalo);
   }
-
-  for (let i = 1; i <= juegosGanados.length; i++) {
-    h3.innerText = "Juego " + i + ": " + partidas;
-  }
-
 }
+
+// Impedir que ponga la misma letra 2 veces
+/*  if (letrasUsadas.includes(intento)) {
+  error.innerText = "Ya has probado esa letra.";
+  return;
+}
+letrasUsadas.push(intento); */
+
+// Crear un boton de reinicio
+/* let bReset = createNode("button", "Reiniciar");
+bReset.onclick = () => location.reload();
+document.body.appendChild(bReset); */
+
+// Controlar el rango de la palabra inicial
+/*if (valor.trim() === "") {
+  palabra.innerText = "Introduce una palabra válida.";
+  return;
+} */
+
+//Pedir una pista y que de una penalización (intento)
+/* function pedirPista() {
+  // Buscar índices de letras ocultas (guiones)
+  let indicesOcultos = [];
+  for (let i = 0; i < arrayLetras.length; i++) {
+    if (arrayLetras[i] === "-") {
+      indicesOcultos.push(i);
+    }
+  }
+
+  // Si no quedan guiones, no hay pista que dar
+  if (indicesOcultos.length === 0) return;
+
+  // Elegir un índice aleatorio de los ocultos
+  const i = indicesOcultos[Math.floor(Math.random() * indicesOcultos.length)];
+
+  // Revelar la letra en esa posición
+  arrayLetras[i] = adivina[i];
+  palabra.innerText = arrayLetras.join(" ");
+
+  // Penalización: quita un intento y tiempo
+  intentos = Math.max(0, intentos - 1);
+  tiempoTotal = Math.max(0, tiempoTotal - 10);
+
+  // Actualizar HUD (tiempo + intentos)
+  actualizarHUD(tiempoTotal, intentos);
+
+  // Si tras la pista ya no quedan guiones, victoria automática
+  if (!arrayLetras.includes("-")) {
+    contador.innerText = "¡Has adivinado la palabra con ayuda de una pista!";
+    clearInterval(intervalo);
+    letra.disabled = true;
+    bLetra.disabled = true;
+  }
+} */
+
+// Crear botón de pista
+/* let bPista = createNode("button", "Pedir Pista");
+bPista.onclick = () => pedirPista();
+document.body.appendChild(bPista); */

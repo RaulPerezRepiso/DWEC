@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+    <title>Galaxia</title>
+</head>
+
+<body>
+    <div class="principal">
+        <div id="div1">
+            <p>Color: <input type="color" id="color"></p>
+            <p><span>X:</span> <input id="eX" type="text" size="5" style="text-align: right;"><span> Y:</span> <input id="eY"
+                    type="text" size="5" style="text-align: right;"></p>
+            <p>¿Que quieres crear?</p>
+            <label for="planeta">
+                <input id="planet" type="radio" name="planeta"> Planeta
+            </label>
+            <label for="radio">
+                <input id="satel" type="radio" value="satelite" name="planeta"> Satélite
+            </label>
+            <p>Diámetro:
+                <input id="diametro" type="text" size="10" style="text-align: right;">
+            </p>
+            <p>Nombre del Planeta</p>
+            <input type="text" name="" id="nombre" value="Tierra">
+            <button id="bIns">Insertar Planeta</button>
+            <hr>
+            <p>Lista de Planetas y Satélites creados:</p>
+        </div>
+        <div id="div2">
+
+        </div>
+    </div>
+</body>
+
+</html>
