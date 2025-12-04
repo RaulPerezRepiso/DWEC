@@ -1,0 +1,29 @@
+/* body {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+#divP{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#divP #div {
+    width: 50%;
+} */
+
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}

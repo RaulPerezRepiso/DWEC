@@ -1114,28 +1114,34 @@ document.body.addEventListener("keydown", press);
 const OFFSET = 15;
 const ball = document.getElementById("pelota");
 
-function press  (ev) {
+function press(ev) {
 
     //Declaración de top, left, bottom, right con el valor de la pagina menos 2
-    let top = parseFloat(ball.style.top.substring(0, ball.style.top.length-2));
-    let left = parseFloat(ball.style.left.substring(0, ball.style.left.length-2));
+    let top = parseFloat(ball.style.top.substring(0, ball.style.top.length - 2));
+    let left = parseFloat(ball.style.left.substring(0, ball.style.left.length - 2));
 
-    switch(ev.key) {
+    const ballWidth = ball.offsetWidth;
+    const ballHeight = ball.offsetHeight;
+
+    const maxX = window.innerWidth - ballWidth;
+    const maxY = window.innerHeight - ballHeight;
+
+    switch (ev.key) {
         case "ArrowUp":
             if (top > 0)
                 ball.style.top = (top - OFFSET) + "px";
-        break;
+            break;
         case "ArrowDown":
-            if (top < window.innerHeight)
+            if (top + OFFSET <= maxY)
                 ball.style.top = (top + OFFSET) + "px";
-        break;
+            break;
         case "ArrowLeft":
             if (left > 0)
                 ball.style.left = (left - OFFSET) + "px";
-        break;
+            break;
         case "ArrowRight":
-            if (left < window.innerWidth)
+            if (left + OFFSET <= maxX)
                 ball.style.left = (left + OFFSET) + "px";
-        break;
+            break;
     }
 }
