@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/main.js" defers></script>
+  </head>
+  
+  <body bgcolor="#848484">
+    <h1 id="hh">JavaScript - DWEC: -Raúl Pérez Repiso-</h1>
+    
+    <div id="div2" style="color: red"></div>
+    <br />
+    <label id="nombreUsu"></label>
+    <br /><br />
+
+    <div id="div1">
+      <form>
+        <tr>
+          <td>Cargo:</td>
+          <td>
+            <select id="cargo">
+              <option value="empleado">empleado</option>
+              <option value="encargado">encargado</option>
+            </select>
+          </td>
+        </tr>
+        <label
+          ><h4><u>Formulario: </u></h4></label
+        >
+        <table width="30%">
+          <tr>
+            <td></td>
+            <td>
+              <input type="button" id="btnEnviar" value="Enviar" /> 
+              <input type="reset" />
+            </td>
+          </tr>
+          <tr>
+            <td>Nombre:</td>
+            <td><input type="text" id="nombre" /></td>
+          </tr>
+          <tr>
+            <td>Apellido/s:</td>
+            <td>
+              <input type="text" id="apellidos" />
+              <tr>
+                <td>DNI:</td>
+                <td><input type="text" id="dni" /></td>
+              </tr>
+              <tr>
+                <td>e-mail:</td>
+                <td><input type="text" id="email" /></td>
+              </tr>
+              <tr>
+                <td>Web:</td>
+                <td><input type="url" id="web" placeholder="http://www..." /></td>
+              </tr>
+              <tr>
+                <td>Comentario:</td>
+                <td><textarea id="comentario"></textarea></td>
+              </tr>
+              <tr>
+                <td>¿Acepta las condiciones?</td>
+                <td>
+                  <input type="radio" id="condSi" name="condiciones" value="si" />SI Acepto
+                </td>
+                <td>
+                  <input type="radio" id="condNo" name="condiciones" value="no" checked="checked" />NO Acepto
+                </td>
+              </tr>
+              <tr id="camposNuevos"></tr>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </body>
+</html>
