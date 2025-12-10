@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Tareas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" type="module"></script>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2 class="sidebar-logo">WebTasks.js</h2>
+        <!-- Menú lateral -->
+        <nav class="sidebar-menu">
+            <ul>
+                <li class="sidebar-menu-item">
+                    <i>🏠</i> <a>Panel Principal</a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <i>📊</i> <a>Proyectos</a>
+                </li>
+                <li class="sidebar-menu-item">
+                    <i>📋</i> <a>Tareas</a>
+                </li>
+                 </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="btn btn-danger"></button>
+        </div>
+    </aside>
+    
+    <!-- Main -->
+    <main class="main-content">
+        <!-- Sección de Proyectos -->
+        <section id="projects-section">
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>PlayOnWeb</h3>
+                    <p>Minijuegos online</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección de Tareas -->
+        <section id="tasks-section">
+            <div class="content-header">
+                <h1>Tareas Pendientes</h1>
+                <button class="btn btn-primary" id="creaTarea">Crear Nueva Tarea</button>
+            </div>
+            
+            <table class="tasks-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Prioridad</th>
+                        <th>Responsable</th>
+                        <th>Fecha Límite</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Diseñar interfaz de usuario</td>
+                        <td>Crear mockups para la nueva aplicación web</td>
+                        <td>
+                            9
+                        </td>
+                        <td>Juan Pérez</td>
+                        <td>15/07/2024</td>
+                        <td>En Progreso</td>
+                        <td>
+                                <button class="btn btn-secondary">Editar</button>
+                                <button class="btn btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Implementar autenticación</td>
+                        <td>Desarrollar sistema de login y registro</td>
+                        <td>
+                            5
+                        </td>
+                        <td>María García</td>
+                        <td>20/07/2024</td>
+                        <td>Finalizada</td>
+                        <td>
+                                <button class="btn btn-secondary">Editar</button>
+                                <button class="btn btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Pruebas de integración</td>
+                        <td>Realizar pruebas completas del sistema</td>
+                        <td>
+                            3
+                        </td>
+                        <td>Carlos Rodríguez</td>
+                        <td>30/07/2024</td>
+                        <td>No Iniciada</td>
+                        <td>
+                                <button class="btn btn-secondary">Editar</button>
+                                <button class="btn btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+</body>
+</html>
