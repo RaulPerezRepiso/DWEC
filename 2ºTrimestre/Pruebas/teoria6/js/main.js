@@ -33,6 +33,8 @@ let myPromise = new Promise(function (resolve, reject) {
     // Ejecuto código asíncrono...
     setTimeout(function () {
         console.log("Ejecutando promesa...");
+
+        // Solo permite que se le pase un dato
         reject(5);
     }, 2000)
 })
