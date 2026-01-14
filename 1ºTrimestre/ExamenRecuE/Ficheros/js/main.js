@@ -1,5 +1,7 @@
+//Uso de clase que no hemos visto
 import { Tarea } from "./Tarea.js";
 
+//Variables de clase globales para su uso
 var ventanaAux = null;
 var main = document.getElementsByTagName("main")[0];
 var aside = document.getElementsByTagName("aside")[0];
@@ -14,11 +16,10 @@ var task = document.getElementById("tasks-section");
 let arrayEliminar = Array.from(bElminar);
 let arrayEditar = Array.from(bModificar);
 
-//No he encontrado manera mejor de que se me actualice el array de botones para que cuando añada una tarea nueva tambien me lo coja el evento onclick
+//Método para actualizar los eventos
 actualizarEvento();
 
-
-
+//Abrir ventana secundaria y oscurecer la principal 
 window.onload = function () {
   // Obtener las dimensiones de la ventana actual
   let anchoActual = window.innerWidth;
@@ -40,9 +41,12 @@ window.onload = function () {
 
 //Evento para crear nueva tarea
 botonNueva.onclick = function () {
+  //Borramos los campos y los insertamos 
   borrarCampos();
   insertarFormulario();
   let validar = document.getElementById("validar");
+
+  //Validar al hacer click los campos que están escritos
   validar.onclick = function (event) {
     let errores = 0;
     let nombre = document.getElementById("nombre");
@@ -94,7 +98,7 @@ botonNueva.onclick = function () {
   };
 };
 
-//eventos de modificar y eleminar
+//Eventos de modificar y eleminar
 function actualizarEvento() {
   document.querySelectorAll(".btn.btn-danger").forEach((boton) => {
     boton.onclick = function (event) {

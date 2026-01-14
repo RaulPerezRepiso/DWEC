@@ -1,4 +1,4 @@
-//Se que algunas no las necesito, pero no me da tiempo ya de de eliminarlas y hacerlas locales en metodos. 
+//Variable globales
 var boton = document.getElementById("btLogin");
 var pass = document.getElementsByTagName("input")[1];
 var login = document.getElementsByTagName("input")[0];
@@ -11,7 +11,7 @@ var divDev;
 var divAdmin;
 var divPm;
 
-//Crear el select y deshabilitarlo
+//Crear el select y deshabilitarlo hasta que no haga falta
 crearSelectGeneral();
 select.setAttribute("disabled", "disabled");
 

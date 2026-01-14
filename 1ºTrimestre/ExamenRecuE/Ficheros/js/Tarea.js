@@ -1,3 +1,4 @@
+//Clase Tarea para exportar al main
 export class Tarea {
   #nombre = "";
   descripcion = "";

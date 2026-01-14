@@ -312,25 +312,56 @@ function temaInterfaz() {
 function rangeBarra() {
   let range = document.getElementById("range");
 
+  //Si usamos el switch
+  let valor = parseFloat(range.value);
+
   //Podemos ver con esto el range para ver si funciona la barra
   console.log("valor range:", range.value);
 
-  if (range.value <= 12.5) {
-    document.body.style.fontSize = "10px";
-  } else if (range.value <= 25) {
-    document.body.style.fontSize = "12px";
-  } else if (range.value <= 37.5) {
-    document.body.style.fontSize = "14px";
-  } else if (range.value <= 50) {
-    document.body.style.fontSize = "16px";
-  } else if (range.value <= 62.5) {
-    document.body.style.fontSize = "18px";
-  } else if (range.value <= 75) {
-    document.body.style.fontSize = "20px";
-  } else if (range.value <= 87.5) {
-    document.body.style.fontSize = "22px";
-  } else {
-    document.body.style.fontSize = "24px";
+  // if (range.value <= 12.5) {
+  //   document.body.style.fontSize = "10px";
+  // } else if (range.value <= 25) {
+  //   document.body.style.fontSize = "12px";
+  // } else if (range.value <= 37.5) {
+  //   document.body.style.fontSize = "14px";
+  // } else if (range.value <= 50) {
+  //   document.body.style.fontSize = "16px";
+  // } else if (range.value <= 62.5) {
+  //   document.body.style.fontSize = "18px";
+  // } else if (range.value <= 75) {
+  //   document.body.style.fontSize = "20px";
+  // } else if (range.value <= 87.5) {
+  //   document.body.style.fontSize = "22px";
+  // } else {
+  //   document.body.style.fontSize = "24px";
+  // }
+
+  //Con switch
+  switch (true) {
+    case valor <= 12.5:
+      document.body.style.fontSize = "10px";
+      break;
+    case valor <= 25:
+      document.body.style.fontSize = "12px";
+      break;
+    case valor <= 37.5:
+      document.body.style.fontSize = "14px";
+      break;
+    case valor <= 50:
+      document.body.style.fontSize = "16px";
+      break;
+    case valor <= 62.5:
+      document.body.style.fontSize = "18px";
+      break;
+    case valor <= 75:
+      document.body.style.fontSize = "20px";
+      break;
+    case valor <= 87.5:
+      document.body.style.fontSize = "22px";
+      break;
+    default:
+      document.body.style.fontSize = "24px";
+      break;
   }
 }
 
@@ -349,7 +380,9 @@ form.onsubmit = (e) => {
   crearTarjeta();
 };
 
+//Validamos que los campos sean los que se piden
 function validarCampos() {
+  //Llamamos primero a los nodos ya creados con su value
   let pass = document.getElementById("pass").value;
   let cpass = document.getElementById("cpass").value;
   let link = document.getElementById("link").value;
@@ -366,7 +399,7 @@ function validarCampos() {
     return false;
   }
 
-  // Validación LinkedIn
+  // Validación LinkedIn con regex simple para que tenga o no wwww sea valido
   const regex = /^https:\/\/(www\.)?linkedin\.com\//;
   if (!regex.test(link)) {
     mostrarError("La URL de LinkedIn no es válida");
@@ -376,16 +409,19 @@ function validarCampos() {
   return true;
 }
 
+//Comprobamos que el pass válido
 function passValido() {
+  //Sacamos el valor del pass
   let pass = document.getElementById("pass").value;
 
+  //Si tiene más de 0 se muestran los errores sino no aparcerá
   if (pass.length > 0) {
     ul.style.display = "block";
   } else {
     ul.style.display = "none";
   }
 
-  // Expresiones regulares
+  // Expresiones regulares con test
   let tieneMayus = /[A-Z]/.test(pass);
   let tieneMinus = /[a-z]/.test(pass);
   let tieneNum = /[0-9]/.test(pass);
@@ -401,6 +437,7 @@ function passValido() {
   return tieneMayus && tieneMinus && tieneNum && tieneSym && tieneLen;
 }
 
+//Vamos actualizacon el color del li si es válido y cumple la regla
 function actualizarRegla(li, cumple) {
   if (!li) return;
   // Por si acaso
@@ -413,23 +450,34 @@ function actualizarRegla(li, cumple) {
   }
 }
 
+//Mostramos errores si alguno de los campos no estan correctos
 function mostrarError(mensaje) {
   let error = document.getElementById("er");
   error.innerText = mensaje;
 
+  //Desaparece el error a los 3 segundos
   setTimeout(() => {
     error.innerText = "";
   }, 3000);
 }
 
-function crearTarjeta() {
+function crearTarjeta() {   
   // 1. Obtener datos del formulario
-  let nombre = document.getElementById("nombre").value;
-  let email = document.getElementById("email").value;
-  let fecha = document.getElementById("fecha").value;
-  let habilidades = Array.from(
-    document.getElementById("select").selectedOptions
-  ).map((opt) => opt.value);
+  let nombreInput = document.getElementById("nombre");
+  let emailInput = document.getElementById("email");
+  let fechaInput = document.getElementById("fecha");
+  let selectHabilidades = document.getElementById("select");
+
+  let nombre = nombreInput.value;
+  let email = emailInput.value;
+  let fecha = fechaInput.value;
+
+  // Obtener habilidades SIN map
+  let habilidades = [];
+  for (let i = 0; i < selectHabilidades.selectedOptions.length; i++) {
+    let opcion = selectHabilidades.selectedOptions[i];
+    habilidades.push(opcion.value);
+  }
 
   // Calcular días en la empresa
   let hoy = new Date();
@@ -445,14 +493,14 @@ function crearTarjeta() {
   article.style.borderRadius = "8px";
   article.style.background = "white";
 
-  // 3. Crear cabecera
+  // 3. Crear cabecera con un div 
   let cabecera = document.createElement("div");
 
   let h3 = document.createElement("h3");
   h3.textContent = nombre;
 
   let small = document.createElement("small");
-  small.textContent = `${email} — ${dias} días en la empresa`;
+  small.textContent = email + " — " + dias + " días en la empresa";
 
   cabecera.appendChild(h3);
   cabecera.appendChild(small);
@@ -467,18 +515,19 @@ function crearTarjeta() {
 
   // 5. Crear lista de habilidades
   let ul = document.createElement("ul");
-  habilidades.forEach((h) => {
+  for (let i = 0; i < habilidades.length; i++) {
     let li = document.createElement("li");
-    li.textContent = h;
+    li.textContent = habilidades[i];
     ul.appendChild(li);
-  });
+  }
 
   // 6. Botón clonar
   let btnClonar = document.createElement("button");
   btnClonar.textContent = "Clonar Ficha";
   btnClonar.style.marginRight = "10px";
 
-  btnClonar.onclick = () => {
+  btnClonar.onclick = function () {
+    //Usamos el clone node para clonar todo el contenido del article pero con menos opacidad
     let clon = article.cloneNode(true);
     clon.style.opacity = "0.7"; // 70%
     article.parentNode.appendChild(clon);
@@ -490,7 +539,8 @@ function crearTarjeta() {
   btnDespedir.style.background = "red";
   btnDespedir.style.color = "white";
 
-  btnDespedir.onclick = () => {
+  //Simplemente un remove en el botón que hemos creado
+  btnDespedir.onclick = function () {
     article.remove();
   };
 
@@ -505,6 +555,7 @@ function crearTarjeta() {
   document.body.appendChild(article);
 }
 
+//Para abrir la ventan tenemos que crear el bóton y le tenemos que dar la dirección a la que apunta
 function abrirVentana() {
   //Creamos el botón y le damos los estilos necesarios
   let botonInforme = createNode("button");
@@ -524,12 +575,18 @@ function abrirVentana() {
       "Informe",
       "width=500,height=400,top=0,left=0"
     );
-    ventana.onload = () => {
-      enviarDatosInforme(ventana);
-    };
+
+    //Le podemos dar un tiempo por si no ha cargado la información nada más abrir la ventana
+    let timer = setInterval(() => {
+      if (ventana.cargarInforme) {
+        clearInterval(timer);
+        enviarDatosInforme(ventana);
+      }
+    }, 100);
   };
 }
 
+//Los datos necesarios que vamos a usar en la nueva ventana los mandamo a la página
 function enviarDatosInforme(ventana) {
   let empleados = document.querySelectorAll("article");
 
@@ -548,7 +605,7 @@ function enviarDatosInforme(ventana) {
 }
 
 /**
- * Funcion para crear Nodos
+ * Función para crear Nodos
  * @param {*} tipoNodo
  * @param {*} tipoTexto
  * @returns
