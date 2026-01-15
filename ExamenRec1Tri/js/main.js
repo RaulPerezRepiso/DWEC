@@ -297,9 +297,13 @@ function segundoAside(form) {
 
 // Función que controla el rango y el tema de pantalla
 function temaInterfaz() {
-  if (document.getElementsByName("opcion")[0].checked) {
+
+  let opcion1 = document.getElementsByName("opcion")[0]
+  console.log(opcion1.checked);
+  if (opcion1.checked) {
     document.body.style.background = "white";
     document.body.style.color = "black";
+
   } else if (document.getElementsByName("opcion")[1].checked) {
     document.body.style.background = "black";
     document.body.style.color = "white";
@@ -461,7 +465,7 @@ function mostrarError(mensaje) {
   }, 3000);
 }
 
-function crearTarjeta() {   
+function crearTarjeta() {
   // 1. Obtener datos del formulario
   let nombreInput = document.getElementById("nombre");
   let emailInput = document.getElementById("email");

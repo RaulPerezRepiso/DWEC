@@ -305,3 +305,65 @@ generateButton.addEventListener("click", () => {
         );
     });
 });
+
+
+
+/**
+ * 
+var entrantes = [
+    "Turrón salada de queso y frutos secos",
+    "Piruletas crujientes de parmesano",
+    "Hummus con remolacha",
+    "Mejillones a la cerveza con bacon",
+    "Croquetas de atún",
+    "Quesadilla de chorizo criollo con aguacate",
+    "Ensalada de endivias, surimi y salsa roquefort",
+    "Guacamole",
+    "Pan casero con aceite de oliva y sal negra en escamas",
+    "Verduras rellenas de arroz"
+];
+
+comidas.push(entrantes);
+
+var comidaCasera = [
+    "Sopa de pollo",
+    "Sopa de verdura",
+    "Crema de calabaza",
+    "Arroz con pollo",
+    "Paella de mariscos",
+    "Arroz caldoso de pescado",
+    "Pollo al horno",
+    "Conejo al ajillo",
+    "Potaje de lentejas o abichuelas",
+    "Pescado al horno"
+];
+
+comidas.push(comidaCasera);
+
+var comidaOriental = [
+    "Ramen",
+    "Rollitos de primavera vegetales",
+    "Atún con arroz",
+    "Wok de verduras y fideos chinos",
+    "Arroz al estilo oriental",
+    "Nishime de verduras",
+    "Solomillo de cerdo agridulce",
+    "Noodles de arroz con gambas",
+    "Rollitos de alga nori con con verduras en tempura"
+];
+
+comidas.push(comidaOriental);
+
+var mediterranea = [
+    "Judías verdes estofadas",
+    "Gazpacho",
+    "Magro de cerdo con champiñón",
+    "Salteado de garbanzos con cebolla, guisantes y tomate",
+    "Lasaña de espinacas",
+    "Berenjena al horno",
+    "Dorada a la plancha",
+    "Pizza mediterránea",
+    "Tortilla de pimiento y cebolla"
+];
+
+ */

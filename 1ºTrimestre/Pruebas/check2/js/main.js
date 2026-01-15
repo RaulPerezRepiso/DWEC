@@ -17,6 +17,8 @@ document.getElementById("bDoc").onclick = () => {
 
 //Bóton que introduce todo en la tabla
 const tabla = document.getElementById("tablaDatos");
+  document.getElementById("indice0").innerHTML = "hola";
+
 
 document.getElementById("bDatosusuarios").onclick = () => {
     for (let usuario = 0; usuario < datosUsuarios.length; usuario++) {
