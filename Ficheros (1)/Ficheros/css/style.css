@@ -1,0 +1,76 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0.5%;
+}
+
+html, body {
+    overflow: hidden;
+}
+
+#error {
+    color: red;
+    font-weight: 200;
+}
+
+#usuarioRegistrado {
+    float: right;
+    font-weight: bold;
+    color: #8822ee;
+}
+
+div {
+    padding: 0%;
+}
+
+img {
+    position: relative;
+    width: 10%;
+    height: auto;
+    top: 0px;
+    left: 0px;
+    overflow: auto;
+    transition: left 0.5s;
+}
+
+button {
+    background-color: darkred;
+    color: white;
+    font-weight: bolder;
+    border: 1px solid white;
+    border-bottom-right-radius: 15px;
+    padding: 1%;
+}
+
+nav {
+    text-align: center;
+}
+
+main {
+    display: inline-block;
+    width: 50%;
+}
+
+h3 {
+    border: 1px solid black;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 0.5%;
+    display: none;
+}
+
+.moreWidth {
+    width: 200px;
+}
+aside {
+    display: none;
+    width: 45%;
+    float: right;
+}
+
+aside fieldset {
+    border-radius: 10px;
+}
+
+.morado {
+    color: #8822ee;
+}
