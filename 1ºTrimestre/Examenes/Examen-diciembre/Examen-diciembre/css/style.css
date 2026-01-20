@@ -1,0 +1,84 @@
+* {
+    font-family: Arial;
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    color:black;
+}
+
+.container {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "enc enc er er"
+        "lat princ princ princ"
+        "lat princ princ princ";
+    gap: 2%;
+}
+
+#main-title {
+    grid-area: enc;
+}
+
+#er {
+    grid-area: er;
+    color:red;
+    font-weight: bolder;
+}
+
+aside {
+    grid-area: lat;
+}
+
+aside * {
+    margin: 0.75%;
+}
+
+main {
+    grid-area: princ;
+}
+
+.card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+    border-color: red !important;
+    background-color: #ffe6e6;
+}
+
+.dark-mode {
+    background-color: #222;
+    color: #eee;
+}
+
+.dark-mode .card {
+    background-color: #333;
+    border-color: #555;
+}
+
+fieldset {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+.main-button {
+    padding: 1%;
+    color: white;
+    background-color: lightblue;
+    border-radius: 10px;
+}

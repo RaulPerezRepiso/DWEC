@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe</title>
+    <script src="../js/mainInfo.js" defer></script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f0f0f0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #999; padding: 8px; text-align: left; }
+        th { background: #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Informe de Estado</h1>
+    <p>Total Empleados: <strong id="total"></strong></p>
+    <p id="fecha">Fecha informe:</p>
+    
+    <table>
+        <thead>
+            <tr><th>Nombre</th><th>Eficiencia</th></tr>
+        </thead>
+        <tbody id="empleados">
+            
+        </tbody>
+    </table>
+
+    <button onclick="window.print()">Imprimir PDF</button>
+    <button onclick="window.close()">Cerrar</button>
+</body>
+</html>
