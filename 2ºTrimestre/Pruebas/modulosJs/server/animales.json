@@ -1,0 +1,84 @@
+{
+    "animales": [
+      {
+        "id": 1,
+        "nombre": "León",
+        "especie": "Panthera leo",
+        "habitat": "Sabana",
+        "dieta": "Carnívoro",
+        "esperanza_vida_años": 14
+      },
+      {
+        "id": 2,
+        "nombre": "Elefante Africano",
+        "especie": "Loxodonta africana",
+        "habitat": "Selva y Sabana",
+        "dieta": "Herbívoro",
+        "esperanza_vida_años": 70
+      },
+      {
+        "id": 3,
+        "nombre": "Pingüino Emperador",
+        "especie": "Aptenodytes forsteri",
+        "habitat": "Antártida",
+        "dieta": "Piscívoro",
+        "esperanza_vida_años": 20
+      },
+      {
+        "id": 4,
+        "nombre": "Tiburón Blanco",
+        "especie": "Carcharodon carcharias",
+        "habitat": "Océanos",
+        "dieta": "Carnívoro",
+        "esperanza_vida_años": 70
+      },
+      {
+        "id": 5,
+        "nombre": "Koala",
+        "especie": "Phascolarctos cinereus",
+        "habitat": "Bosques de eucalipto",
+        "dieta": "Herbívoro",
+        "esperanza_vida_años": 15
+      },
+      {
+        "id": 6,
+        "nombre": "Lobo Gris",
+        "especie": "Canis lupus",
+        "habitat": "Bosques y Montañas",
+        "dieta": "Carnívoro",
+        "esperanza_vida_años": 12
+      },
+      {
+        "id": 7,
+        "nombre": "Águila Real",
+        "especie": "Aquila chrysaetos",
+        "habitat": "Zonas montañosas",
+        "dieta": "Carnívoro",
+        "esperanza_vida_años": 30
+      },
+      {
+        "id": 8,
+        "nombre": "Panda Gigante",
+        "especie": "Ailuropoda melanoleuca",
+        "habitat": "Bosques de bambú",
+        "dieta": "Herbívoro",
+        "esperanza_vida_años": 20
+      },
+      {
+        "id": 9,
+        "nombre": "Orca",
+        "especie": "Orcinus orca",
+        "habitat": "Océanos",
+        "dieta": "Carnívoro",
+        "esperanza_vida_años": 50
+      },
+      {
+        "id": 10,
+        "nombre": "Ornitorrinco",
+        "especie": "Ornithorhynchus anatinus",
+        "habitat": "Ríos de Australia",
+        "dieta": "Insectívoro",
+        "esperanza_vida_años": 12
+      }
+    ]
+  }

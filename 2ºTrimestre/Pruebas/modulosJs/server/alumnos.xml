@@ -1,0 +1,22 @@
+<Alumnos>
+<alumno>
+<name course="2">Cristina</name>
+<age>27</age>
+<color>Black</color>
+</alumno>
+<alumno>
+<name>Kiko</name>
+<age>30</age>
+<color>White</color>
+</alumno>
+<alumno>
+<name>Sandra</name>
+<age>22</age>
+<color>red</color>
+</alumno>
+<alumno>
+<name>Rubén</name>
+<age>48</age>
+<color>Pink</color>
+</alumno>
+</Alumnos>

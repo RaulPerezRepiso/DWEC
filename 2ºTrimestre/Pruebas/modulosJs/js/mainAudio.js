@@ -19,7 +19,6 @@ document.getElementById("leeTxt").addEventListener("click", () => {
             console.log(this.getAllResponseHeaders());
 
         }
-
     }
 
     // Método  que establece al conexión mediante una petición HTTP (En este caso direccion vhost)

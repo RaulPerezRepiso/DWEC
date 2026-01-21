@@ -62,7 +62,6 @@ function datosRegistro() {
     // cuenta.style = ".moreWidth";
     cuenta.id = "cuenta";
 
-
     form.appendChild(lLogin);
     form.appendChild(login);
     form.appendChild(createNode("br"));
