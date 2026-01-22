@@ -36,6 +36,9 @@ document.getElementById("leeTxt").addEventListener("click", () => {
     // Nombre de variable de XML HTTP REQUEST
     let xhr = new XMLHttpRequest();
 
+
+    xhr.responseType = "json";
+
     // Preparamos la función lista para la respuesta
     xhr.onreadystatechange = function () {
         /**
@@ -60,13 +63,16 @@ document.getElementById("leeTxt").addEventListener("click", () => {
 
 
             //Procesamos los datos
-            document.getElementById("data").value = xhr.responseText;
+            // let textarea = document.getElementById("data").value 
+            // textarea = xhr.responseText;
 
             // Ver todas las cabeceras de lo que se ha mandado
             // console.log(this.getAllResponseHeaders());
 
             // var alumnos = xhr.responseXML;
-            info.innerHTML = xhr.response;
+            // info.innerHTML = xhr.response;
+            info.innerHTML = "";
+
             // alumnos = alumnos.getElementsByTagName("Alumnos")[0].getElementsByTagName("alumno");
 
             //Procesamos la respuesta del servidor
@@ -81,6 +87,16 @@ document.getElementById("leeTxt").addEventListener("click", () => {
             // Para sacar el valor del atributo
             // info.innerHTML = "Nombre: "+ alumnos[0].getElementsByTagName("name")[0].getAttribute("course");
 
+            // let respData = xhr.response;
+            // console.log("Usuario: " + respData.name + ", con edad " + respData.age + " años.");
+
+            // Sacaremos el nombre concreto del hueco concreto del JSON
+            console.log(xhr.response.animales[3].nombre);
+            let datos = xhr.response.animales
+            console.log(datos);
+            for (let index = 0; index < datos.length; index++) {
+                info.innerHTML += xhr.response.animales[index].nombre + " <br>";
+            }
         }
 
     }
@@ -92,13 +108,13 @@ document.getElementById("leeTxt").addEventListener("click", () => {
     // xhr.open("POST", "http://www.pruebasjs.es/server/hello.php");
     // xhr.open("POST", "http://www.pruebasjs.es/server/alumnos.xml");
 
-    xhr.open("POST", "http://www.pruebasjs.es/server/hello.php");
+    xhr.open("POST", "http://www.pruebasjs.es/server/animales.json");
 
 
     // xhr.open("GET", "http://www.pruebasjs.es/server/hello.php?login=Pepe&pass=1234");
 
-    //Hacer la resqueste al header + llamada a la misma solo hara falta si se mandan datos
-    // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    //Hacer la resqueste al header + llamada a la misma solo hara falta si se mandan datos a un php
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     //Datos a leer del php con POST
     // xhr.send("login=Pepe&pass=1234");
@@ -107,6 +123,7 @@ document.getElementById("leeTxt").addEventListener("click", () => {
     // xhr.send();
 
     // Para convertir un json en cadena
-    xhr.send(JSON.stringify(alumno));
+    // xhr.send(JSON.stringify(alumno));
+    xhr.send();
 
 });
