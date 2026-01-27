@@ -9,17 +9,27 @@
     <!-- El type="module" hace que se pueda importar código de otros módulos "(NO QUE SEA UNA LIB)" Podemos dejar o quitar el "defer"
      Pero el type="module" ya incluye el defer -->
     <!-- <script src="js/main.js" type="module"></script> -->
-    <script src="js/fetch.js" type="module"></script>
+    <script src="js/main.js" type="module"></script>
 </head>
 
 <body>
     <h3 id="info" style="color:red">Hi!</h3>
     <hr>
-    <a href="#" id="leeTxt">Leer TXT</a>
+    <!-- <a href="#" id="leeTxt">Leer TXT</a>
     <br>
     <textarea name="data" id="data" cols="50" rows="10"></textarea>
     <hr>
-    <audio src="" id="audio1" controls></audio>
+    <audio src="" id="audio1" controls></audio> -->
+
+    <label for="">Login:</label>
+    <input type="text" id="login">
+    <br>
+    <label for="" >Password:</label>
+    <input type="password" id="pass">
+
+    <br>
+    <input type="color" id="selectorColor">
+    <button id="boton">Login</button>
 </body>
 
 </html>
