@@ -3,7 +3,7 @@ let input = createNode("input");
 let boton = createNode("button", "Generar");
 input.type = "number";
 let resultado = createNode("h3", "");
-resultado.style.color = "purple"
+resultado.style.color = "purple";
 
 document.body.appendChild(label);
 document.body.appendChild(input);
@@ -11,14 +11,17 @@ document.body.appendChild(boton);
 document.body.appendChild(resultado);
 
 boton.onclick = function () {
-    
-    let valor = input.value;
-    console.log(input.value);
-    
-    input.value = "";
-    resultado.innerText = valor;
-};
+  let valor = input.value;
+  console.log(input.value);
 
+  input.value = "";
+
+  if (valor === "" || valor <= 0) {
+    resultado.innerText = "Introduce un número entero positivo.";
+    return;
+  }
+  resultado.innerText = "Generando Array...";
+};
 
 let myPromise = new Promise(function (resolve, reject) {
   // Ejecuto código asíncrono...
