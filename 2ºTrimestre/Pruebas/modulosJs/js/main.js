@@ -129,78 +129,133 @@ let info = document.getElementById("info");
 // });
 
 //Asignar al boton un addEvenListener
-document.getElementById("boton").addEventListener("click", () => {
-    const login = document.getElementById("login");
-    const pass = document.getElementById("pass");
-
-    console.log("Login: " + login.value + ", Password: " + pass.value);
-
-    //Crear una cookie
-    document.cookie = "login= " + login.value
-    document.cookie = "pass= " + pass.value;
-});
-
-const input = document.getElementById("selectorColor");
-input.addEventListener("change", function () {
-    const color = this.value;
-    document.cookie = `prefColor=${color}; path=/; max-age=86400`;
-})
-
-function getCookie(nombre) {
-    const partes = document.cookie.split("; ");
-    for (const parte of partes) {
-        const [clave, valor] = parte.split("=");
-        if (clave === nombre) return valor;
-    }
-    return null;
-}
-
-window.addEventListener("DOMContentLoaded", () => {
-    const color = getCookie("prefColor");
-    if (color) {
-        document.body.style.backgroundColor = color;
-    }
-});
-
-
-// let info = document.getElementById("info");
-
-// document.getElementById("bLogin").addEventListener("click", () => {
+// document.getElementById("boton").addEventListener("click", () => {
 //     const login = document.getElementById("login");
 //     const pass = document.getElementById("pass");
-//     const prefColor = document.getElementById("prefColor");
 
 //     console.log("Login: " + login.value + ", Password: " + pass.value);
 
-//     document.cookie = "login=" + login.value;
-//     document.cookie = "pass=" + pass.value;
-//     document.cookie = "prefColor=" + prefColor.value;
-
-//     let color = checkCookie("prefColor");
-//     if (color)
-//         document.body.style.backgroundColor = color;    
+//     //Crear una cookie
+//     document.cookie = "login= " + login.value
+//     document.cookie = "pass= " + pass.value;
 // });
 
+// const input = document.getElementById("selectorColor");
+// input.addEventListener("change", function () {
+//     const color = this.value;
+//     document.cookie = `prefColor=${color}; path=/; max-age=86400`;
+// })
 
-// /************************************ */
-
-// function checkCookie(c) {
-//     let result = false;
-//     if (document.cookie.match(c)) {
-//         let myCookies = document.cookie.split(";");
-//         for (let i = 0; i < myCookies.length; i++)
-//             if (myCookies[i].match(c)) {
-//                 let color = myCookies[i].split("=");
-//                 result = color[1];
-//                 break;
-//             } 
+// function getCookie(nombre) {
+//     const partes = document.cookie.split("; ");
+//     for (const parte of partes) {
+//         const [clave, valor] = parte.split("=");
+//         if (clave === nombre) return valor;
 //     }
-//     else {
-//         result = false;
-//     }
-
-//     return result;
+//     return null;
 // }
+
+// window.addEventListener("DOMContentLoaded", () => {
+//     const color = getCookie("prefColor");
+//     if (color) {
+//         document.body.style.backgroundColor = color;
+//     }
+// });
+
+// if (checkCookie("login"))
+//     login.value = checkCookie("login");
+// if (checkCookie("pass"))
+//     pass.value = checkCookie("pass");
+// if (checkCookie("prefColor"))
+//     document.body.style.backgroundColor = checkCookie("prefColor");
+
+document.getElementById("boton").addEventListener("click", () => {
+    const login = document.getElementById("login");
+    const pass = document.getElementById("pass");
+    const prefColor = document.getElementById("selectorColor");
+
+    // console.log("Login: " + login.value + ", Password: " + pass.value);
+
+    // //Solo si usamos el https (lcoalhost)
+    // // document.cookie = "login=" + login.value + ";max-age=" + (25 * 60 + 60)+ ";secure;";
+    // document.cookie = "login=" + login.value + ";max-age=" + (25 * 60 + 60);
+    // document.cookie = "pass=" + pass.value;
+    // document.cookie = "prefColor=" + prefColor.value;
+
+    // let color = checkCookie("prefColor");
+    // if (color) {
+    //     document.body.style.backgroundColor = color;
+    // }
+
+    // localStorage.setItem("login", login.value);
+    // localStorage.setItem("pass", pass.value);
+    // localStorage.setItem("prefColor", prefColor.value);
+
+    let color = localStorage.getItem("prefColor");
+    if (color) {
+        document.body.style.backgroundColor = color;
+    }
+
+    if (localStorage.length) {
+
+        if (localStorage.login)
+            login.value = localStorage.login;
+        else
+            login.placeholder = "Introduzca login";
+
+        if (localStorage.pass)
+            pass.value = localStorage.pass;
+
+        if (localStorage.prefColor)
+            document.body.style.backgroundColor = localStorage.prefColor;
+
+    }
+    else {
+        console.info("No existen variables en localStorage");
+    }
+});
+
+document.getElementById("bBorrar").onclick = () => {
+
+    //Borrar por nombre
+    // if (sessionStorage.length > 0) {
+    //     console.log(sessionStorage);
+    //     sessionStorage.removeItem("prefColor");
+    // }
+
+    //Borrar segun sitio
+    // if (sessionStorage.length > 0) {
+    //     console.log(sessionStorage)
+    //     sessionStorage.removeItem(sessionStorage.key(sessionStorage.length - 1));
+    // }
+
+    //Borrar las todas
+    localStorage.setItem("login", login.value);
+    localStorage.pass = pass.value;
+    localStorage.prefColor = prefColor.value;
+
+
+}
+
+/************************************ */
+
+function checkCookie(c) {
+    let result = false;
+    if (document.cookie.match(c)) {
+        let myCookies = document.cookie.split(";");
+        for (let i = 0; i < myCookies.length; i++)
+            if (myCookies[i].match(c)) {
+                let color = myCookies[i].split("=");
+                result = color[1];
+                break;
+            }
+    }
+    else {
+        result = false;
+    }
+
+    return result;
+}
 
 
 

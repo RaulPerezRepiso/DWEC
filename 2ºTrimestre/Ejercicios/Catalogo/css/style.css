@@ -1,0 +1,150 @@
+/* RESET BÁSICO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+    background: #D6E6F2;
+    color: #2D2D2D;
+    line-height: 1.5;
+}
+
+/* HEADER */
+header {
+    background: #2C2C54;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+header h1 {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* ENLACES DE ACCIONES */
+#enlaces {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+#enlaces a {
+    text-decoration: none;
+    background: #4A69BD;
+    color: #fff;
+    padding: 0.7rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+#enlaces li {
+    list-style: none;
+}
+
+#enlaces a:hover {
+    background: #1E3799;
+}
+
+/* TOTAL DE PRODUCTOS */
+#total {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #444;
+}
+
+/* GRID DE TARJETAS */
+#tarjetas {
+    width: 100%;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+/* CONTENEDOR DE TARJETAS */
+#tarjetas {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding: 2rem;
+    scroll-snap-type: x mandatory;
+    flex-wrap: wrap;
+}
+
+/* TARJETA INDIVIDUAL */
+#tarjetas>div {
+    flex: 0 0 280px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    transition: transform .2s ease, box-shadow .2s ease;
+    scroll-snap-align: start;
+}
+
+#tarjetas>div:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+    background-color: rgba(74, 105, 189, 0.12);
+    /* azul suave */
+}
+
+/* IMAGEN DEL PRODUCTO*/
+/* #img {
+    width: 90%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 0.8rem;
+} */
+
+/*  TEXTOS */
+#marca {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2C2C54;
+    margin-bottom: 0.4rem;
+}
+
+#info {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.6rem;
+}
+
+#precio {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #4A69BD;
+    margin-bottom: 0.4rem;
+}
+
+#descuento,
+#unidades,
+#fabricante,
+#categoria {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+/* FOOTER */
+#footer {
+    background: #2C2C54;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+    position: staticw;
+    font-weight: bold;
+    bottom: 0;
+}
