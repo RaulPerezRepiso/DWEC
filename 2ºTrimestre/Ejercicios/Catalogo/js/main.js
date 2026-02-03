@@ -71,7 +71,20 @@ function contarTodos() {
     document.getElementById("total").innerText += " " + total;
 }
 
+function buscarPrecio() {
+}
 
+function buscarTitulo() {
+}
+
+function mostrarCategorias() {
+}
+
+function añadirProd() {
+}
+
+function borrarProd() {
+}
 
 // FUNCIÓN PARA CREAR NODOS
 function createNode(tipoNodo, tipoTexto) {
