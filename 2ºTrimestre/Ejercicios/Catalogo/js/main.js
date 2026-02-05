@@ -77,7 +77,57 @@ function buscarPrecio() {
 function buscarTitulo() {
 }
 
-function mostrarCategorias() {
+const cat = document.getElementById("cat");
+const menu = document.getElementById("menu-categorias");
+
+cat.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    // Si ya está visible → ocultar 
+    if (!menu.classList.contains("oculto")) {
+        menu.classList.add("oculto");
+        return;
+    }
+
+    if (menu.style.display === "flex") {
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "flex";
+    }
+
+    // Limpiar contenido previo 
+    menu.innerHTML = "";
+    const categorias =
+        [
+            "SmartPhones",
+            "Laptop",
+            "Fragancia",
+            "SkinCare",
+            "Comestibles",
+            "Decoración de Hogar"
+        ];
+
+
+    categorias.forEach(element => {
+        const a = document.createElement("a");
+        a.href = "#";
+        a.textContent = element;
+        menu.appendChild(a);
+    });
+
+    // Mostrar menú 
+    menu.classList.remove("oculto");
+
+    // Posicionar debajo del enlace const 
+    rect = cat.getBoundingClientRect();
+    menu.style.left = rect.left + "px";
+    menu.style.top = rect.bottom + "px";
+    menu.style.width = rect.width + "px";
+    menu.classList.remove("oculto");
+
+});
+
+function mostrarCat() {
 }
 
 function añadirProd() {
