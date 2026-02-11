@@ -273,9 +273,7 @@ function filtrarPorTitulo(texto) {
   cargarProductos(filtrados);
 }
 
-// ===============================
-// MOSTRAR CATEGORÍAS (XMLHttpRequest)
-// ===============================
+// MOSTRAR CATEGORÍAS con (XMLHttpRequest)
 function mostrarCat(e) {
   e.preventDefault();
 
@@ -286,7 +284,7 @@ function mostrarCat(e) {
     if (xhr.readyState === 4 && xhr.status === 200) {
       let data = JSON.parse(xhr.responseText);
 
-      // 1. Sacamos todas las categorías SIN repetir
+      // Sacamos todas las categorías sin repetir
       let categorias = [];
 
       for (let i = 0; i < data.products.length; i++) {
@@ -308,10 +306,10 @@ function mostrarCat(e) {
         }
       }
 
-      // 2. Limpiamos el menú
+      // Limpiamos el menú
       menu.innerHTML = "";
 
-      // 3. Creamos los enlaces con un bucle normal
+      // Creamos los enlaces con un bucle
       for (let i = 0; i < categorias.length; i++) {
         let a = document.createElement("a");
         a.href = "#";
@@ -325,10 +323,10 @@ function mostrarCat(e) {
         menu.appendChild(a);
       }
 
-      // 4. Mostrar / ocultar el menú
+      // Mostrar / ocultar el menú
       menu.classList.toggle("oculto");
 
-      // 5. Posicionar debajo del botón
+      // Para posicionar debajo del botón
       let enlace = document.getElementById("cat");
       let rect = enlace.getBoundingClientRect();
 
@@ -337,9 +335,9 @@ function mostrarCat(e) {
     }
   };
 
-  // Evitar caché
   xhr.open("GET", "server/PRODUCTS.json?nocache=" + Math.random(), true);
   xhr.send();
+  
 }
 
 // FILTRAR POR CATEGORÍA
@@ -363,57 +361,57 @@ function mostrarFormularioAdd() {
   // Limpiamos las tarjetas
   productos.innerHTML = "";
 
-  // CONTENEDOR PRINCIPAL
+  // Contenedor Principal
   let form = createNode("div");
-  form.id = "formAddProd";
+  form.id = "fAdd";
   form.className = "formulario";
 
-  // TÍTULO
+  // Título
   let titulo = createNode("h2", "Añadir Producto");
   form.appendChild(titulo);
 
-  // CAMPO: TÍTULO
+  // Campo: Título
   let inputTitle = createNode("input");
-  inputTitle.id = "f_title";
+  inputTitle.id = "iTitle";
   inputTitle.placeholder = "Título";
   form.appendChild(inputTitle);
 
-  // CAMPO: DESCRIPCIÓN
+  // Campo: Descripción
   let inputDesc = createNode("input");
-  inputDesc.id = "f_desc";
+  inputDesc.id = "iDesc";
   inputDesc.placeholder = "Descripción";
   form.appendChild(inputDesc);
 
-  // CAMPO: PRECIO
+  // Campo: precio
   let inputPrice = createNode("input");
-  inputPrice.id = "f_price";
+  inputPrice.id = "iPrice";
   inputPrice.type = "number";
   inputPrice.placeholder = "Precio";
   form.appendChild(inputPrice);
 
-  // CAMPO: DESCUENTO
+  // Campo: descuento
   let inputDiscount = createNode("input");
-  inputDiscount.id = "f_discount";
+  inputDiscount.id = "iDisc";
   inputDiscount.type = "number";
   inputDiscount.placeholder = "Descuento %";
   form.appendChild(inputDiscount);
 
-  // CAMPO: PUNTUACIÓN
+  // Campo: puntuación
   let inputRating = createNode("input");
-  inputRating.id = "f_rating";
+  inputRating.id = "iRat";
   inputRating.type = "number";
   inputRating.placeholder = "Puntuación";
   form.appendChild(inputRating);
 
-  // CAMPO: MARCA
+  // Campo: marca
   let inputBrand = createNode("input");
-  inputBrand.id = "f_brand";
+  inputBrand.id = "iBran";
   inputBrand.placeholder = "Marca";
   form.appendChild(inputBrand);
 
-  // CAMPO: CATEGORÍA con Select
+  // Campo: Categorías con Select
   let selectCat = createNode("select");
-  selectCat.id = "f_cat";
+  selectCat.id = "sCat";
   form.appendChild(selectCat);
 
   // Sacar categorías sin repetir
@@ -442,13 +440,13 @@ function mostrarFormularioAdd() {
     selectCat.appendChild(op);
   }
 
-  // CAMPO: IMAGEN PRINCIPAL
+  // Campo: Imagen principal
   let inputThumb = createNode("input");
-  inputThumb.id = "f_thumb";
+  inputThumb.id = "iThumb";
   inputThumb.placeholder = "URL imagen principal";
   form.appendChild(inputThumb);
 
-  // BOTÓN GUARDAR
+  // Botón guardar
   let btn = createNode("button", "Guardar");
   btn.id = "btnGuardar";
   form.appendChild(btn);
@@ -462,14 +460,14 @@ function mostrarFormularioAdd() {
 
 function guardarNuevoProducto() {
   // Leemos los valores del formulario
-  let titulo = document.getElementById("f_title").value;
-  let desc = document.getElementById("f_desc").value;
-  let precio = Number(document.getElementById("f_price").value);
-  let descuento = Number(document.getElementById("f_discount").value);
-  let rating = Number(document.getElementById("f_rating").value);
-  let marca = document.getElementById("f_brand").value;
-  let categoria = document.getElementById("f_cat").value;
-  let thumb = document.getElementById("f_thumb").value;
+  let titulo = document.getElementById("iTitle").value;
+  let desc = document.getElementById("iDesc").value;
+  let precio = Number(document.getElementById("iPrice").value);
+  let descuento = Number(document.getElementById("iDisc").value);
+  let rating = Number(document.getElementById("iRat").value);
+  let marca = document.getElementById("iBran").value;
+  let categoria = document.getElementById("sCat").value;
+  let thumb = document.getElementById("iThumb").value;
 
   // Creamos el objeto del nuevo producto
   let nuevo = {
@@ -484,6 +482,7 @@ function guardarNuevoProducto() {
     thumbnail: thumb,
   };
 
+  // Simulación POST
   fetch("server/PRODUCTS.json", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -491,10 +490,12 @@ function guardarNuevoProducto() {
   }).then(function () {
     datosJSON.push(nuevo);
     cargarProductos(datosJSON);
+    let form = document.getElementById("fAdd");
+    if (form) form.remove();
   });
 }
 
-// BORRAR PRODUCTO (FETCH DELETE SIMULADO)
+// Borrar los productos
 function activarModoBorrado() {
   let botones = document.querySelectorAll(".bBorrar");
 
