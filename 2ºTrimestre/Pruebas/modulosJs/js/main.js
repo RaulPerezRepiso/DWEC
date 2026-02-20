@@ -61,7 +61,6 @@ let info = document.getElementById("info");
 //             //Diferencia entre reponseText y response es que el text siempre devuelve texto plano en html y el
 //             // response es más flexible y depende del responseType
 
-
 //             //Procesamos los datos
 //             // let textarea = document.getElementById("data").value 
 //             // textarea = xhr.responseText;

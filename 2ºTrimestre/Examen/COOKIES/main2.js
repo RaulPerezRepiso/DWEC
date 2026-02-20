@@ -9,12 +9,12 @@ let color = document.getElementById("color");
 
 
 
-if (checkCookie("login")) 
+if (checkCookie("login"))
     login.value = checkCookie("login");
-if (checkCookie("pass")) 
+if (checkCookie("pass"))
     pass.value = checkCookie("pass");
 if (checkCookie("color"))
-    document.body.style.backgroundColor = checkCookie("color"); 
+    document.body.style.backgroundColor = checkCookie("color");
 
 
 // Pulsamos botÃ³n de Login
@@ -25,13 +25,13 @@ document.getElementById("boton").addEventListener("click", () => {
 
     console.log("Login: " + login.value + ", Password: " + pass.value);
 
-    document.cookie = "login=" + login.value + ";max-age=" + (24*60*60);
-    document.cookie = "pass=" + pass.value;
+    document.cookie = "login=" + login.value + ";max-age=" + (24 * 60 * 60);
+    document.cookie = "pass=" + pass.value ;
     document.cookie = "color=" + color.value;
 
     let colores = checkCookie("color");
     if (colores)
-        document.body.style.backgroundColor = colores;    
+        document.body.style.backgroundColor = colores;
 });
 
 
@@ -44,7 +44,7 @@ function checkCookie(c) {
                 let color = myCookies[i].split("=");
                 result = color[1];
                 break;
-            } 
+            }
     }
     else {
         result = false;
@@ -66,7 +66,7 @@ document.getElementById("boton").addEventListener("click", () => {
     sessionStorage.setItem("prefColor", prefColor.value);
 });
 
-document.getElementById("bErase").onclick = function() {
+document.getElementById("bErase").onclick = function () {
     sessionStorage.clear();
 
     document.getElementById("login").value = "";
@@ -89,17 +89,17 @@ if (localStorage.length) {
         pass.value = localStorage.pass;
 
     if (localStorage.prefColor)
-        document.body.style.backgroundColor =  localStorage.prefColor;
+        document.body.style.backgroundColor = localStorage.prefColor;
 
 }
-else{
+else {
     console.info("No existen variables en localStorage");
 }
 
 /************************************ */
 // Pulsamos botÃ³n de Login
 document.getElementById("boton").addEventListener("click", () => {
-    localStorage.setItem("login",login.value);
+    localStorage.setItem("login", login.value);
     localStorage.pass = pass.value;
     localStorage.prefColor = prefColor.value;
 });
