@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RPG</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Clase para testear que funcione bien todo por la consola -->
+    <script src="js/test.js" type="module"></script>
+    <script src="js/main.js" type="module"></script>
+  </head>
+  <body>
+    <h1>Arena de Combate</h1>
+
+    <form id="form-crear">
+      <input type="text" id="nombre" placeholder="Nombre" required />
+
+      <input
+        type="number"
+        id="fuerza"
+        placeholder="Fuerza (1-10)"
+        min="1"
+        max="10"
+        required
+      />
+
+      <select id="clase">
+        <option value="Guerrero">Guerrero</option>
+        <option value="Mago">Mago</option>
+      </select>
+
+      <!-- Inputs dinámicos -->
+      <div id="input-mana" style="display: none">
+        <input
+          type="number"
+          id="mana"
+          placeholder="Maná (0-5)"
+          min="0"
+          max="5"
+        />
+      </div>
+
+      <div id="input-escudo" style="display: none">
+        <input
+          type="number"
+          id="escudo"
+          placeholder="Escudo (0-10)"
+          min="0"
+          max="10"
+        />
+      </div>
+
+      <button type="submit">Crear</button>
+    </form>
+
+    <div id="arena"></div>
+
+    <h2>Log de Batalla</h2>
+    <div id="log"></div>
+  </body>
+</html>
