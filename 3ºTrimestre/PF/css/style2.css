@@ -1,61 +1,112 @@
+/* ======== ESTILOS GENERALES ======== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* IMPORTANTE: evita descuadres */
+}
+
 body {
-    margin: 0;
-    background-color: #0A0F1F;
-    font-family: 'Inter', sans-serif;
-    color: white;
+  margin: 0;
+  height: 100vh;
+  font-family: "Inter", sans-serif;
+  color: white;
+
+  /* Fondo animado */
+  background: linear-gradient(120deg, #0a0f1f, #1a1035, #0a0f1f);
+  background-size: 300% 300%;
+  animation: moverFondo 6s ease infinite;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Animación del fondo */
+@keyframes moverFondo {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ======== CONTENEDOR PRINCIPAL ======== */
 .login-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
+/* ======== LOGO / NOMBRE ======== */
 .logo {
-    font-family: 'Poppins', sans-serif;
-    font-size: 32px;
-    color: #A78BFA;
-    margin-bottom: 40px;
+  font-family: "Poppins", sans-serif;
+  font-size: 34px;
+  color: #a78bfa;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
 }
 
+/* ======== TARJETA DE LOGIN ======== */
 .login-card {
-    background-color: #141A2A;
-    padding: 40px;
-    width: 350px;
-    border-radius: 18px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
-    text-align: center;
+  background-color: #141a2a;
+  padding: 40px;
+  width: 360px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* SEPARACIÓN PERFECTA ENTRE ELEMENTOS */
 }
 
 .login-card h2 {
-    font-family: 'Poppins', sans-serif;
-    margin-bottom: 25px;
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
 }
 
+/* ======== FORMULARIO ======== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* SEPARACIÓN UNIFORME */
+}
+
+/* ======== INPUTS ======== */
 input {
-    width: 100%;
-    padding: 14px;
-    margin-bottom: 20px;
-    border-radius: 12px;
-    border: 2px solid #A78BFA;
-    background-color: #0A0F1F;
-    color: white;
-    font-size: 15px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 2px solid #a78bfa;
+  background-color: #0a0f1f;
+  color: white;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s;
 }
 
+input:focus {
+  border-color: #c4a8ff;
+}
+
+/* ======== BOTÓN ======== */
 button {
-    width: 100%;
-    padding: 14px;
-    background-color: #A78BFA;
-    border: none;
-    border-radius: 12px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
+  width: 100%;
+  padding: 14px;
+  background-color: #a78bfa;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 button:hover {
-    background-color: #C4A8FF;
+  background-color: #c4a8ff;
 }
-

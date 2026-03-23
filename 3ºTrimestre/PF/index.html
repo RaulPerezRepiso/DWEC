@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" href="img/logo.png" type="image/png" />
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css" />
@@ -19,14 +20,24 @@
   <body>
     <!-- HEADER -->
     <header class="header">
-      <h1 class="logo">EFFICIUM PEAK</h1>
+      <!-- IZQUIERDA: LOGO + NOMBRE -->
+      <div class="header-left">
+        <img src="img/logo.png" alt="Efficium Peak" class="logo" />
+        <span class="brand-name">EFFICIUM PEAK</span>
+      </div>
 
+      <!-- CENTRO: MENÚ -->
       <nav class="nav">
         <a href="#">Inicio</a>
         <a href="#">Hábitos</a>
         <a href="#">Retos</a>
         <a href="#">Estadísticas</a>
       </nav>
+
+      <!-- DERECHA: PERFIL / LOGIN -->
+      <div class="header-right">
+        <a href="login.html" class="login-btn">Iniciar sesión</a>
+      </div>
     </header>
 
     <!-- HERO PRINCIPAL -->
@@ -64,5 +75,8 @@
         </div>
       </div>
     </section>
+    <footer class="footer">
+      <p>© 2026 Efficium Peak — Todos los derechos reservados</p>
+    </footer>
   </body>
 </html>
