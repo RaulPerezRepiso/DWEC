@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "titulo": "Beber agua",
+    "descripcion": "Beber 2 vasos de agua por la mañana",
+    "frecuencia": "diario",
+    "completado": []
+  },
+  {
+    "id": 2,
+    "titulo": "Leer 10 minutos",
+    "descripcion": "Leer un libro o artículo",
+    "frecuencia": "diario",
+    "completado": []
+  },
+   {
+    "id": 3,
+    "titulo": "Salir a correr 5km",
+    "descripcion": "Hacer cardio",
+    "frecuencia": "semanal",
+    "completado": []
+  }, {
+    "id": 4,
+    "titulo": "Comer saludable",
+    "descripcion": "Comer 1 o 2 piezas de fruta",
+    "frecuencia": "diario",
+    "completado": []
+  }
+]

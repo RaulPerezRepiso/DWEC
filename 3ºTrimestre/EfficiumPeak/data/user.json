@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "nombre": "Raul",
+    "email": "raul@example.com",
+    "rol": "usuario",
+    "habitos": [1, 2, 3, 4]
+  },
+  {
+    "id": 2,
+    "nombre": "Marcos",
+    "email": "marcos@example.com",
+    "rol": "manager",
+    "habitos": []
+  },
+  {
+    "id": 3,
+    "nombre": "Pepe",
+    "email": "pepe@example.com",
+    "rol": "usuario",
+    "habitos": [1,2]
+  },
+  {
+    "id": 4,
+    "nombre": "Raquel",
+    "email": "raquel@example.com",
+    "rol": "usuario",
+    "habitos": [4]
+  },
+  {
+    "id": 5,
+    "nombre": "Peter",
+    "email": "peter@example.com",
+    "rol": "usuario",
+    "habitos": [3,4]
+  },
+  {
+    "id": 6,
+    "nombre": "Pan",
+    "email": "pan@example.com",
+    "rol": "usuario",
+    "habitos": [1, 3]
+  }
+]
