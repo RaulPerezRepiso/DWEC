@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager · Efficium Peak</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <script type="module" src="./js/main.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark">EP</span>
+        <span>Efficium Peak</span>
+      </a>
+      <button class="icon-button" type="button" data-accion="cerrar-sesion">Salir</button>
+    </header>
+
+    <main class="dashboard">
+      <section class="dashboard-main">
+        <section class="actions-bar">
+          <div class="profile-inline">
+            <span class="avatar">M</span>
+            <div>
+              <strong>Marcos Gómez</strong>
+              <small>Manager · Operaciones</small>
+            </div>
+          </div>
+          <nav class="actions-nav" aria-label="Acciones manager">
+            <a class="active" href="./dashboard-manager.html">Equipo</a>
+            <a href="#retos">Retos</a>
+            <a href="#kpis">KPIs</a>
+            <button type="button" data-accion="abrir-modal-reto" data-id="r001">Crear reto</button>
+          </nav>
+        </section>
+
+        <section class="dashboard-hero manager-hero">
+          <div>
+            <p class="eyebrow">Panel manager</p>
+            <h1>Seguimiento del equipo</h1>
+            <p>Visión clara de hábitos, rachas, retos colaborativos y productividad semanal.</p>
+          </div>
+          <div class="hero-status">
+            <span>3 empleados activos</span>
+            <span>2 retos en curso</span>
+          </div>
+        </section>
+
+        <section class="kpi-grid" id="kpis">
+          <article class="kpi-card strong">
+            <span>Hábitos completados</span>
+            <strong>87%</strong>
+            <small>+12% vs semana anterior</small>
+          </article>
+          <article class="kpi-card">
+            <span>Racha media</span>
+            <strong>9 días</strong>
+            <small>Equipo Operaciones</small>
+          </article>
+          <article class="kpi-card">
+            <span>Retención semanal</span>
+            <strong>76%</strong>
+            <small>Usuarios activos</small>
+          </article>
+        </section>
+
+        <section class="executive-summary">
+          <article>
+            <p class="eyebrow">Resumen ejecutivo</p>
+            <h2>El equipo mantiene una tendencia positiva</h2>
+            <p>La constancia sube en los perfiles con retos colaborativos y baja ligeramente en hábitos de bienestar.</p>
+          </article>
+          <div class="summary-actions">
+            <span>Riesgo bajo</span>
+            <span>3 acciones sugeridas</span>
+          </div>
+        </section>
+
+        <section class="manager-grid">
+          <article class="analytics-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Productividad</p>
+                <h2>Tendencia semanal</h2>
+              </div>
+              <span>Tiempo real</span>
+            </div>
+            <div class="large-chart" aria-label="Gráfico de tendencia semanal">
+              <span class="bar h-45"></span>
+              <span class="bar h-60"></span>
+              <span class="bar h-38"></span>
+              <span class="bar h-82"></span>
+              <span class="bar h-74"></span>
+              <span class="bar h-94"></span>
+              <span class="bar h-70"></span>
+            </div>
+          </article>
+
+          <article class="team-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Equipo</p>
+                <h2>Ranking de constancia</h2>
+              </div>
+            </div>
+            <ul class="team-list">
+              <li><span>RP</span><strong>Raúl Pérez</strong><em>1.250 pts</em></li>
+              <li><span>RM</span><strong>Raquel Martín</strong><em>2.140 pts</em></li>
+              <li><span>PG</span><strong>Paula García</strong><em>980 pts</em></li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="employee-analytics-panel" id="analiticas-empleados">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Analíticas por empleado</p>
+              <h2>Detalle de rendimiento</h2>
+            </div>
+            <span>Simulación live</span>
+          </div>
+          <div class="employee-table" id="tabla-empleados"></div>
+        </section>
+
+        <section id="retos" class="mission-strip">
+          <article>
+            <span class="mission-icon">🏆</span>
+            <div>
+              <strong>Reto colaborativo: Equipo al día</strong>
+              <p>Todo el equipo registra sus hábitos clave durante tres días.</p>
+            </div>
+          </article>
+          <div id="diagnostico-navegador" class="system-status" aria-live="polite"></div>
+        </section>
+
+        <section class="retos-manager-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Retos creados</p>
+              <h2>Asignaciones activas</h2>
+            </div>
+          </div>
+          <div id="retos-manager-lista" class="reto-list"></div>
+        </section>
+
+        <section id="lista-habitos" class="habitos-grid compact-grid"></section>
+
+        <div data-modal="reto" class="modal">
+          <div class="panel challenge-modal">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Nuevo reto</p>
+                <h2>Crear reto para empleados</h2>
+              </div>
+              <button class="icon-button" type="button" data-accion="cerrar-modal">Cerrar</button>
+            </div>
+            <form id="form-reto-manager" class="challenge-form">
+              <label for="reto-titulo">Título del reto</label>
+              <input id="reto-titulo" name="titulo" type="text" value="Sprint de foco semanal">
+              <label for="reto-empleado">Asignar a</label>
+              <select id="reto-empleado" name="empleado">
+                <option value="todos">Todo el equipo</option>
+                <option value="u001">Raúl Pérez</option>
+                <option value="u003">Raquel Martín</option>
+                <option value="u004">Paula García</option>
+              </select>
+              <label for="reto-meta">Meta</label>
+              <input id="reto-meta" name="meta" type="number" min="1" max="30" value="5">
+              <label for="reto-descripcion">Descripción</label>
+              <input id="reto-descripcion" name="descripcion" type="text" value="Completar bloques de trabajo profundo sin interrupciones.">
+              <button class="button full" type="submit">Asignar reto</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

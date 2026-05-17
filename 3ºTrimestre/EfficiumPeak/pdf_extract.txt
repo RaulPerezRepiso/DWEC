@@ -1,0 +1,309 @@
+===== document_pdf.pdf | pages=2 =====
+--- page 1 ---
+Actividades propuestas para el periodo FEOE 25/26 para el 
+módulo de Desarrollo web en entorno cliente (2º GS DAW) 
+ 
+Actividad 
+El alumno/a debe desarrollar un proyecto web que 
+versará sobre un tema de libre elección o que tenga 
+algún interés práctico para la empresa en la que 
+realiza la FEOE: recursos humanos, inventariado 
+de material, facturación, réplica de las aplicaciones 
+que usan en la empresa en modo aplicación web, 
+etc..  
+Requisitos: 
+ 
+● RA2. c), e), f) Se valorará el uso de 
+comentarios, código legible, limpio y modular, 
+así como el uso apropiado de estructuras de 
+control y funciones. 
+● RA3. c), e), f), g)  Uso de objetos nativos de 
+JavaScript (Date, Array, String, Number, 
+Window, Navigator, Location, …) y de sus 
+métodos. También se implementarán objetos 
+y/o arrays de objetos con sus 
+correspondientes propiedades. 
+ 
+Se usarán ventanas auxiliares para mostrar 
+más información al usuario, mostrar otras 
+partes de la aplicación cuando sean 
+necesarias, etc. 
+ 
+RA4. d), g), h) Se implementarán clases para 
+manejar “entidades” que se crean necesarias: 
+usuarios, artículos, 
+ 
+● RA5. d), f)  Uso de, al menos, tres eventos 
+distintos ( por ejemplo, tres eventos click se 
+considera un solo tipo de evento ). Los eventos 
+se asignarán en el código JavaScript y no en 
+HTML. 
+ 
+● RA6. d), e) Creación, modificación, y 
+eliminación dinámica de nodos DOM. 
+ 
+Acceso y modificación de los atributos y a las 
+propiedades de estilo (CSS3) de los 
+elementos del código HTML. 
+ 
+● RA7. e) Se realizarán conexiones asíncronas
+--- page 2 ---
+(al menos 2) al servidor usando fetch. Se 
+tendrá que enviar y recibir datos del servidor en 
+formato JSON. 
+ 
+Se usarán módulos para organizar el código en 
+librerías (p.ej. clases) y web workers para 
+realizar tareas asíncronas. 
+ 
+Uso de variables de almacenamiento web 
+local, de sesión y cookies para almacenar los 
+datos de la sesión actual o de otras sesiones 
+del usuario que se consideren oportunos. 
+ 
+Se hará un control de requerimientos y filtrado 
+de errores de los distintos campos. Para esto se 
+usarán expresiones regulares cuando así se 
+requiera. 
+ 
+ 
+Resultado/s de Aprendizaje y 
+Criterios de Evaluación 
+Este proyecto cubre todos los RA y criterios de 
+evaluación desde el RA2 - RA7. 
+ 
+Para calcular la nota de este proyecto con respecto a 
+los RA desarrollados en el centro, se tendrá en cuenta 
+los requisitos implementados de cada RA y tendrán 
+un peso del 10% del peso total de cada RA asociado. 
+Evaluación 
+En la empresa valorarán el desarrollo de este 
+proyecto como “Superado o No Superado”. 
+ 
+La nota numérica la pondrá el profesor/a titular del 
+módulo de DWEC. Esta nota, si el tutor en centro de 
+formación la ha puesto como “Superado”, tendrá un 
+valor de 5.00 puntos sobre el 10% del valor total. La 
+nota entre 5 y 10 se obtendrá mediante defensa con el 
+profesor/a del proyecto para comprobar si se cubren 
+los requisitos exigidos.
+===== Efficium-Peak.pdf | pages=12 =====
+--- page 1 ---
+Efficium Peak
+Plataforma Web de Productividad Empresarial
+Autor: Raúl Pérez Repiso · Curso: 2025/2026 · Fecha: Mayo 2026
+--- page 2 ---
+Índice de Contenidos
+1Introducción y Objetivos
+2 El Problema y la Solución
+3Público Objetivo
+4 Estudio de la Competencia
+5Ventajas Competitivas
+6 Arquitectura Técnica
+7Modelo de Negocio SaaS
+8 Presupuesto y Fases del Proyecto
+9Diseño UX, Gestión y KPIs
+10 Conclusión
+--- page 3 ---
+Introducción y 
+Objetivos
+Efficium Peak es una plataforma web SaaS Full-Stack orientada a empresas 
+para mejorar el rendimiento, la organización y los hábitos de los empleados 
+mediante microhábitos, retos y misiones, con paneles diferenciados por rol.
+Objetivo General
+Desarrollar una app Full-Stack con paneles diferenciados para empleados, 
+managers y administradores según el plan contratado.
+Competencias Aplicadas
+Arquitectura web completa, metodologías ágiles, Figma, documentación 
+técnica y accesibilidad WCAG.
+--- page 4 ---
+El Problema y la Solución
+El Problema
+Las empresas carecen de hábitos sólidos y medibles
+Los managers no disponen de datos claros de progreso
+Los empleados no tienen herramientas de crecimiento 
+estructurado
+Imposibilidad de medir el rendimiento real del equipo
+La Solución
+Microhábitos diarios, retos semanales y misiones mensuales
+Panel de control para managers con métricas reales
+Gamificación: rachas, niveles y logros
+Retos colaborativos entre equipos y demo gratuita
+--- page 5 ---
+Público Objetivo
+Empresas
+Organizaciones que buscan 
+mejorar el rendimiento y el 
+bienestar de sus equipos de 
+forma medible y escalable.
+Managers y RRHH
+Responsables que necesitan 
+métricas claras y seguimiento 
+del progreso de sus equipos en 
+tiempo real.
+Empleados
+Profesionales que desean 
+mejorar su productividad 
+personal y construir hábitos 
+sostenibles con gamificación.
+Administradores
+Perfiles técnicos encargados 
+de la gestión, configuración y 
+mantenimiento organizativo de 
+la plataforma.
+--- page 6 ---
+Estudio de la Competencia
+Efficium Peak supera a la 
+competencia al combinar 
+enfoque empresarial, 
+gamificación equilibrada y 
+demo gratuita en una 
+única plataforma.
+Competidores analizados: 
+Habitica (gamificación 
+personal), CoachHub 
+(coaching corporativo) y 
+Fabulous (bienestar 
+personal). Ninguno cubre 
+el nicho empresarial 
+completo.
+Funcionalidad Efficium 
+Peak
+Habitica CoachHub Fabulous
+Micro Hábitos diarios ' o o '
+Retos semanales ' ' o '
+Panel para empresas ' o ' o
+Gamificación ' ' ' o
+Retos Colaborativos ' ' o o
+Demo gratuita ' ' o o
+Enfoque empresarial ' o ' o
+--- page 7 ---
+Ventajas Competitivas
+Enfoque Dual Empresa + Empleado
+Beneficio real para la organización y para el individuo de 
+forma simultánea.
+Misiones Inteligentes Adaptativas
+Sistema de misiones que se adapta al rendimiento 
+histórico de cada usuario.
+Panel Avanzado para Managers
+Datos históricos, métricas de equipo y seguimiento de 
+productividad en tiempo real.
+Gamificación Orientada a la Constancia
+Rachas, niveles y logros diseñados para fomentar el hábito 
+sostenido.
+Retos Colaborativos entre Equipos
+Dinámicas grupales que refuerzan la cohesión y el 
+compromiso colectivo.
+Arquitectura Modular y Escalable
+Modelo freemium con demo semanal y flexibilidad por 
+roles.
+--- page 8 ---
+Arquitectura Técnica
+Solución Full-Stack con separación clara de capas, API REST y despliegue en contenedores Docker sobre plataformas cloud.
+Infra & Datos
+PostgreSQL, Docker, 
+Vercel/Railway, Git
+Backend
+Node.js, Express, API REST
+Frontend
+React, HTML5, CSS3, 
+JavaScript ES6
+Autenticación mediante JWT + Bcrypt. Control de versiones con Git Flow simplificado y commits semánticos.
+--- page 9 ---
+Modelo de Negocio SaaS
+Planes Disponibles
+Gratuito: 1 usuario, 1 hábito semanal, dashboard básico 4 
+¬0/siempre
+Individual: seguimiento ilimitado, dashboard de 
+productividad 4 ¬29/mes
+Empresarial: hasta 50 usuarios, dashboard de equipo, 
+integraciones (Slack, Teams) 4 ¬99/mes
+Enterprise: usuarios ilimitados, IA, SSO, personalización 
+completa 4 Precio personalizado
+Costes operativos: infraestructura 10325 ¬/mes · BD 
+5315 ¬/mes · dominio 10315 ¬/año
+0 20 40 60 80 100
+Precio mensual á¬â
+Gratuito
+Individual
+Empresarial
+Plan
+--- page 10 ---
+Presupuesto y Fases del Proyecto
+Presupuesto Estimado
+4.500 ¬ (300 h × 15 ¬/h) · Mantenimiento mensual: 90 - 190 ¬
+Planificación Ágil 4 7 Fases en 9 Semanas
+S1 · Análisis y 
+Diseño
+Requisitos, 
+arquitectura, Figma S2 · BD y 
+Endpoints
+Modelo ER, 
+PostgreSQL
+S33S4 · Backend
+API REST, JWT, lógica 
+hábitos
+S53S6 · 
+Frontend
+Pantallas, paneles, 
+responsive
+S7 · Integración 
+y Demo
+Conexión full-stack, 
+demo S8 · Pruebas y 
+Optimización
+QA, rendimiento, 
+accesibilidad
+S9 · Despliegue 
+y 
+Documentación
+Docker, cloud, docs 
+finales
+Frontend Developer · 40%
+Backend Developer · 40%
+Database Admin · 10%
+QA / Tester · 5%
+Project Manager · 5%
+--- page 11 ---
+Diseño UX, Gestión y KPIs
+Diseño UX / Prototipo Figma
+Interfaz limpia y minimalista, navegación 
+por roles, responsive y WCAG AA. Paneles: 
+empleado (hábitos, rachas, misiones), 
+manager (métricas, productividad) y 
+páginas públicas (landing, precios, login).
+Ver prototipo Figma ³
+Gestión Ágil del Proyecto
+Sprints semanales con backlog priorizado. 
+Herramientas: GitHub Projects, Figma, 
+Notion. Git Flow: ramas 
+main, dev, 
+feature/, hotfix/. Commits semánticos 
+(feat:, fix:, docs:). Incidencias con GitHub 
+Issues.
+7
+KPIs Principales
+Hábitos completados, retención semanal/mensual, empresas activas, tiempo medio de uso diario, retos y misiones completadas, 
+rachas activas por usuario y tasa de conversión demo ³ plan empresarial.
+--- page 12 ---
+Conclusión
+Efficium Peak se posiciona como la solución definitiva para optimizar el rendimiento y bienestar de los equipos empresariales, 
+combinando tecnología avanzada con un enfoque humano.
+Visión 360° del Negocio
+Una plataforma integral, robusta y 
+escalable, diseñada para adaptarse a 
+las necesidades de cualquier 
+organización.
+Propuesta de Valor Única
+Fusiona gamificación efectiva, un claro 
+enfoque empresarial y accesibilidad 
+con una demo gratuita para una 
+adopción sin barreras.
+Futuro de Crecimiento
+Un catalizador para la productividad, la 
+retención de talento y el crecimiento 
+sostenible en el dinámico panorama 
+actual.
+Efficium Peak: Impulsando el 
+potencial humano, transformando 
+el rendimiento empresarial.

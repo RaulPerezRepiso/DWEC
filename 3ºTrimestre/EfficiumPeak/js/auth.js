@@ -1,14 +1,9 @@
-export class Usuario {
-    constructor(id, nombre, email, rol = "usuario", habitos = []) {
-        this.id = id;
-        this.nombre = nombre;
-        this.email = email;
-        this.rol = rol; // Designar usuario o manager
-        this.habitos = habitos; // Número de id del hábito
-    }
+/**
+ * @file auth.js
+ * @description Compatibilidad con clases y autenticación de Efficium Peak
+ * @author Raúl Pérez Repiso
+ * @version 1.0.0
+ */
 
-    //Asigna un hábito a la id de un usuario
-    asignarHabito(habitoId) {
-        this.habitos.push(habitoId);
-    }
-}
+export { Usuario, Empleado, Manager } from './classes/Usuario.js';
+export { iniciarSesion, iniciarSesionBiometrico, cerrarSesion, redirigirSegunRol, obtenerInfoNavegador } from './modules/auth.js';

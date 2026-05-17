@@ -1,18 +1,8 @@
-export class Estadisticas {
-    constructor(usuarioId, semana, habitosCompletados = 0, racha = 0) {
-        this.usuarioId = usuarioId;
-        this.semana = semana;
-        this.habitosCompletados = habitosCompletados;
-        this.racha = racha;
-    }
+/**
+ * @file stats.js
+ * @description Compatibilidad con estadísticas y gamificación de Efficium Peak
+ * @author Raúl Pérez Repiso
+ * @version 1.0.0
+ */
 
-    //Sumar hábito completo
-    incrementarHabitos() {
-        this.habitosCompletados++;
-    }
-
-    //Sumar racha si es seguida
-    incrementarRacha() {
-        this.racha++;
-    }
-}
+export { calcularNivel, calcularEstadisticasAsync } from './modules/gamificacion.js';

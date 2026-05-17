@@ -1,29 +1,50 @@
 [
   {
-    "id": 1,
-    "titulo": "Beber agua",
-    "descripcion": "Beber 2 vasos de agua por la mañana",
-    "frecuencia": "diario",
-    "completado": []
+    "id": "h001",
+    "titulo": "Hidratación matutina",
+    "descripcion": "Bebe un vaso de agua al despertar",
+    "tipo": "diario",
+    "puntos": 50,
+    "icono": "💧"
   },
   {
-    "id": 2,
-    "titulo": "Leer 10 minutos",
-    "descripcion": "Leer un libro o artículo",
-    "frecuencia": "diario",
-    "completado": []
+    "id": "h002",
+    "titulo": "Lectura 20 minutos",
+    "descripcion": "Lee sobre tu sector profesional",
+    "tipo": "diario",
+    "puntos": 75,
+    "icono": "📚"
   },
-   {
-    "id": 3,
-    "titulo": "Salir a correr 5km",
-    "descripcion": "Hacer cardio",
-    "frecuencia": "semanal",
-    "completado": []
-  }, {
-    "id": 4,
-    "titulo": "Comer saludable",
-    "descripcion": "Comer 1 o 2 piezas de fruta",
-    "frecuencia": "diario",
-    "completado": []
+  {
+    "id": "h003",
+    "titulo": "Ejercicio físico",
+    "descripcion": "30 minutos de actividad física moderada",
+    "tipo": "diario",
+    "puntos": 100,
+    "icono": "🏃"
+  },
+  {
+    "id": "h004",
+    "titulo": "Meditación",
+    "descripcion": "10 minutos de mindfulness o respiración consciente",
+    "tipo": "diario",
+    "puntos": 60,
+    "icono": "🧘"
+  },
+  {
+    "id": "r001",
+    "titulo": "5 días de hábitos completos",
+    "descripcion": "Completa todos tus hábitos diarios durante 5 días seguidos",
+    "tipo": "semanal",
+    "puntos": 200,
+    "icono": "🏆"
+  },
+  {
+    "id": "m001",
+    "titulo": "Misión: Equilibrio total",
+    "descripcion": "Combina enfoque, descanso y bienestar durante todo el mes",
+    "tipo": "mensual",
+    "puntos": 800,
+    "icono": "⚡"
   }
 ]

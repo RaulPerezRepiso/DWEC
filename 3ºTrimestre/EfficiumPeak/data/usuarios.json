@@ -1,0 +1,33 @@
+[
+  {
+    "id": "u001",
+    "nombre": "Raúl Pérez",
+    "email": "raul@example.com",
+    "rol": "empleado",
+    "puntos": 1250,
+    "racha": 6,
+    "nivel": 2,
+    "habitosCompletados": []
+  },
+  {
+    "id": "u002",
+    "nombre": "Marcos Gómez",
+    "email": "marcos@example.com",
+    "rol": "manager",
+    "departamento": "Operaciones",
+    "puntos": 3200,
+    "racha": 12,
+    "nivel": 4,
+    "habitosCompletados": []
+  },
+  {
+    "id": "u003",
+    "nombre": "Raquel Martín",
+    "email": "raquel@example.com",
+    "rol": "empleado",
+    "puntos": 2140,
+    "racha": 9,
+    "nivel": 3,
+    "habitosCompletados": []
+  }
+]

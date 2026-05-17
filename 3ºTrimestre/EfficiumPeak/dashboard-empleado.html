@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleado · Efficium Peak</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <script type="module" src="./js/main.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark">EP</span>
+        <span>Efficium Peak</span>
+      </a>
+      <button class="icon-button" type="button" data-accion="cerrar-sesion">Salir</button>
+    </header>
+
+    <main class="dashboard">
+      <section class="dashboard-main">
+        <section class="actions-bar">
+          <div class="profile-inline">
+            <span class="avatar">R</span>
+            <div>
+              <strong>Raúl Pérez</strong>
+              <small>Empleado · Operaciones</small>
+            </div>
+          </div>
+          <nav class="actions-nav" aria-label="Acciones empleado">
+            <a class="active" href="./dashboard-empleado.html">Hábitos</a>
+            <a href="#misiones">Misiones</a>
+            <a href="#racha">Racha</a>
+            <button id="btn-guardar" type="button" data-accion="ver-historial" data-id="u001">Ver historial</button>
+          </nav>
+        </section>
+
+        <section class="dashboard-hero">
+          <div>
+            <p class="eyebrow">Panel empleado</p>
+            <h1>Hábitos de rendimiento</h1>
+            <p>Completa acciones diarias, suma puntos y mantén tu racha activa.</p>
+          </div>
+          <select id="filtro-habitos" aria-label="Filtrar hábitos">
+            <option value="todos">Todos</option>
+            <option value="diario">Diarios</option>
+            <option value="semanal">Semanales</option>
+            <option value="mensual">Mensuales</option>
+          </select>
+        </section>
+
+        <section class="kpi-grid" id="racha">
+          <article class="kpi-card">
+            <span>Racha actual</span>
+            <strong>6 días</strong>
+            <small>Constancia semanal</small>
+          </article>
+          <article class="kpi-card">
+            <span>Nivel</span>
+            <strong>Aprendiz</strong>
+            <small>1.250 puntos</small>
+          </article>
+          <article class="kpi-card">
+            <span>Retos activos</span>
+            <strong>2</strong>
+            <small>1 colaborativo</small>
+          </article>
+        </section>
+
+        <section class="insight-row">
+          <article class="insight-card">
+            <div>
+              <p class="eyebrow">Siguiente logro</p>
+              <h2>Constancia de 7 días</h2>
+              <p>Completa dos hábitos más hoy para desbloquear el bonus semanal.</p>
+            </div>
+            <span class="score-ring">86%</span>
+          </article>
+          <article class="insight-card accent-card">
+            <div>
+              <p class="eyebrow">Recomendación</p>
+              <h2>Bloque de foco</h2>
+              <p>Agenda 25 minutos sin interrupciones antes de cerrar la mañana.</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="progress-box">
+          <div>
+            <strong>Progreso de hoy</strong>
+            <span id="contador-habitos">0/0 completados</span>
+          </div>
+          <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+            <div id="barra-progreso"></div>
+          </div>
+        </section>
+
+        <section class="api-suggestion" id="habito-dia-api">
+          <div>
+            <p class="eyebrow">API externa</p>
+            <h2>Hábito sugerido del día</h2>
+            <p>Cargando recomendación externa...</p>
+          </div>
+          <span class="api-badge">Advice Slip API</span>
+        </section>
+
+        <section id="lista-habitos" class="habitos-grid"></section>
+
+        <section id="misiones" class="mission-strip">
+          <article>
+            <span class="mission-icon">⚡</span>
+            <div>
+              <strong>Misión: Equilibrio total</strong>
+              <p>Combina enfoque, descanso y bienestar durante todo el mes.</p>
+            </div>
+          </article>
+          <span class="mission-pill">Misión mensual activa</span>
+        </section>
+
+        <section class="retos-manager-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Retos asignados</p>
+              <h2>Objetivos enviados por tu manager</h2>
+            </div>
+            <span>Operaciones</span>
+          </div>
+          <div id="retos-empleado-lista" class="reto-list"></div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

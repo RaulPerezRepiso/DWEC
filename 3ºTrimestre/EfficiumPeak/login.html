@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login · Efficium Peak</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <script type="module" src="./js/main.js"></script>
+  </head>
+  <body class="auth-page">
+    <main class="auth-layout">
+      <section class="auth-copy">
+        <a class="brand" href="./index.html">
+          <span class="brand-mark">EP</span>
+          <span>Efficium Peak</span>
+        </a>
+        <p class="eyebrow">Acceso por rol</p>
+        <h1>Tu centro de hábitos, retos y rendimiento.</h1>
+        <p class="lead">Entra como empleado para completar hábitos o como manager para revisar métricas del equipo.</p>
+        <div class="login-hints">
+          <span>raul@example.com</span>
+          <span>marcos@example.com</span>
+          <span>Password1</span>
+        </div>
+      </section>
+
+      <form id="form-login" class="panel form-panel" novalidate>
+        <p class="eyebrow">Demo privada</p>
+        <h2>Iniciar sesión</h2>
+        <label for="input-email">Email corporativo</label>
+        <input id="input-email" name="email" type="email" autocomplete="email" placeholder="raul@example.com">
+        <p id="error-email" class="campo-error"></p>
+        <label for="input-password">Contraseña</label>
+        <input id="input-password" name="password" type="password" autocomplete="current-password" placeholder="Password1">
+        <p id="error-password" class="campo-error"></p>
+        <p id="error-general" class="campo-error"></p>
+        <button class="button full" type="submit">Entrar a Efficium Peak</button>
+        <div class="divider"><span>o</span></div>
+        <button class="biometric-button" type="button" data-accion="login-biometrico">
+          <span class="biometric-icon">◎</span>
+          <span>Acceder con Face ID / passkey</span>
+        </button>
+        <p class="auth-note">En web se usa WebAuthn: el dispositivo decide si valida con Face ID, Windows Hello, Touch ID o PIN.</p>
+      </form>
+    </main>
+  </body>
+</html>

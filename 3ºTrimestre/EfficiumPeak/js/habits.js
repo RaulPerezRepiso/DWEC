@@ -1,14 +1,22 @@
-export class Habito {
-    constructor(id, titulo, descripcion, frecuencia = "diario", completado = []) {
-        this.id = id;
-        this.titulo = titulo;
-        this.descripcion = descripcion;
-        this.frecuencia = frecuencia; // frecuencia con la que hacer el hábito
-        this.completado = completado; // array de hábitos completados con la fecha del día que se completo
-    }
+/**
+ * @file habits.js
+ * @description Compatibilidad con hábitos de Efficium Peak
+ * @author Raúl Pérez Repiso
+ * @version 1.0.0
+ */
 
-    //Marcar como hábito y guardar la fecha
-    marcarComoCompletado(fecha) {
-        this.completado.push(fecha);
-    }
-}
+export { Habito } from './classes/Habito.js';
+export {
+  calcularRacha,
+  formatearFecha,
+  filtrarPorTipo,
+  buscarHabitoPorId,
+  calcularPorcentajeCompletados,
+  obtenerTopEmpleados,
+  calcularTotalPuntos,
+  habitosAFormatoUI,
+  cargarHabitos,
+  renderizarHabitos,
+  completarHabito,
+  obtenerHabitosActuales
+} from './modules/habitos.js';

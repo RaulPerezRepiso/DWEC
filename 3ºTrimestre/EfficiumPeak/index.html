@@ -1,9 +1,100 @@
 <!doctype html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EfficiumPeak</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efficium Peak</title>
+    <link rel="stylesheet" href="./css/styles.css">
   </head>
-  <body></body>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark">EP</span>
+        <span>Efficium Peak</span>
+      </a>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <a href="#solucion">Solución</a>
+        <a href="#planes">Planes</a>
+        <a href="./login.html">Login</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero hero-saas">
+        <div class="hero-copy">
+          <p class="eyebrow">Plataforma Web de Productividad Empresarial</p>
+          <h1>Efficium Peak</h1>
+          <p class="lead">Microhábitos, retos y misiones para convertir el rendimiento del equipo en métricas claras, accionables y sostenibles.</p>
+          <div class="hero-actions">
+            <a class="button" href="./login.html">Probar demo</a>
+            <a class="ghost-button" href="./dashboard-manager.html">Ver panel manager</a>
+          </div>
+        </div>
+        <div class="product-frame" aria-label="Vista previa de la plataforma">
+          <div class="mini-topbar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="preview-grid">
+            <article class="metric-card strong">
+              <span>Hábitos completados</span>
+              <strong>87%</strong>
+              <small>+12% esta semana</small>
+            </article>
+            <article class="metric-card">
+              <span>Racha activa</span>
+              <strong>14 días</strong>
+              <small>Equipo Operaciones</small>
+            </article>
+            <article class="preview-chart">
+              <span class="bar h-70"></span>
+              <span class="bar h-45"></span>
+              <span class="bar h-88"></span>
+              <span class="bar h-62"></span>
+              <span class="bar h-94"></span>
+            </article>
+            <article class="mission-card">
+              <span class="mission-icon">⚡</span>
+              <div>
+                <strong>Misión: Equilibrio total</strong>
+                <small>Progreso mensual 68%</small>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="solucion" class="section-grid">
+        <article>
+          <p class="eyebrow">El problema</p>
+          <h2>Hábitos invisibles, rendimiento difícil de medir</h2>
+          <p>Los managers necesitan datos claros y los empleados necesitan una guía simple para construir constancia sin perder foco.</p>
+        </article>
+        <article class="feature-list">
+          <div><strong>Microhábitos diarios</strong><span>Acciones pequeñas con impacto medible.</span></div>
+          <div><strong>Retos semanales</strong><span>Dinámicas individuales y colaborativas.</span></div>
+          <div><strong>Paneles por rol</strong><span>Empleado y manager con información relevante.</span></div>
+        </article>
+      </section>
+
+      <section id="planes" class="plans">
+        <article class="plan-card">
+          <span>Demo</span>
+          <strong>0€</strong>
+          <p>Un usuario y dashboard básico para presentar el flujo.</p>
+        </article>
+        <article class="plan-card highlighted">
+          <span>Empresarial</span>
+          <strong>99€/mes</strong>
+          <p>Equipo, métricas, retos y seguimiento de productividad.</p>
+        </article>
+        <article class="plan-card">
+          <span>Enterprise</span>
+          <strong>A medida</strong>
+          <p>Personalización y analítica avanzada para grandes equipos.</p>
+        </article>
+      </section>
+    </main>
+  </body>
 </html>
