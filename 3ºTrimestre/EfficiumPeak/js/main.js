@@ -1,9 +1,11 @@
 // Importamos aquí toda la lógica principal que luego se reparte entre login, paneles y utilidades.
 import { iniciarSesion, iniciarSesionFacialDemo, cerrarSesion, redirigirSegunRol } from './modulos/auth.js';
 import { cargarHabitos, renderizarHabitos, completarHabito } from './modulos/habitos.js';
-import { mostrarNotificacion, createNode } from './modulos/dom.js';
+import { mostrarNotificacion, createNode, abrirHistorialUsuario } from './modulos/dom.js';
 import { obtenerHabitoDia, guardarProgresoServidor, cargarUsuarios } from './modulos/api.js';
 import { validarEmail, validarPassword } from './modulos/validacion.js';
+import { Empleado, Manager } from './clases/Usuario.js';
+import { Reto } from './clases/Reto.js';
 import {
   obtenerEmailRecordado,
   obtenerHabitosUsuario,
@@ -82,6 +84,7 @@ function calcularResumenUsuario(usuarioId) {
   const usuarioBase = obtenerUsuarioBase(usuarioId);
   if (!usuarioBase) return null;
 
+  //Todas las constantes necesarias para guardar puntos, habitos, rachas, progeso...
   const habitosGuardados = obtenerHabitosUsuario(usuarioId);
   const habitosCompletados = habitosGuardados.filter((habito) => habito.completado);
   const puntosGanados = habitosCompletados.reduce((total, habito) => total + Number(habito.puntos ?? 0), 0);
@@ -105,7 +108,8 @@ function calcularResumenUsuario(usuarioId) {
 }
 
 /**
- * Mezcla el usuario base con el resumen real guardado en localStorage.
+ * Mezcla el usuario base con el resumen real guardado en localStorage. 
+ * (para poder actualizar datos dependiendo de lo guardado o marcado)
  * @param {Object} usuario - Usuario base del JSON.
  * @returns {Object} Empleado listo para pintar en manager.
  */
@@ -114,21 +118,7 @@ function crearEmpleadoSistemaDesdeUsuario(usuario) {
   const resumen = resumenGuardado ?? calcularResumenUsuario(usuario.id);
   if (!resumenGuardado && resumen) guardarResumenUsuario(usuario.id, resumen);
   const puntos = Number(resumen?.puntosTotales ?? usuario.puntos ?? 0);
-  const racha = Number(resumen?.racha ?? usuario.racha ?? 0);
-  const habitos = Number(resumen?.habitosCompletados ?? usuario.habitosCompletados?.length ?? 0);
-  const progreso = Number(resumen?.progreso ?? usuario.progreso ?? 0);
-
-  return {
-    id: usuario.id,
-    iniciales: crearIniciales(usuario.nombre),
-    nombre: usuario.nombre,
-    rol: 'Empleado',
-    puntos,
-    racha,
-    habitos,
-    progreso,
-    riesgo: obtenerRiesgoPorPuntos(puntos)
-  };
+  return new Empleado(usuario, resumen, obtenerRiesgoPorPuntos(puntos)).toPanelData();
 }
 
 /**
@@ -140,6 +130,7 @@ function sincronizarResumenUsuario(usuarioId) {
   const resumen = calcularResumenUsuario(usuarioId);
   if (!resumen) return null;
 
+  //Guadamos el usuario
   guardarResumenUsuario(usuarioId, resumen);
   empleadosSistema = empleadosSistema.map((empleado) => (
     empleado.id === usuarioId
@@ -154,6 +145,7 @@ function sincronizarResumenUsuario(usuarioId) {
       : empleado
   ));
 
+  //Actualizamos la sesión
   const sesion = obtenerSesionActiva();
   if (sesion?.id === usuarioId) {
     sessionStorage.setItem('sesion_usuario', JSON.stringify({
@@ -277,6 +269,7 @@ function crearRetosInicialesDinamicos() {
   const empleados = obtenerEmpleadosSistema();
   if (empleados.length === 0) return [];
 
+  //Devuelve los 2 retos con los que empieza el manager
   return [
     {
       id: 'reto-base-equipo',
@@ -322,7 +315,7 @@ function renderizarDashboardDinamicoSiProcede() {
 }
 
 /**
- * Recupera la sesión activa desde sessionStorage.
+ * Recupera la sesión activa desde sessionStorage con todos los datos 
  * @returns {Object|null} Usuario autenticado o null.
  */
 function obtenerSesionActiva() {
@@ -423,6 +416,7 @@ function crearMainDashboard(usuario) {
  * @returns {HTMLElement} Contenido del panel empleado.
  */
 function crearPanelEmpleado(usuario) {
+  //Crear todas las constantes y nodos necesarios para hacer las vista de usuario
   const fragment = document.createDocumentFragment();
   const nombre = usuario.nombre ?? 'Empleado';
   const inicial = nombre.charAt(0).toUpperCase();
@@ -437,7 +431,15 @@ function crearPanelEmpleado(usuario) {
   const perfilInfo = createNode('div');
   perfilInfo.append(createNode('strong', nombre), createNode('small', `${capitalizarRol(usuario.rol)} · Operaciones`));
   perfil.append(avatar, perfilInfo);
-  acciones.appendChild(perfil);
+  const accionesNav = createNode('nav');
+  accionesNav.classList.add('actions-nav');
+  accionesNav.setAttribute('aria-label', 'Acciones empleado');
+  const botonHistorial = createNode('button', 'Ver historial');
+  botonHistorial.type = 'button';
+  botonHistorial.dataset.accion = 'ver-historial';
+  botonHistorial.dataset.id = usuario.id;
+  accionesNav.appendChild(botonHistorial);
+  acciones.append(perfil, accionesNav);
 
   const hero = createNode('section');
   hero.classList.add('dashboard-hero');
@@ -571,8 +573,10 @@ function crearPanelEmpleado(usuario) {
  * @returns {HTMLElement} Contenido del panel manager.
  */
 function crearPanelManager(usuario) {
+  //Todas las constantes y nodos necesarios para crear la vista de manager
   const fragment = document.createDocumentFragment();
-  const nombre = usuario.nombre ?? 'Manager';
+  const manager = new Manager(usuario, obtenerEmpleadosSistema());
+  const nombre = manager.nombre ?? 'Manager';
   const inicial = nombre.charAt(0).toUpperCase();
 
   const acciones = createNode('section');
@@ -597,7 +601,7 @@ function crearPanelManager(usuario) {
   const heroStatus = createNode('div');
   heroStatus.classList.add('hero-status');
   heroStatus.append(
-    createNode('span', `${obtenerEmpleadosSistema().length} empleados activos`),
+    createNode('span', `${manager.obtenerTotalEquipo()} empleados activos`),
     createNode('span', `${obtenerRetos().length} retos en curso`)
   );
   hero.append(heroCopy, heroStatus);
@@ -667,7 +671,7 @@ function crearPanelManager(usuario) {
   retosLista.classList.add('reto-list');
   retosPanel.append(retosHeader, editorReto, retosLista);
 
-  fragment.append(acciones, hero, kpis, resumen, managerGrid, analiticas, missionStrip, retosPanel);
+  fragment.append(acciones, hero, kpis, resumen, managerGrid, analiticas, retosPanel);
 
   const wrapper = createNode('div');
   wrapper.id = 'dashboard-manager-dinamico';
@@ -878,12 +882,37 @@ function manejarClicksGlobales(e) {
     'login-facial-demo': () => iniciarAccesoFacialDemo(),
     'confirmar-facial-demo': () => confirmarAccesoFacialDemo(),
     'cancelar-facial-demo': () => cancelarAccesoFacialDemo(),
+    'ver-historial': () => abrirHistorialUsuarioActual(id),
     'editar-reto': () => abrirEdicionReto(id),
     'cancelar-edicion-reto': () => cancelarEdicionReto(),
     'guardar-edicion-reto': () => guardarEdicionReto(id),
     'cerrar-sesion': () => cerrarSesion()
   };
   acciones[accion]?.();
+}
+
+/**
+ * Abre una ventana auxiliar con historial, habitos y retos del usuario activo.
+ * @param {string} usuarioId - Identificador del usuario mostrado.
+ * @returns {void}
+ */
+function abrirHistorialUsuarioActual(usuarioId) {
+  const usuario = obtenerSesionActiva();
+  const empleadoId = usuarioId || usuario?.id || 'u001';
+  const resumen = sincronizarResumenUsuario(empleadoId);
+  const habitos = obtenerHabitosUsuario(empleadoId);
+  const retos = obtenerRetos()
+    .map((reto) => new Reto(reto))
+    .filter((reto) => reto.perteneceA(empleadoId))
+    .map((reto) => enriquecerRetoEmpleado(reto.toJSON(), empleadoId));
+
+  abrirHistorialUsuario({
+    usuario: usuario ?? obtenerUsuarioBase(empleadoId) ?? { id: empleadoId, nombre: 'Empleado', email: '', rol: 'empleado' },
+    resumen,
+    habitos,
+    retos,
+    nivel: obtenerNivelPorPuntos(resumen?.puntosTotales ?? usuario?.puntos ?? 0)
+  });
 }
 
 /**
@@ -1296,14 +1325,14 @@ function enriquecerRetoEmpleado(reto, empleadoId) {
     return {
       ...reto,
       progreso: Math.min(reto.meta, reto.progreso + diasConsecutivos),
-      descripcion: 'Avanza cada día seguido en el que completas al menos un hábito.'
+      descripcion: 'Registrar los hábitos clave durante tres días seguidos.'
     };
   }
 
   return {
     ...reto,
     progreso: Math.min(reto.meta, reto.progreso + avanceHoy),
-    descripcion: 'Suma 1 por cada hábito grande de 200 puntos o más completados en el día.'
+    descripcion: 'Completar cinco bloques de trabajo profundo esta semana.'
   };
 }
 
@@ -1399,6 +1428,7 @@ function renderizarListaRetos(contenedor, retos, mostrarAsignado, editable = fal
  * @returns {HTMLElement} Tarjeta creada.
  */
 function crearTarjetaReto(reto, mostrarAsignado, editable = false) {
+  //Constantes y nodos para la tarjeta de retos
   const card = createNode('article');
   const porcentaje = Math.min(100, Math.round((reto.progreso / reto.meta) * 100));
   card.classList.add('reto-card');
@@ -1442,7 +1472,8 @@ function crearTarjetaReto(reto, mostrarAsignado, editable = false) {
 function obtenerRetos() {
   // Si ya había retos guardados de antes, se recuperan esos en vez de empezar siempre desde cero.
   const raw = localStorage.getItem('efficium_retos_manager');
-  return raw ? JSON.parse(raw) : crearRetosInicialesDinamicos();
+  const retos = raw ? JSON.parse(raw) : crearRetosInicialesDinamicos();
+  return retos.map((reto) => new Reto(reto).toJSON());
 }
 
 /**

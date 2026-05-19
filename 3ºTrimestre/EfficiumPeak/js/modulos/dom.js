@@ -195,3 +195,192 @@ export function toggleSpinner(visible) {
     spinner.remove();
   }
 }
+
+/**
+ * Abre una ventana auxiliar con el historial completo del usuario activo.
+ * @param {Object} datos - Datos ya calculados para pintar el historial.
+ * @returns {void}
+ */
+export function abrirHistorialUsuario(datos) {
+  const ventana = window.open('', `historial_${datos.usuario.id}`, 'width=760,height=680,scrollbars=yes,resizable=yes');
+  if (!ventana) {
+    mostrarNotificacion('El navegador ha bloqueado la ventana de historial', 'error');
+    return;
+  }
+
+  const doc = ventana.document;
+  doc.title = `Historial de ${datos.usuario.nombre}`;
+  doc.documentElement.lang = 'es';
+  doc.head.innerHTML = '';
+  doc.body.innerHTML = '';
+  doc.head.appendChild(crearHojaEstilosHistorial(doc));
+
+  doc.body.append(
+    crearNodoHistorial(doc, 'h1', `Historial de ${datos.usuario.nombre}`),
+    crearNodoHistorial(doc, 'p', `${datos.usuario.email} - ${datos.usuario.rol}`),
+    crearKPIsHistorial(doc, datos),
+    crearNodoHistorial(doc, 'h2', 'Habitos del usuario'),
+    crearTablaHabitosHistorial(doc, datos.habitos),
+    crearNodoHistorial(doc, 'h2', 'Retos y misiones asignadas'),
+    crearGridRetosHistorial(doc, datos.retos)
+  );
+}
+
+/**
+ * Crea un nodo dentro de la ventana auxiliar.
+ * @param {Document} doc - Documento de la ventana auxiliar.
+ * @param {string} tipo - Etiqueta HTML.
+ * @param {string} texto - Texto visible.
+ * @param {string} [clase] - Clase CSS opcional.
+ * @returns {HTMLElement} Nodo creado.
+ */
+function crearNodoHistorial(doc, tipo, texto, clase = '') {
+  const nodo = doc.createElement(tipo);
+  nodo.textContent = texto;
+  if (clase) nodo.classList.add(clase);
+  return nodo;
+}
+
+/**
+ * Carga la hoja de estilos propia de la ventana auxiliar.
+ * @param {Document} doc - Documento de la ventana auxiliar.
+ * @returns {HTMLLinkElement} Enlace a la hoja de estilos.
+ */
+function crearHojaEstilosHistorial(doc) {
+  const link = doc.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = new URL('./css/historial.css', window.location.href).href;
+  return link;
+}
+
+/**
+ * Crea las tarjetas resumen del historial.
+ * @param {Document} doc - Documento de la ventana auxiliar.
+ * @param {Object} datos - Datos del usuario.
+ * @returns {HTMLElement} Contenedor de KPIs.
+ */
+function crearKPIsHistorial(doc, datos) {
+  const kpis = doc.createElement('section');
+  kpis.classList.add('kpis');
+  kpis.append(
+    crearKPIHistorial(doc, 'Puntos', Number(datos.resumen?.puntosTotales ?? datos.usuario.puntos ?? 0)),
+    crearKPIHistorial(doc, 'Racha', `${Number(datos.resumen?.racha ?? datos.usuario.racha ?? 0)} dias`),
+    crearKPIHistorial(doc, 'Nivel', datos.nivel),
+    crearKPIHistorial(doc, 'Habitos completados', Number(datos.resumen?.habitosCompletados ?? 0))
+  );
+  return kpis;
+}
+
+/**
+ * Crea una tarjeta KPI de la ventana auxiliar.
+ * @param {Document} doc - Documento de la ventana auxiliar.
+ * @param {string} titulo - Nombre de la metrica.
+ * @param {string|number} valor - Valor de la metrica.
+ * @returns {HTMLElement} Tarjeta KPI.
+ */
+function crearKPIHistorial(doc, titulo, valor) {
+  const article = doc.createElement('article');
+  article.classList.add('kpi');
+  article.append(
+    crearNodoHistorial(doc, 'span', titulo),
+    crearNodoHistorial(doc, 'strong', String(valor))
+  );
+  return article;
+}
+
+/**
+ * Crea la tabla de habitos del historial.
+ * @param {Document} doc - Documento de la ventana auxiliar.
+ * @param {Array<Object>} habitos - Habitos del usuario.
+ * @returns {HTMLTableElement} Tabla creada.
+ */
+function crearTablaHabitosHistorial(doc, habitos) {
+  const table = doc.createElement('table');
+  const thead = doc.createElement('thead');
+  const tbody = doc.createElement('tbody');
+  const header = doc.createElement('tr');
+
+  ['Habito', 'Tipo', 'Puntos', 'Estado', 'Fecha'].forEach((texto) => {
+    header.appendChild(crearNodoHistorial(doc, 'th', texto));
+  });
+  thead.appendChild(header);
+
+  if (habitos.length === 0) {
+    const fila = doc.createElement('tr');
+    const celda = crearNodoHistorial(doc, 'td', 'Sin habitos cargados');
+    celda.colSpan = 5;
+    fila.appendChild(celda);
+    tbody.appendChild(fila);
+  } else {
+    habitos.forEach((habito) => tbody.appendChild(crearFilaHabitoHistorial(doc, habito)));
+  }
+
+  table.append(thead, tbody);
+  return table;
+}
+
+/**
+ * Crea una fila para un habito del historial.
+ * @param {Document} doc - Documento de la ventana auxiliar.
+ * @param {Object} habito - Habito a mostrar.
+ * @returns {HTMLTableRowElement} Fila creada.
+ */
+function crearFilaHabitoHistorial(doc, habito) {
+  const fila = doc.createElement('tr');
+  const fecha = habito.fechaCompletado ? new Date(habito.fechaCompletado).toLocaleDateString('es-ES') : '-';
+  [
+    habito.titulo,
+    habito.tipo,
+    `${Number(habito.puntos ?? 0)} pts`,
+    habito.completado ? 'Completado' : 'Pendiente',
+    fecha
+  ].forEach((texto) => fila.appendChild(crearNodoHistorial(doc, 'td', texto)));
+  return fila;
+}
+
+/**
+ * Crea el contenedor de retos de la ventana auxiliar.
+ * @param {Document} doc - Documento de la ventana auxiliar.
+ * @param {Array<Object>} retos - Retos del usuario.
+ * @returns {HTMLElement} Contenedor de tarjetas.
+ */
+function crearGridRetosHistorial(doc, retos) {
+  const grid = doc.createElement('section');
+  grid.classList.add('grid');
+
+  if (retos.length === 0) {
+    const card = doc.createElement('article');
+    card.classList.add('card');
+    card.append(
+      crearNodoHistorial(doc, 'strong', 'Sin retos activos'),
+      crearNodoHistorial(doc, 'p', 'No hay retos asignados.')
+    );
+    grid.appendChild(card);
+    return grid;
+  }
+
+  retos.forEach((reto) => grid.appendChild(crearTarjetaRetoHistorial(doc, reto)));
+  return grid;
+}
+
+/**
+ * Crea una tarjeta de reto para el historial.
+ * @param {Document} doc - Documento de la ventana auxiliar.
+ * @param {Object} reto - Reto a mostrar.
+ * @returns {HTMLElement} Tarjeta creada.
+ */
+function crearTarjetaRetoHistorial(doc, reto) {
+  const card = doc.createElement('article');
+  const progress = doc.createElement('progress');
+  progress.max = Number(reto.meta);
+  progress.value = Number(reto.progreso);
+  card.classList.add('card');
+  card.append(
+    crearNodoHistorial(doc, 'span', reto.empleadoNombre ?? 'Todo el equipo'),
+    crearNodoHistorial(doc, 'strong', reto.titulo),
+    crearNodoHistorial(doc, 'p', reto.descripcion),
+    progress,
+    crearNodoHistorial(doc, 'small', `${Number(reto.progreso)}/${Number(reto.meta)} acciones`)
+  );
+  return card;
+}

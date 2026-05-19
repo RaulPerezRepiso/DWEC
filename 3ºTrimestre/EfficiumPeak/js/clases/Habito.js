@@ -60,8 +60,8 @@ export class Habito {
   }
 
   /**
-   * Aplica un estado persistido al hábito sin pasar por la interacción de la UI.
-   * @param {{completado?: boolean, fechaCompletado?: string|null}} estado - Estado guardado.
+   * Aplica un estado seguro al hábito sin pasar por la interacción de la UI.
+   * @param {{completado?: boolean, fechaCompletado?: string|null}} estado Estado guardado.
    * @returns {void}
    */
   aplicarEstado(estado = {}) {
@@ -71,14 +71,14 @@ export class Habito {
 
   /**
    * Indica si el hábito está completado.
-   * @returns {boolean} Estado de completado.
+   * @returns {boolean} Estado completado.
    */
   estaCompletado() {
     return this.#completado;
   }
 
   /**
-   * Devuelve una representación textual.
+   * Devuelve una representación en tipo cadena del habito.
    * @returns {string} Texto del hábito.
    */
   toString() {
@@ -86,8 +86,8 @@ export class Habito {
   }
 
   /**
-   * Serializa el hábito a objeto plano.
-   * @returns {Object} Hábito serializado.
+   * Convierte el objeto en memoría a un formato bytes o cadena para devolver el hábito a objeto plano.
+   * @returns {Object} Hábito.
    */
   toJSON() {
     return {
@@ -97,7 +97,7 @@ export class Habito {
       tipo: this.#tipo,
       puntos: this.#puntos,
       completado: this.#completado,
-      fechaCompletado: this.#fechaCompletado?.toISOString() ?? null,
+      fechaCompletado: this.#fechaCompletado?.toISOString() ?? null, // Meror que toString porque guarda la fecha con formato Fecha + Hora
       icono: this.#icono
     };
   }

@@ -1,4 +1,4 @@
-
+// TODO Guardado en LocalStorage
 /**
  * Guarda el email del último usuario logueado.
  * @param {string} email - Email a recordar.
