@@ -6,4 +6,4 @@
  */
 
 export { Usuario, Empleado, Manager } from './classes/Usuario.js';
-export { iniciarSesion, iniciarSesionBiometrico, cerrarSesion, redirigirSegunRol, obtenerInfoNavegador } from './modules/auth.js';
+export { iniciarSesion, iniciarSesionBiometrico, iniciarSesionFacialDemo, cerrarSesion, redirigirSegunRol, obtenerInfoNavegador } from './modules/auth.js';

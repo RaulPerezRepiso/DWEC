@@ -11,7 +11,7 @@
     <main class="auth-layout">
       <section class="auth-copy">
         <a class="brand" href="./index.html">
-          <span class="brand-mark">EP</span>
+          <img class="brand-logo" src="./img/logo.png" alt="Logo de Efficium Peak">
           <span>Efficium Peak</span>
         </a>
         <p class="eyebrow">Acceso por rol</p>
@@ -36,11 +36,19 @@
         <p id="error-general" class="campo-error"></p>
         <button class="button full" type="submit">Entrar a Efficium Peak</button>
         <div class="divider"><span>o</span></div>
-        <button class="biometric-button" type="button" data-accion="login-biometrico">
+        <button class="biometric-button" type="button" data-accion="login-facial-demo">
           <span class="biometric-icon">◎</span>
-          <span>Acceder con Face ID / passkey</span>
+          <span>Acceso facial demo con webcam</span>
         </button>
-        <p class="auth-note">En web se usa WebAuthn: el dispositivo decide si valida con Face ID, Windows Hello, Touch ID o PIN.</p>
+        <section id="face-demo-panel" class="face-demo-panel" hidden>
+          <video id="face-demo-video" autoplay muted playsinline></video>
+          <p id="face-demo-status">Preparando cámara...</p>
+          <div class="face-demo-actions">
+            <button class="ghost-button" type="button" data-accion="cancelar-facial-demo">Cancelar</button>
+            <button class="button" type="button" data-accion="confirmar-facial-demo">Entrar</button>
+          </div>
+        </section>
+        <p class="auth-note">Demo académica: valida que la cámara se abre y simula detección facial. No identifica personas reales.</p>
       </form>
     </main>
   </body>

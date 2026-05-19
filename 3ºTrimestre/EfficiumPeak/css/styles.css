@@ -101,6 +101,15 @@ select {
   box-shadow: 0 10px 30px rgba(124, 58, 237, 0.32);
 }
 
+.brand-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.24);
+}
+
 .site-nav {
   display: flex;
   gap: 22px;
@@ -262,6 +271,41 @@ select {
   color: var(--muted);
   font-size: 0.86rem;
   line-height: 1.5;
+}
+
+.face-demo-panel {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+  border: 1px solid rgba(34, 211, 238, 0.18);
+  border-radius: 8px;
+  padding: 12px;
+  background: rgba(34, 211, 238, 0.06);
+}
+
+.face-demo-panel[hidden] {
+  display: none;
+}
+
+.face-demo-panel video {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #0f1425;
+  object-fit: cover;
+}
+
+.face-demo-panel p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.face-demo-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
 
 .product-frame,

@@ -5,7 +5,7 @@
  * @version 1.0.0
  */
 
-import { iniciarSesion, iniciarSesionBiometrico, cerrarSesion, redirigirSegunRol, obtenerInfoNavegador } from './modules/auth.js';
+import { iniciarSesion, iniciarSesionBiometrico, iniciarSesionFacialDemo, cerrarSesion, redirigirSegunRol, obtenerInfoNavegador } from './modules/auth.js';
 import { cargarHabitos, renderizarHabitos, completarHabito } from './modules/habitos.js';
 import { abrirHistorialEmpleado, mostrarNotificacion } from './modules/dom.js';
 import { obtenerHabitoDia } from './modules/api.js';
@@ -70,6 +70,9 @@ const RETOS_INICIALES = [
     creadoPor: 'Marcos Gómez'
   }
 ];
+
+let streamFacialDemo = null;
+let timeoutFacialDemo = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   inicializarEventos();
@@ -170,6 +173,9 @@ function manejarClicksGlobales(e) {
     'completar-habito': () => completarHabito(id),
     'ver-historial': () => abrirHistorialEmpleado(crearHistorialEmpleadoDemo(id)),
     'login-biometrico': () => manejarLoginBiometrico(),
+    'login-facial-demo': () => iniciarAccesoFacialDemo(),
+    'confirmar-facial-demo': () => confirmarAccesoFacialDemo(),
+    'cancelar-facial-demo': () => cancelarAccesoFacialDemo(),
     'cerrar-sesion': () => cerrarSesion(),
     'cerrar-modal': () => cerrarModal(),
     'abrir-modal-reto': () => abrirModalReto(id)
@@ -209,6 +215,84 @@ async function manejarLoginBiometrico() {
     redirigirSegunRol(usuario.rol);
   } catch (error) {
     mostrarError('error-general', error.message);
+  }
+}
+
+/**
+ * Abre la webcam para simular un acceso facial.
+ * @returns {Promise<void>} Finalización de la preparación de cámara.
+ */
+async function iniciarAccesoFacialDemo() {
+  const panel = document.getElementById('face-demo-panel');
+  const video = document.getElementById('face-demo-video');
+  const estado = document.getElementById('face-demo-status');
+  if (!panel || !video || !estado) return;
+
+  panel.hidden = false;
+  estado.textContent = 'Solicitando permiso de cámara...';
+
+  try {
+    streamFacialDemo = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 420 } },
+      audio: false
+    });
+    video.srcObject = streamFacialDemo;
+    estado.textContent = 'Cámara activa. Buscando rostro...';
+    programarDeteccionFacialDemo(estado);
+  } catch (error) {
+    estado.textContent = 'No se pudo abrir la cámara. Revisa los permisos del navegador.';
+    mostrarError('error-general', 'Permite la cámara para usar el acceso facial demo.');
+  }
+}
+
+/**
+ * Programa la detección facial demo tras activar la cámara.
+ * @param {HTMLElement} estado - Elemento de estado de la cámara.
+ * @returns {void}
+ */
+function programarDeteccionFacialDemo(estado) {
+  clearTimeout(timeoutFacialDemo);
+  timeoutFacialDemo = setTimeout(() => {
+    estado.textContent = 'Rostro detectado en modo demo. Entrando...';
+    confirmarAccesoFacialDemo();
+  }, 1800);
+}
+
+/**
+ * Confirma el acceso facial demo y redirige al panel del empleado.
+ * @returns {Promise<void>} Finalización del acceso.
+ */
+async function confirmarAccesoFacialDemo() {
+  try {
+    const usuario = await iniciarSesionFacialDemo();
+    detenerCamaraFacialDemo();
+    redirigirSegunRol(usuario.rol);
+  } catch (error) {
+    mostrarError('error-general', error.message);
+  }
+}
+
+/**
+ * Cancela el acceso facial demo y apaga la cámara.
+ * @returns {void}
+ */
+function cancelarAccesoFacialDemo() {
+  const panel = document.getElementById('face-demo-panel');
+  const estado = document.getElementById('face-demo-status');
+  detenerCamaraFacialDemo();
+  if (estado) estado.textContent = 'Acceso facial cancelado.';
+  if (panel) panel.hidden = true;
+}
+
+/**
+ * Detiene el stream de cámara del acceso facial demo.
+ * @returns {void}
+ */
+function detenerCamaraFacialDemo() {
+  clearTimeout(timeoutFacialDemo);
+  if (streamFacialDemo) {
+    streamFacialDemo.getTracks().forEach((track) => track.stop());
+    streamFacialDemo = null;
   }
 }
 

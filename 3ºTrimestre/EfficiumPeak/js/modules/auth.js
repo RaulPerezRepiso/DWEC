@@ -46,6 +46,20 @@ export async function iniciarSesionBiometrico() {
 }
 
 /**
+ * Inicia sesión tras completar el acceso facial demo con webcam.
+ * @returns {Promise<Object>} Usuario autenticado para la demo facial.
+ */
+export async function iniciarSesionFacialDemo() {
+  const usuarios = await cargarUsuarios();
+  const usuarioDemo = usuarios.find((usuario) => usuario.rol === 'empleado') ?? usuarios[0];
+  if (!usuarioDemo) throw new Error('No hay usuarios disponibles para iniciar sesión');
+  guardarSesion(usuarioDemo);
+  recordarEmail(usuarioDemo.email);
+  aceptarCookies();
+  return usuarioDemo;
+}
+
+/**
  * Solicita una credencial WebAuthn de plataforma para simular Face ID/passkey.
  * @param {string} email - Email del usuario demo.
  * @returns {Promise<void>} Finalización de la solicitud.
