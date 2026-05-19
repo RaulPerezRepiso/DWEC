@@ -1,10 +1,3 @@
-/**
- * @file Habito.js
- * @description Clase que representa un micro-hábito de Efficium Peak
- * @author Raúl Pérez Repiso
- * @version 1.0.0
- */
-
 export class Habito {
   #id;
   #titulo;
@@ -17,11 +10,11 @@ export class Habito {
 
   /**
    * Crea un hábito puntuable.
-   * @param {string} id - Identificador único del hábito.
+   * @param {string} id - ID del hábito.
    * @param {string} titulo - Título del hábito.
-   * @param {string} descripcion - Descripción breve.
+   * @param {string} descripcion - Descripción breve del hábito.
    * @param {'diario'|'semanal'|'mensual'} tipo - Frecuencia del hábito.
-   * @param {number} puntos - Puntos que otorga.
+   * @param {number} puntos - Puntos que da al completarse.
    * @param {string} icono - Icono representativo.
    */
   constructor(id, titulo, descripcion, tipo, puntos, icono = '⭐') {
@@ -64,6 +57,16 @@ export class Habito {
   reiniciar() {
     this.#completado = false;
     this.#fechaCompletado = null;
+  }
+
+  /**
+   * Aplica un estado persistido al hábito sin pasar por la interacción de la UI.
+   * @param {{completado?: boolean, fechaCompletado?: string|null}} estado - Estado guardado.
+   * @returns {void}
+   */
+  aplicarEstado(estado = {}) {
+    this.#completado = Boolean(estado.completado);
+    this.#fechaCompletado = estado.fechaCompletado ? new Date(estado.fechaCompletado) : null;
   }
 
   /**
