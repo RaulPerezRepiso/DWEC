@@ -1,10 +1,3 @@
-/**
- * @file stats.worker.js
- * @description Web Worker para calcular métricas del panel manager sin bloquear la UI
- * @author Raúl Pérez Repiso
- * @version 1.0.0
- */
-
 self.onmessage = function (evento) {
   const { tipo, datos } = evento.data;
 
@@ -14,6 +7,7 @@ self.onmessage = function (evento) {
       throw new Error(`Tipo de mensaje no soportado: ${tipo}`);
     }
 
+    //Constantes que guardan los datos del empleado y asigna el calculo de puntos al empleado
     const empleados = Array.isArray(datos?.empleados) ? datos.empleados : [];
     const resultado = calcularMetricasManager(empleados);
     self.postMessage({ ok: true, tipo, resultado });
@@ -45,10 +39,13 @@ function calcularMetricasManager(empleados) {
   const mediaPuntos = Math.round(
     empleados.reduce((acc, empleado) => acc + Number(empleado.puntos ?? 0), 0) / totalEmpleados
   );
+
+  //Empelado con más puntos
   const topEmpleado = empleados.reduce((top, actual) => (
     Number(actual.puntos ?? 0) > Number(top.puntos ?? 0) ? actual : top
   ));
 
+  //Asignamos dependiendo de los puntos
   return {
     totalEmpleados,
     mediaPuntos,

@@ -46,7 +46,8 @@ async function prepararDatosDinamicos() {
 }
 
 /**
- * Saca unas iniciales a partir del nombre del usuario.
+ * Saca la primera inicial a partir del nombre del usuario.
+ * Para mostrarlas en el panel de usuario.
  * @param {string} nombre - Nombre completo.
  * @returns {string} Iniciales cortas.
  */
@@ -56,7 +57,7 @@ function crearIniciales(nombre = '') {
 }
 
 /**
- * Devuelve un riesgo simple según los puntos del empleado.
+ * Devuelve un riesgo simple según los puntos del empleado seán menores o mayores.
  * @param {number} puntos - Puntos del empleado.
  * @returns {string} Riesgo calculado.
  */
@@ -111,9 +112,11 @@ function calcularResumenUsuario(usuarioId) {
  * Mezcla el usuario base con el resumen real guardado en localStorage. 
  * (para poder actualizar datos dependiendo de lo guardado o marcado)
  * @param {Object} usuario - Usuario base del JSON.
- * @returns {Object} Empleado listo para pintar en manager.
+ * @returns {Object} Empleado listo para Crear en manager.
  */
 function crearEmpleadoSistemaDesdeUsuario(usuario) {
+
+  //Saca los datos del usuario guardado en el json y del editado en el panel (para dar el usuario completo).
   const resumenGuardado = obtenerResumenUsuario(usuario.id);
   const resumen = resumenGuardado ?? calcularResumenUsuario(usuario.id);
   if (!resumenGuardado && resumen) guardarResumenUsuario(usuario.id, resumen);
@@ -253,6 +256,8 @@ function calcularAvanceDiarioPonderado(empleadoId) {
  * @returns {number} Racha visible de la semana.
  */
 function calcularRachaSemanalVisible(usuarioId) {
+
+  //Constante de datos de usuario para asignar la nueva racha dependiendo de actividad
   const usuarioBase = obtenerUsuarioBase(usuarioId);
   const baseRacha = Number(usuarioBase?.racha ?? 0);
   const actividadHoy = obtenerHabitosCompletadosHoy(usuarioId).length > 0 ? 1 : 0;
@@ -302,6 +307,7 @@ function renderizarDashboardDinamicoSiProcede() {
   const root = document.getElementById('dashboard-root');
   if (!root) return;
 
+  //Dependiendo del usuario crea una panel u otro.
   const usuario = obtenerSesionActiva();
   if (!usuario) {
     location.href = './login.html';
@@ -319,6 +325,8 @@ function renderizarDashboardDinamicoSiProcede() {
  * @returns {Object|null} Usuario autenticado o null.
  */
 function obtenerSesionActiva() {
+
+  //Carga los datos guardados en session si los hay
   const raw = sessionStorage.getItem('sesion_usuario');
   return raw ? JSON.parse(raw) : null;
 }
@@ -685,6 +693,8 @@ function crearPanelManager(usuario) {
  * @returns {HTMLElement} Nodo de apoyo.
  */
 function crearEyebrow(texto) {
+
+  //Según su rol crear el eyebrow del primer panel
   const p = createNode('p', texto);
   p.classList.add('eyebrow');
   return p;
@@ -792,7 +802,6 @@ function inicializarEventos() {
   if (formLogin) formLogin.addEventListener('submit', manejarLogin);
 
   document.addEventListener('click', manejarClicksGlobales);
-  document.addEventListener('keydown', manejarTeclado);
 
   const filtroHabitos = document.getElementById('filtro-habitos');
   if (filtroHabitos) filtroHabitos.addEventListener('change', manejarFiltroHabitos);
@@ -971,7 +980,9 @@ async function renderizarHabitoDiaApi() {
 }
 
 /**
- * Abre la webcam para simular un acceso facial.
+ * Abre la webcam para simular un acceso facial pidiendo permiso para usar webcam.
+ * Si el navegador deja acceder a la cámara, el vídeo se muestra en pantalla
+ * y se lanza una detección simulada para completar el login. 
  * @returns {Promise<void>} Finalización de la preparación de cámara.
  */
 async function iniciarAccesoFacialDemo() {
@@ -998,7 +1009,9 @@ async function iniciarAccesoFacialDemo() {
 }
 
 /**
- * Programa la detección facial demo tras activar la cámara.
+ * Lanza una detección facial simulada después de activar la cámara.
+ * Aquí no se hace reconocimiento real: solo se espera un momento y se
+ * continúa con el acceso demo para hacer como si registrase la cara
  * @param {HTMLElement} estado - Elemento de estado de la cámara.
  * @returns {void}
  */
@@ -1011,7 +1024,8 @@ function programarDeteccionFacialDemo(estado) {
 }
 
 /**
- * Confirma el acceso facial demo y redirige al panel del empleado.
+ * Completa el acceso facial demo iniciando sesión con el usuario preparado
+ * para esta prueba en ese caso el mío, apaga la cámara y redirige al panel correspondiente.
  * @returns {Promise<void>} Finalización del acceso.
  */
 async function confirmarAccesoFacialDemo() {
@@ -1037,7 +1051,8 @@ function cancelarAccesoFacialDemo() {
 }
 
 /**
- * Detiene el stream de cámara del acceso facial demo.
+ * Si se cancela el acceso facial demo, cierra la cámara y oculta el panel visual
+ * para devolver el formulario a su estado normal.
  * @returns {void}
  */
 function detenerCamaraFacialDemo() {
@@ -1046,14 +1061,6 @@ function detenerCamaraFacialDemo() {
     streamFacialDemo.getTracks().forEach((track) => track.stop());
     streamFacialDemo = null;
   }
-}
-
-/**
- * Maneja atajos de teclado globales.
- * @param {KeyboardEvent} e - Evento de teclado.
- * @returns {void}
- */
-function manejarTeclado(e) {
 }
 
 /**
@@ -1355,7 +1362,7 @@ function obtenerNivelPorPuntos(puntos) {
  */
 function calcularMetricasManagerAsync(empleados) {
   return new Promise((resolve, reject) => {
-    // El worker devuelve solo los datos ya calculados y aquí luego se decide cómo pintarlos.
+    // El worker devuelve solo los datos ya calculados y aquí luego se decide cómo Crearlos.
     const worker = new Worker('./js/workers/stats.worker.js');
     worker.postMessage({
       tipo: 'calcular_metricas_manager',
@@ -1477,7 +1484,7 @@ function obtenerRetos() {
 }
 
 /**
- * Pinta el editor del manager en un bloque aparte cuando se pulsa el botón de editar.
+ * Crea el editor del manager en un bloque aparte cuando se pulsa el botón de editar.
  * @returns {void}
  */
 function renderizarEditorRetoManager() {
