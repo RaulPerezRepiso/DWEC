@@ -1,6 +1,12 @@
+/* =========================================================
+   VARIABLES GLOBALES
+   Se definen los colores, tipografia y sombras principales
+   del proyecto para mantener coherencia visual.
+========================================================= */
 :root {
   color-scheme: dark;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
   --bg: #0f1220;
   --surface: #171b2e;
   --surface-2: #1f2540;
@@ -13,14 +19,24 @@
   --warning: #f59e0b;
   --danger: #ef4444;
   --glow: 0 24px 80px rgba(0, 0, 0, 0.32);
+
   background: var(--bg);
   color: var(--text);
 }
 
+/* =========================================================
+   RESET BASICO
+   Hace que padding y border cuenten dentro del ancho total.
+========================================================= */
 * {
   box-sizing: border-box;
 }
 
+/* =========================================================
+   PREVENCION DE DESBORDAMIENTOS
+   Evita que algunos contenedores flex o grid se rompan
+   cuando el contenido es demasiado ancho.
+========================================================= */
 main,
 section,
 article,
@@ -30,10 +46,19 @@ form {
   min-width: 0;
 }
 
+/* =========================================================
+   DESPLAZAMIENTO SUAVE
+   Mejora la experiencia al navegar por anclas internas.
+========================================================= */
 html {
   scroll-behavior: smooth;
 }
 
+/* =========================================================
+   ESTILOS GENERALES DEL BODY
+   Fondo oscuro con degradados decorativos y color principal
+   del texto.
+========================================================= */
 body {
   min-height: 100vh;
   margin: 0;
@@ -44,17 +69,29 @@ body {
   color: var(--text);
 }
 
+/* =========================================================
+   ENLACES
+   Se hereda el color para mantener la identidad visual.
+========================================================= */
 a {
   color: inherit;
   text-decoration: none;
 }
 
+/* =========================================================
+   FORMULARIOS
+   Botones, inputs y selects heredan la tipografia global.
+========================================================= */
 button,
 input,
 select {
   font: inherit;
 }
 
+/* =========================================================
+   CABECERA SUPERIOR
+   Barra fija en la parte superior con efecto translúcido.
+========================================================= */
 .site-header,
 .topbar {
   position: sticky;
@@ -70,6 +107,9 @@ select {
   backdrop-filter: blur(18px);
 }
 
+/* =========================================================
+   LINEA DECORATIVA BAJO LA CABECERA
+========================================================= */
 .site-header::after,
 .topbar::after {
   position: absolute;
@@ -81,6 +121,9 @@ select {
   background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.46), transparent);
 }
 
+/* =========================================================
+   MARCA / LOGOTIPO
+========================================================= */
 .brand {
   display: inline-flex;
   align-items: center;
@@ -110,6 +153,9 @@ select {
   box-shadow: 0 10px 30px rgba(124, 58, 237, 0.24);
 }
 
+/* =========================================================
+   NAVEGACION PRINCIPAL
+========================================================= */
 .site-nav {
   display: flex;
   gap: 22px;
@@ -117,6 +163,10 @@ select {
   font-size: 0.95rem;
 }
 
+/* =========================================================
+   CONTENEDORES PRINCIPALES
+   Limita el ancho para mejorar la lectura en pantallas grandes.
+========================================================= */
 .hero,
 .auth-layout,
 .dashboard {
@@ -124,6 +174,10 @@ select {
   margin: 0 auto;
 }
 
+/* =========================================================
+   HERO PRINCIPAL
+   Dos columnas en escritorio: texto + parte visual.
+========================================================= */
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr);
@@ -137,6 +191,9 @@ select {
   position: relative;
 }
 
+/* =========================================================
+   DETALLE DECORATIVO DEL HERO
+========================================================= */
 .hero-saas::before {
   position: absolute;
   inset: auto 0 26px 0;
@@ -145,6 +202,10 @@ select {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
 }
 
+/* =========================================================
+   TITULOS PRINCIPALES
+   Se usa clamp para que sean responsive de forma fluida.
+========================================================= */
 .hero-copy h1,
 .auth-copy h1,
 .dashboard-hero h1 {
@@ -158,6 +219,9 @@ select {
   font-size: clamp(2rem, 5vw, 3.8rem);
 }
 
+/* =========================================================
+   PARRAFOS DESTACADOS
+========================================================= */
 .lead,
 .hero-copy p,
 .dashboard-hero p {
@@ -166,20 +230,26 @@ select {
   line-height: 1.7;
 }
 
-.hero-copy {
+.hero-copy,
+.auth-copy {
   display: grid;
   gap: 18px;
 }
 
+/* =========================================================
+   TEXTO PEQUENO SUPERIOR DE SECCION
+========================================================= */
 .eyebrow {
   margin: 0 0 10px;
   color: #a78bfa;
   font-size: 0.78rem;
   font-weight: 800;
-  letter-spacing: 0;
   text-transform: uppercase;
 }
 
+/* =========================================================
+   FILAS FLEXIBLES REUTILIZABLES
+========================================================= */
 .hero-actions,
 .panel-header,
 .mission-strip,
@@ -191,6 +261,9 @@ select {
   flex-wrap: wrap;
 }
 
+/* =========================================================
+   BOTONES GENERALES
+========================================================= */
 .button,
 .ghost-button,
 .icon-button,
@@ -225,6 +298,9 @@ select {
   width: 100%;
 }
 
+/* =========================================================
+   BOTONES SECUNDARIOS
+========================================================= */
 .ghost-button,
 .icon-button,
 .biometric-button {
@@ -248,6 +324,9 @@ select {
   font-size: 1.25rem;
 }
 
+/* =========================================================
+   DIVISOR HORIZONTAL CON TEXTO EN CENTRO
+========================================================= */
 .divider {
   display: flex;
   align-items: center;
@@ -271,6 +350,9 @@ select {
   line-height: 1.5;
 }
 
+/* =========================================================
+   PANEL DE DEMOSTRACION FACIAL
+========================================================= */
 .face-demo-panel {
   display: grid;
   gap: 12px;
@@ -306,6 +388,9 @@ select {
   gap: 10px;
 }
 
+/* =========================================================
+   TARJETAS Y PANELES GENERALES
+========================================================= */
 .product-frame,
 .panel,
 .kpi-card,
@@ -328,6 +413,9 @@ select {
   transform: perspective(1100px) rotateY(-5deg) rotateX(2deg);
 }
 
+/* =========================================================
+   MINI BARRA DECORATIVA SUPERIOR
+========================================================= */
 .mini-topbar {
   display: flex;
   gap: 7px;
@@ -341,24 +429,30 @@ select {
   background: #475569;
 }
 
+/* =========================================================
+   GRID DE PREVISUALIZACION
+========================================================= */
 .preview-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 
+/* =========================================================
+   TARJETAS DE METRICAS Y MISIONES
+========================================================= */
 .metric-card,
 .mission-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 8px;
   min-height: 132px;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 18px;
   background: #12172a;
-  position: relative;
-  overflow: hidden;
 }
 
 .metric-card::after,
@@ -392,6 +486,9 @@ select {
   background: linear-gradient(135deg, rgba(124, 58, 237, 0.42), rgba(34, 211, 238, 0.18));
 }
 
+/* =========================================================
+   GRAFICOS DE BARRAS
+========================================================= */
 .preview-chart,
 .large-chart {
   display: flex;
@@ -411,6 +508,9 @@ select {
   background: linear-gradient(180deg, var(--accent-2), var(--accent));
 }
 
+/* =========================================================
+   ALTURAS PREDEFINIDAS PARA BARRAS
+========================================================= */
 .h-38 { height: 38%; }
 .h-45 { height: 45%; }
 .h-60 { height: 60%; }
@@ -421,6 +521,9 @@ select {
 .h-88 { height: 88%; }
 .h-94 { height: 94%; }
 
+/* =========================================================
+   TARJETA DE MISION DESTACADA
+========================================================= */
 .mission-card {
   flex-direction: row;
   align-items: center;
@@ -437,6 +540,9 @@ select {
   font-size: 1.4rem;
 }
 
+/* =========================================================
+   TITULOS DE PANELES
+========================================================= */
 .panel h2,
 .analytics-panel h2,
 .team-panel h2 {
@@ -444,6 +550,9 @@ select {
   font-size: clamp(1.6rem, 3vw, 2.4rem);
 }
 
+/* =========================================================
+   PAGINA DE AUTENTICACION
+========================================================= */
 .auth-page {
   display: grid;
   min-height: 100vh;
@@ -456,11 +565,6 @@ select {
   gap: clamp(28px, 7vw, 82px);
   align-items: center;
   padding: 48px 0;
-}
-
-.auth-copy {
-  display: grid;
-  gap: 18px;
 }
 
 .login-hints span {
@@ -476,6 +580,9 @@ select {
   padding: 30px;
 }
 
+/* =========================================================
+   FORMULARIOS
+========================================================= */
 label {
   display: block;
   margin: 18px 0 7px;
@@ -508,6 +615,9 @@ select:focus {
   font-size: 0.9rem;
 }
 
+/* =========================================================
+   DASHBOARD
+========================================================= */
 .dashboard {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -552,6 +662,9 @@ select:focus {
   gap: 20px;
 }
 
+/* =========================================================
+   BARRA DE ACCIONES
+========================================================= */
 .actions-bar {
   position: sticky;
   top: 86px;
@@ -585,6 +698,9 @@ select:focus {
   color: var(--muted);
 }
 
+/* =========================================================
+   ETIQUETAS TIPO PILLS
+========================================================= */
 .mission-pill,
 .hero-status span {
   display: inline-flex;
@@ -600,19 +716,22 @@ select:focus {
   white-space: nowrap;
 }
 
+/* =========================================================
+   HERO DEL DASHBOARD
+========================================================= */
 .dashboard-hero {
   display: flex;
   align-items: end;
   justify-content: space-between;
   gap: 22px;
   min-height: 230px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   padding: 28px;
   background:
     linear-gradient(135deg, rgba(124, 58, 237, 0.36), rgba(34, 211, 238, 0.1)),
     #171b2e;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  overflow: hidden;
 }
 
 .dashboard-hero > div {
@@ -639,6 +758,9 @@ select:focus {
   flex-wrap: wrap;
 }
 
+/* =========================================================
+   GRID DE KPIs
+========================================================= */
 .kpi-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -646,12 +768,12 @@ select:focus {
 }
 
 .kpi-card {
+  position: relative;
   display: grid;
   gap: 8px;
   min-height: 132px;
-  padding: 20px;
-  position: relative;
   overflow: hidden;
+  padding: 20px;
 }
 
 .kpi-card span,
@@ -664,6 +786,9 @@ select:focus {
   z-index: 1;
 }
 
+/* =========================================================
+   BLOQUE DE PROGRESO
+========================================================= */
 .progress-box {
   display: grid;
   gap: 12px;
@@ -673,6 +798,29 @@ select:focus {
     rgba(23, 27, 46, 0.86);
 }
 
+.progress-box > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--muted);
+}
+
+.progress {
+  height: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #0f1425;
+}
+
+#barra-progreso {
+  width: 0;
+  height: 100%;
+  transition: width 0.2s ease;
+}
+
+/* =========================================================
+   SUGERENCIA API
+========================================================= */
 .api-suggestion {
   display: flex;
   align-items: center;
@@ -709,26 +857,9 @@ select:focus {
   white-space: nowrap;
 }
 
-.progress-box > div:first-child {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  color: var(--muted);
-}
-
-.progress {
-  height: 12px;
-  overflow: hidden;
-  border-radius: 999px;
-  background: #0f1425;
-}
-
-#barra-progreso {
-  width: 0;
-  height: 100%;
-  transition: width 0.2s ease;
-}
-
+/* =========================================================
+   GRID DE HABITOS
+========================================================= */
 .habitos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
@@ -783,6 +914,9 @@ select:focus {
   font-weight: 900;
 }
 
+/* =========================================================
+   FRANJA DE MISION
+========================================================= */
 .mission-strip {
   justify-content: space-between;
   padding: 18px;
@@ -809,6 +943,9 @@ select:focus {
   overflow-wrap: anywhere;
 }
 
+/* =========================================================
+   GRIDS DE ANALITICA Y RESUMEN
+========================================================= */
 .manager-grid {
   display: grid;
   grid-template-columns: 1.25fr 0.75fr;
@@ -855,6 +992,9 @@ select:focus {
   background: linear-gradient(135deg, rgba(124, 58, 237, 0.28), rgba(34, 211, 238, 0.08));
 }
 
+/* =========================================================
+   ANILLO DE PUNTUACION
+========================================================= */
 .score-ring {
   --ring-progress: 0deg;
   display: grid;
@@ -889,13 +1029,16 @@ select:focus {
   text-align: center;
 }
 
+/* =========================================================
+   PANELES DE CONTENIDO
+========================================================= */
 .analytics-panel,
 .team-panel,
 .employee-analytics-panel,
 .retos-manager-panel {
-  padding: 22px;
   position: relative;
   overflow: hidden;
+  padding: 22px;
 }
 
 .panel-header {
@@ -915,6 +1058,9 @@ select:focus {
   height: 260px;
 }
 
+/* =========================================================
+   LISTADO DE EQUIPO
+========================================================= */
 .team-list {
   display: grid;
   gap: 12px;
@@ -944,6 +1090,9 @@ select:focus {
   font-weight: 900;
 }
 
+/* =========================================================
+   TABLA DE EMPLEADOS EN FORMATO GRID
+========================================================= */
 .employee-table {
   display: grid;
   gap: 10px;
@@ -951,16 +1100,21 @@ select:focus {
 
 .employee-row {
   display: grid;
-  grid-template-columns: minmax(180px, 1.4fr) minmax(90px, 0.8fr) minmax(130px, 1fr) minmax(90px, 0.8fr) minmax(90px, 0.7fr);
+  grid-template-columns:
+    minmax(180px, 1.4fr)
+    minmax(90px, 0.8fr)
+    minmax(130px, 1fr)
+    minmax(90px, 0.8fr)
+    minmax(90px, 0.7fr);
   gap: 12px;
   align-items: center;
   min-height: 54px;
+  min-width: 0;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   padding: 0 14px;
   background: rgba(255, 255, 255, 0.045);
   color: var(--muted);
-  min-width: 0;
 }
 
 .employee-row span {
@@ -989,6 +1143,9 @@ select:focus {
   color: #a78bfa;
 }
 
+/* =========================================================
+   TARJETAS DE RETOS
+========================================================= */
 .reto-list {
   display: grid;
   gap: 12px;
@@ -999,14 +1156,14 @@ select:focus {
   grid-template-columns: minmax(0, 1fr) minmax(140px, 0.28fr);
   gap: 18px;
   align-items: center;
+  min-width: 0;
+  overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 8px;
   padding: 16px;
   background:
     linear-gradient(135deg, rgba(124, 58, 237, 0.14), transparent 48%),
     rgba(255, 255, 255, 0.045);
-  min-width: 0;
-  overflow: hidden;
 }
 
 .reto-card--manager {
@@ -1051,6 +1208,23 @@ select:focus {
   text-align: right;
 }
 
+.reto-progress div {
+  height: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #0f1425;
+}
+
+.reto-progress i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+/* =========================================================
+   ACCIONES DE RETOS
+========================================================= */
 .reto-card-actions,
 .reto-editor-actions {
   display: flex;
@@ -1065,6 +1239,9 @@ select:focus {
   width: auto;
 }
 
+/* =========================================================
+   EDITOR DE RETOS
+========================================================= */
 .reto-editor-panel {
   margin-bottom: 14px;
   border: 1px solid rgba(34, 211, 238, 0.18);
@@ -1101,20 +1278,9 @@ select:focus {
   resize: vertical;
 }
 
-.reto-progress div {
-  height: 9px;
-  overflow: hidden;
-  border-radius: 999px;
-  background: #0f1425;
-}
-
-.reto-progress i {
-  display: block;
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-}
-
+/* =========================================================
+   ESTADOS ESPECIALES
+========================================================= */
 .estado-vacio {
   grid-column: 1 / -1;
   padding: 24px;
@@ -1123,6 +1289,9 @@ select:focus {
   color: var(--muted);
 }
 
+/* =========================================================
+   NOTIFICACIONES
+========================================================= */
 .notificacion {
   position: fixed;
   right: 18px;
@@ -1145,6 +1314,9 @@ select:focus {
   transform: translateY(0);
 }
 
+/* =========================================================
+   SPINNER GLOBAL
+========================================================= */
 #spinner-global {
   position: fixed;
   inset: 0;
@@ -1163,6 +1335,9 @@ select:focus {
   animation: girar 0.8s linear infinite;
 }
 
+/* =========================================================
+   MODAL
+========================================================= */
 .modal {
   display: none;
   position: fixed;
@@ -1178,12 +1353,19 @@ select:focus {
   display: grid;
 }
 
+/* =========================================================
+   ANIMACION DEL SPINNER
+========================================================= */
 @keyframes girar {
   to {
     transform: rotate(360deg);
   }
 }
 
+/* =========================================================
+   RESPONSIVE - TABLET
+   Se pasa la mayoria de layouts complejos a una columna.
+========================================================= */
 @media (max-width: 900px) {
   .hero,
   .auth-layout,
@@ -1217,6 +1399,11 @@ select:focus {
   }
 }
 
+/* =========================================================
+   RESPONSIVE - MOVIL GRANDE
+   La tabla de empleados se convierte en bloques verticales
+   y los retos apilan su contenido.
+========================================================= */
 @media (max-width: 760px) {
   .employee-row {
     grid-template-columns: 1fr;
@@ -1236,6 +1423,11 @@ select:focus {
   }
 }
 
+/* =========================================================
+   RESPONSIVE - MOVIL
+   Se simplifica la navegacion y se apilan botones
+   y bloques horizontales.
+========================================================= */
 @media (max-width: 640px) {
   .site-nav {
     display: none;
@@ -1262,5 +1454,9 @@ select:focus {
   .icon-button,
   .mission-pill {
     width: 100%;
+  }
+
+  .face-demo-actions {
+    grid-template-columns: 1fr;
   }
 }
